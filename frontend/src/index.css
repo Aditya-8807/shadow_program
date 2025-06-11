@@ -1,0 +1,27 @@
+body{
+    margin: 0;
+    background-color: white;
+    color: black;
+}
+.app {
+  text-align: center;
+}
+.navbar{
+    justify-content: space-between;
+    background: khaki;
+    backdrop-filter: blur(1px);
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.5rem ;
+}
+
+.navbar ul{
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+}
+.navbar a{
+    text-decoration: none;
+}
