@@ -3,7 +3,8 @@ import './RegistrationPage.css';
 
 const RegistrationPage = () => {
   const [formData, setFormData] = useState({
-    name: '',
+    firstName: '',
+    lastName: '',
     rollNumber: '',
     contact: '',
     email: '',
@@ -211,7 +212,7 @@ const RegistrationPage = () => {
         {/* Header */}
         <div className="header">
           <h1>Shadow Program Registration</h1>
-          <p>SARc - IIT Bombay</p>
+          <p>SARC - IIT Bombay</p>
         </div>
 
         {/* Form */}
@@ -405,7 +406,7 @@ const RegistrationPage = () => {
                   className="checkbox"
                 />
                 <label htmlFor="confirmation" className="checkbox-label">
-                  I confirm my registration for the Shadow Program and I understand that I will be attending this program at my own risk, and SARc will not be responsible for any mishaps. <span className="required">*</span>
+                  I confirm my registration for the Shadow Program and I understand that I will be attending this program at my own risk, and SARC will not be responsible for any mishaps. <span className="required">*</span>
                 </label>
               </div>
               {errors.confirmation && <p className="error-message">{errors.confirmation}</p>}
@@ -428,4 +429,3 @@ const RegistrationPage = () => {
 };
 
 export default RegistrationPage;
-
