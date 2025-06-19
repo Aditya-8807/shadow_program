@@ -213,7 +213,7 @@ const RegistrationPage = () => {
                 {/* Header */}
                 <div className="header">
                     <h1>Shadow Program Registration</h1>
-                    <p>SARc - IIT Bombay</p>
+                    <p>SARC - IIT Bombay</p>
                 </div>
 
                 {/* Form */}

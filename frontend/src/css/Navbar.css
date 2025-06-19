@@ -1,0 +1,30 @@
+.navbar {
+    justify-content: space-between;
+    background: rgb(0, 0, 0);
+    backdrop-filter: blur(1px);
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.5rem;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+
+}
+
+.navbar-links {
+    display: flex;
+    gap: 3rem;
+    flex-grow: 0.5;
+    flex-wrap: nowrap;
+    color: aliceblue;
+
+}
+
+.navbar a {
+    text-decoration: none;
+}
