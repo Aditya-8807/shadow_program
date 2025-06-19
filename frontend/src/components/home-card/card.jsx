@@ -34,7 +34,7 @@ export default function Card() {
 
       <div className="grid">
         {events.map((event, index) => (
-          <article className="event-card" key={index}>
+          <article className="home-card" key={index}>
             <div className="card-image">
               <img
                 src={event.image}

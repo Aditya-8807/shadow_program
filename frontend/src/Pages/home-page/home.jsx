@@ -1,6 +1,8 @@
 import { useNavigate } from 'react-router-dom';
-import './HomePage.css'
-import Card from '../components/eventcard/card'
+import './home.css'
+import Carousel from '../../components/Image-slider/Carousel';
+import Card from '../../components/home-card/card';
+import Testimonials from '../../components/Testimonials/Testimonials';
 
 
 export default function HomePage() {
@@ -15,8 +17,8 @@ export default function HomePage() {
                 <button className='b2' onClick={() => navigate('/PastEventPage')}>Past Shadows</button>
             </div>
             <Card />
+            <Carousel/>
+            <Testimonials/>
         </div>
-        
-
     );
 }

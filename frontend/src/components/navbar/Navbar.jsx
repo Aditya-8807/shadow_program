@@ -35,7 +35,7 @@ export default function Navbar() {
 
       <ul className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
         <li><Link to="/" onClick={closeMenu}>Home</Link></li>
-        <li><Link to="/PastEventPage" onClick={closeMenu}>Past Events</Link></li>
+        <li><Link to="/PastEvent" onClick={closeMenu}>Past Events</Link></li>
         <li><Link to="/TeamPage" onClick={closeMenu}>Team</Link></li>
         <li><Link to="/RegistrationPage" className="register" onClick={closeMenu}>Register</Link></li>
       </ul>

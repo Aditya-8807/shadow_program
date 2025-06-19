@@ -1,0 +1,51 @@
+.member-img {
+    width: 250px;
+    height: 250px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 200px rgba(41, 157, 148, 0.76);
+}
+
+
+.ctm-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 300px);
+    gap: 2rem;
+    padding: 2rem;
+    width: 100%;
+    box-sizing: border-box;
+    justify-items: center;
+    justify-content: center;
+
+}
+
+.cordi-grid {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 7rem;
+    padding: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    justify-items: center;
+    justify-content: center;
+}
+
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1.5rem;
+
+
+    backdrop-filter: blur(10px);
+
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}

@@ -5,14 +5,15 @@ body {
 }
 
 .navbar {
-  color: white;
-  background: linear-gradient(to right, #01162b, #6a90b4);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.6rem 1rem;
+  background: linear-gradient(to right, #01162b, #6a90b4);
+  padding: 0.8rem 1.5rem;
   position: relative;
   z-index: 1000;
+  flex-wrap: wrap;
+  color: white;
 }
 
 .logo-container {
@@ -100,7 +101,7 @@ a:focus,
 }
 
 /* Hamburger button styles */
-.hamburger {
+/* .hamburger {
   display: none;
   font-size: 2rem;
   cursor: pointer;
@@ -108,6 +109,13 @@ a:focus,
   background: none;
   border: none;
   padding: 0;
+} */
+.hamburger {
+  font-size: 1.6rem;
+  color: white;
+  cursor: pointer;
+  display: none;
+  user-select: none;
 }
 
 .hamburger:focus {
@@ -123,16 +131,15 @@ a:focus,
   }
 
   .nav-links {
-    display: none;
     flex-direction: column;
-    position: absolute;
-    top: 3.2rem;
-    left: 0;
-    right: 0;
-    background: #2a5298;
-    padding: 0.7rem 0;
-    text-align: center;
     width: 100%;
+    background-color: #01162b;
+    padding: 1rem 0;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: 50;
+    display: none;
   }
 
   .nav-links.active {
@@ -140,15 +147,11 @@ a:focus,
   }
 
   .nav-links li {
-    gap: 1rem;
+    padding: 0.5rem 1.5rem;
   }
 
-  .register {
-    padding: 0.5rem 1rem;
-    border-radius: 999px;
-    font-weight: bold;
-    text-decoration: none;
-    border: none;
-    display: inline-block;
+  .nav-links a {
+    display: block;
+    width: 100%;
   }
 }

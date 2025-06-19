@@ -28,8 +28,8 @@
   margin: 0 auto;
 }
 
-.event-card {
-  width: 280px;
+.home-card {
+  width: 360px;
   background-color: #ffffff;
   border-radius: 12px;
   overflow: hidden;
@@ -37,12 +37,12 @@
   transition: transform 0.3s ease;
 }
 
-.event-card:hover {
+.home-card:hover {
   transform: translateY(-6px);
 }
 
 .card-image {
-  height: 180px;
+  height: 200px;
   background-color: #e5e5e5;
   overflow: hidden;
 }
@@ -99,7 +99,7 @@
     align-items: center;
   }
 
-  .event-card {
+  .home-card {
     width: 90%;
   }
 
