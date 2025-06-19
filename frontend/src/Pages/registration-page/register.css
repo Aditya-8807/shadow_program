@@ -16,23 +16,31 @@
 
 /* Header Styles */
 .header {
-  background: linear-gradient(135deg, #3b82f6, #9333ea);
-  color: white;
-  padding: 3rem 2rem;
-  text-align: center;
+  background: linear-gradient(-60deg, #063035, #123354);
+  ;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  color: rgb(200, 236, 255);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .header h1 {
-  font-size: 2.25rem;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-  margin: 0;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  font-family: 'Segoe UI' sans-serif;
+  font-size: 45px;
+  margin: 0%;
+  padding: 0%;
 }
 
 .header p {
-  font-size: 1.25rem;
+
+  color: #688781;
+  font-size: 20px;
   opacity: 0.9;
-  margin: 0.5rem 0 0 0;
+  margin: 20px;
 }
 
 /* Form Container */
@@ -86,7 +94,8 @@ label {
 .form-select {
   width: 100%;
   padding: 0.75rem 1rem;
-  border: 1px solid #d1d5db;
+  border: 1px solid #79c5c5be;
+  background-color: #73aac64b;
   border-radius: 0.5rem;
   font-size: 1rem;
   transition: all 0.2s ease-in-out;
@@ -119,7 +128,7 @@ label {
 
 /* Payment Section */
 .payment-section {
-  background-color: #f9fafb;
+  background-color: #73aac64b;
   padding: 1.5rem;
   border-radius: 0.5rem;
   border: 1px solid #e5e7eb;
@@ -128,7 +137,7 @@ label {
 .payment-section h3 {
   font-size: 1.125rem;
   font-weight: 600;
-  color: #2563eb;
+  color: rgb(45, 109, 104);
   margin-bottom: 1rem;
   text-align: center;
   margin-top: 0;
@@ -143,7 +152,7 @@ label {
 .qr-code-wrapper {
   text-align: center;
   padding: 1.5rem;
-  background-color: white;
+  background-color: rgba(69, 124, 156, 0.251);
   border-radius: 0.5rem;
   border: 2px solid #dbeafe;
 }
@@ -191,7 +200,7 @@ label {
 }
 
 .file-upload-area {
-  border: 2px dashed #60a5fa;
+  border: 2px dashed #0fa399;
   border-radius: 0.5rem;
   padding: 1.5rem;
   text-align: center;
@@ -229,7 +238,7 @@ label {
 }
 
 .file-placeholder {
-  color: #2563eb;
+  color: #293737;
 }
 
 .upload-text {
@@ -284,7 +293,7 @@ label {
   border: none;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
-  background: linear-gradient(135deg, #3b82f6, #9333ea);
+  background: rgb(17, 122, 122);
   color: white;
 }
 
@@ -312,27 +321,17 @@ label {
   .registration-container {
     padding: 1rem 0.5rem;
   }
-  
+
   .form-container {
     padding: 1.5rem;
   }
-  
-  .header {
-    padding: 2rem 1rem;
-  }
-  
-  .header h1 {
-    font-size: 1.875rem;
-  }
-  
-  .header p {
-    font-size: 1.125rem;
-  }
-  
+
+
+
   .qr-code-wrapper {
     padding: 1rem;
   }
-  
+
   .submit-button {
     font-size: 1rem;
     padding: 0.875rem 1.25rem;
