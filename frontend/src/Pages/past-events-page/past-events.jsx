@@ -8,61 +8,61 @@ function PastEvent() {
     const events = [
         {
             id: 1, company: "WorldQuant", date: "Oct,2025",
-            logo: "",
-            photo: "/images/WorldQuant.png",
+            
+            photo: "/images/img1.JPG",
             info: ""
         },
         {
             id: 2, company: "FYND", date: "Oct,2025",
-            logo: "",
-            photo: "",
+            
+            photo: "/images/img2.JPG",
             info: ""
         },
         {
             id: 3, company: "Bajaj Auto", date: "Oct,2025",
-            logo: "",
-            photo: "",
+            
+            photo: "/images/img3.JPG",
             info: ""
         },
         {
             id: 4, company: "Deloitte", date: "Oct,2025",
-            logo: "",
-            photo: "",
+            
+            photo: "/images/img5.JPG",
             info: ""
         },
         {
             id: 5, company: "SBI", date: "Jan,2024",
-            logo: "",
-            photo: "",
+            
+            photo: "/images/img6.JPG",
             info: ""
         },
         {
             id: 6, company: "L&T", date: "Apr,2024",
-            logo: "",
-            photo: "",
+            
+            photo: "/images/img7.JPG",
             info: ""
         },
         {
             id: 7, company: "NSE", date: "Oct,2024",
-            logo: "",
+            
             photo: "",
             info: ""
         },
         {
             id: 8, company: "CSDL", date: "Nov,2024",
-            logo: "",
+            
             photo: "",
             info: ""
         },
         {
             id: 9, company: "HUL", date: "Mar,2023",
-            logo: "",
+            
             photo: "",
             info: ""
         },
         {
             id: 10, company: "BSE", date: "Oct,2022",
-            logo: "",
+            
             photo: "",
             info: ""
         }

@@ -15,9 +15,6 @@ export default function TeamPage() {
                     <img src="/images/L&T.png" className="member-img" />
                     <h4>Kartik Vaishnav</h4>
                     <p>SARC Overall Coordinator 2025-26</p>
-                    <div className="socials">
-                        <p> socials</p>
-                    </div>
                 </div>
 
             </div>
@@ -29,17 +26,11 @@ export default function TeamPage() {
                         <img src="/images/L&T.png" className="member-img" />
                         <h4>Astha Maliwal</h4>
                         <p>SARC ASMP CTM 2025-26</p>
-                        <div className="socials">
-                            <p> socials</p>
-                        </div>
                     </div>
                     <div className="card">
                         <img src="/images/L&T.png" className="member-img" />
                         <h4>Adit Sule</h4>
                         <p>SARC ASMP CTM 2025-26</p>
-                        <div className="socials">
-                            <p> socials</p>
-                        </div>
                     </div>
                 </div>
                 <div className="asmp-cordi">
@@ -49,41 +40,26 @@ export default function TeamPage() {
                             <img src="/images/L&T.png" className="member-img" />
                             <h4>Name of member</h4>
                             <p>position of member</p>
-                            <div className="socials">
-                                <p> socials</p>
-                            </div>
                         </div>
                         <div className="card">
                             <img src="/images/L&T.png" className="member-img" />
                             <h4>Name of member</h4>
                             <p>position of member</p>
-                            <div className="socials">
-                                <p> socials</p>
-                            </div>
                         </div>
                         <div className="card">
                             <img src="/images/L&T.png" className="member-img" />
                             <h4>Name of member</h4>
                             <p>position of member</p>
-                            <div className="socials">
-                                <p> socials</p>
-                            </div>
                         </div>
                         <div className="card">
                             <img src="/images/L&T.png" className="member-img" />
                             <h4>Name of member</h4>
                             <p>position of member</p>
-                            <div className="socials">
-                                <p> socials</p>
-                            </div>
                         </div>
                         <div className="card">
                             <img src="/images/L&T.png" className="member-img" />
                             <h4>Name of member</h4>
                             <p>position of member</p>
-                            <div className="socials">
-                                <p> socials</p>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -96,17 +72,11 @@ export default function TeamPage() {
                         <img src="/images/L&T.png" className="member-img" />
                         <h4>Khsuhi Yadav</h4>
                         <p>SARC Web CTM 2025-26</p>
-                        <div className="socials">
-                            <p> socials</p>
-                        </div>
                     </div>
                     <div className="card">
                         <img src="/images/L&T.png" className="member-img" />
                         <h4>Arush Srivastav</h4>
                         <p>SARC Web CTM 2025-26</p>
-                        <div className="socials">
-                            <p> socials</p>
-                        </div>
                     </div>
                 </div>
                 <div className="web-cordi">
@@ -117,49 +87,31 @@ export default function TeamPage() {
                             <img src="/images/L&T.png" className="member-img" />
                             <h4>Aditya Chaurasiya</h4>
                             <p>SARC Web Coordinator 2025-26</p>
-                            <div className="socials">
-                                <p> socials</p>
-                            </div>
                         </div>
                         <div className="card">
                             <img src="/images/L&T.png" className="member-img" />
                             <h4>Kapil Chippa</h4>
                             <p>SARC Web Coordinator 2025-26</p>
-                            <div className="socials">
-                                <p> socials</p>
-                            </div>
                         </div>
                         <div className="card">
                             <img src="/images/L&T.png" className="member-img" />
                             <h4>Rutika Hake</h4>
                             <p>SARC Web Coordinator 2025-26</p>
-                            <div className="socials">
-                                <p> socials</p>
-                            </div>
                         </div>
                         <div className="card">
                             <img src="/images/L&T.png" className="member-img" />
                             <h4>Tarun Kadam</h4>
                             <p>SARC Web Coordinator 2025-26</p>
-                            <div className="socials">
-                                <p> socials</p>
-                            </div>
                         </div>
                         <div className="card">
                             <img src="/images/L&T.png" className="member-img" />
                             <h4>Vanshika Nalamasa </h4>
                             <p>SARC Web Coordinator 2025-26</p>
-                            <div className="socials">
-                                <p> socials</p>
-                            </div>
                         </div>
                         <div className="card">
                             <img src="/images/L&T.png" className="member-img" />
                             <h4>Vaibhav Singh </h4>
                             <p>SARC Web Coordinator 2025-26</p>
-                            <div className="socials">
-                                <p> socials</p>
-                            </div>
                         </div>
                     </div>
                 </div>

@@ -18,40 +18,40 @@ const RegistrationPage = () => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [fileName, setFileName] = useState('');
-
-  const departments = [
-    'Aerospace Engineering',
-    'Chemical Engineering',
-    'Civil Engineering',
-    'Computer Science and Engineering',
-    'Electrical Engineering',
-    'Engineering Physics',
-    'Materials Science and Engineering',
-    'Mechanical Engineering',
-    'Metallurgical Engineering and Materials Science',
-    'Mathematics and Statistics',
-    'Chemistry',
-    'Physics',
-    'Biosciences and Bioengineering',
-    'Earth Sciences',
-    'Energy Science and Engineering',
-    'Environmental Science and Engineering',
-    'Industrial Design Centre',
-    'Systems and Control Engineering',
-    'Climate Studies',
-    'Other'
-  ];
+const departments = [
+  { value: 'aerospace_engineering', label: 'Aerospace Engineering' },
+  { value: 'chemical_engineering', label: 'Chemical Engineering' },
+  { value: 'civil_engineering', label: 'Civil Engineering' },
+  { value: 'computer_science_engineering', label: 'Computer Science and Engineering' },
+  { value: 'electrical_engineering', label: 'Electrical Engineering' },
+  { value: 'engineering_physics', label: 'Engineering Physics' },
+  { value: 'materials_science_engineering', label: 'Materials Science and Engineering' },
+  { value: 'mechanical_engineering', label: 'Mechanical Engineering' },
+  { value: 'metallurgical_engineering', label: 'Metallurgical Engineering and Materials Science' },
+  { value: 'mathematics_statistics', label: 'Mathematics and Statistics' },
+  { value: 'chemistry', label: 'Chemistry' },
+  { value: 'physics', label: 'Physics' },
+  { value: 'biosciences_bioengineering', label: 'Biosciences and Bioengineering' },
+  { value: 'earth_sciences', label: 'Earth Sciences' },
+  { value: 'energy_science_engineering', label: 'Energy Science and Engineering' },
+  { value: 'environmental_science_engineering', label: 'Environmental Science and Engineering' },
+  { value: 'industrial_design_centre', label: 'Industrial Design Centre' },
+  { value: 'systems_control_engineering', label: 'Systems and Control Engineering' },
+  { value: 'climate_studies', label: 'Climate Studies' },
+  { value: 'other', label: 'Other' }
+];
 
   const years = [
-    '1st Year',
-    '2nd Year',
-    '3rd Year',
-    '4th Year',
-    '5th Year',
-    'PhD',
-    'MSc',
-    'MTech'
-  ];
+  { value: '1st_year', label: '1st Year' },
+  { value: '2nd_year', label: '2nd Year' },
+  { value: '3rd_year', label: '3rd Year' },
+  { value: '4th_year', label: '4th Year' },
+  { value: '5th_year', label: '5th Year' },
+  { value: 'phd', label: 'PhD' },
+  { value: 'msc', label: 'MSc' },
+  { value: 'mtech', label: 'MTech' }
+];
+
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -69,75 +69,128 @@ const RegistrationPage = () => {
     }
   };
 
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setFormData(prev => ({
-        ...prev,
-        screenshot: file
-      }));
-      setFileName(file.name);
-      
-      // Clear file error
-      if (errors.screenshot) {
-        setErrors(prev => ({
-          ...prev,
-          screenshot: ''
-        }));
-      }
-    } else {
-      setFormData(prev => ({
-        ...prev,
-        screenshot: null
-      }));
-      setFileName('');
-    }
-  };
-
+  
   const validateForm = () => {
-    const newErrors = {};
+  const newErrors = {};
 
-    if (!formData.name.trim()) newErrors.name = 'Name is required';
-    if (!formData.rollNumber.trim()) newErrors.rollNumber = 'Roll Number is required';
-    if (!formData.contact.trim()) {
-      newErrors.contact = 'Contact Number is required';
-    } else if (!/^\d{10}$/.test(formData.contact)) {
-      newErrors.contact = 'Contact Number must be 10 digits';
+  if (!formData.firstName.trim()) newErrors.firstName = 'First Name is required';
+  if (!formData.lastName.trim()) newErrors.lastName = 'Last Name is required';
+  if (!formData.rollNumber.trim()) newErrors.rollNumber = 'Roll Number is required';
+  if (!formData.contact.trim()) {
+    newErrors.contact = 'Contact Number is required';
+  } else if (!/^\d{10}$/.test(formData.contact)) {
+    newErrors.contact = 'Contact Number must be 10 digits';
+  }
+  if (!formData.email.trim()) {
+    newErrors.email = 'Email is required';
+  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+    newErrors.email = 'Please enter a valid email';
+  }
+  if (!formData.ldapId.trim()) newErrors.ldapId = 'LDAP ID is required';
+  if (!formData.department) newErrors.department = 'Department is required';
+  if (!formData.yearOfStudy) newErrors.yearOfStudy = 'Year of Study is required';
+  
+  // More specific file validation
+  if (!formData.screenshot) {
+    newErrors.screenshot = 'Payment screenshot is required';
+  } else if (!(formData.screenshot instanceof File)) {
+    newErrors.screenshot = 'Invalid file selected';
+  } else if (!formData.screenshot.type.startsWith('image/')) {
+    newErrors.screenshot = 'Please select an image file';
+  }
+  
+  if (!formData.confirmation) newErrors.confirmation = 'You must confirm your registration';
+
+  console.log('Validation errors:', newErrors); // Debug log
+  setErrors(newErrors);
+  return Object.keys(newErrors).length === 0;
+};
+  
+ const handleFileChange = (e) => {
+  const file = e.target.files[0];
+  console.log('File selected:', file); // Debug log
+  
+  if (file) {
+    console.log('File details:', {
+      name: file.name,
+      size: file.size,
+      type: file.type
+    }); // Debug log
+    
+    setFormData(prev => ({
+      ...prev,
+      screenshot: file
+    }));
+    setFileName(file.name);
+    
+    // Clear file error
+    if (errors.screenshot) {
+      setErrors(prev => ({
+        ...prev,
+        screenshot: ''
+      }));
     }
-    if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Please enter a valid email';
+  } else {
+    console.log('No file selected'); // Debug log
+    setFormData(prev => ({
+      ...prev,
+      screenshot: null
+    }));
+    setFileName('');
+  }
+};
+
+// Updated handleSubmit function with file debugging
+const handleSubmit = async () => {
+  if (!validateForm()) {
+    return;
+  }
+
+  // Debug: Check if file exists before submitting
+  console.log('Form data before submit:', formData);
+  console.log('Screenshot file:', formData.screenshot);
+  
+  if (!formData.screenshot) {
+    console.error('No screenshot file found!');
+    alert('Please select a payment screenshot before submitting.');
+    return;
+  }
+
+  setIsSubmitting(true);
+
+  try {
+    const form = new FormData();
+    form.append('first_name', formData.firstName);
+    form.append('last_name', formData.lastName);
+    form.append('roll_number', formData.rollNumber);
+    form.append('contact', formData.contact);
+    form.append('email', formData.email);
+    form.append('ldap_id', formData.ldapId);
+    form.append('department', formData.department);
+    form.append('year_of_study', formData.yearOfStudy);
+    
+    // Debug: Log file before appending
+    console.log('Appending file to FormData:', formData.screenshot);
+    form.append('payment_screenshot', formData.screenshot);
+form.append('confirmation_accepted', formData.confirmation); 
+    // Debug: Check FormData contents
+    for (let pair of form.entries()) {
+      console.log(pair[0] + ': ' + pair[1]);
     }
-    if (!formData.ldapId.trim()) newErrors.ldapId = 'LDAP ID is required';
-    if (!formData.department) newErrors.department = 'Department is required';
-    if (!formData.yearOfStudy) newErrors.yearOfStudy = 'Year of Study is required';
-    if (!formData.screenshot) newErrors.screenshot = 'Payment screenshot is required';
-    if (!formData.confirmation) newErrors.confirmation = 'You must confirm your registration';
 
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
+    const response = await fetch('http://127.0.0.1:8000/api/registrations/create/', {
+      method: 'POST',
+      body: form,
+    });
 
-  const handleSubmit = async () => {
-    if (!validateForm()) {
-      return;
-    }
-
-    setIsSubmitting(true);
-
-    try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      // Here you would typically send the data to your backend
-      console.log('Form submitted:', formData);
-      
-      alert('Registration submitted successfully! You will receive a confirmation email shortly.');
+    if (response.ok) {
+      const data = await response.json();
+      alert('✅ Registration successful!');
       
       // Reset form
       setFormData({
-        name: '',
+        firstName: '',
+        lastName: '',
         rollNumber: '',
         contact: '',
         email: '',
@@ -145,17 +198,57 @@ const RegistrationPage = () => {
         department: '',
         yearOfStudy: '',
         screenshot: null,
-        confirmation: false
+        confirmation: false,
       });
       setFileName('');
+    } else {
+      const errorData = await response.json();
+      console.error('❌ Validation errors:', errorData);
       
-    } catch (error) {
-      alert('There was an error submitting your registration. Please try again.');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+      // Handle specific field errors from backend
+      if (errorData.errors) {
+        // Convert backend error format to frontend format
+        const formattedErrors = {};
+        
+        Object.keys(errorData.errors).forEach(key => {
+          // Backend returns arrays, take the first error message
+          if (Array.isArray(errorData.errors[key])) {
+            formattedErrors[key] = errorData.errors[key][0];
+          } else {
+            formattedErrors[key] = errorData.errors[key];
+          }
+        });
 
+        // Map backend field names to frontend field names if needed
+        const fieldMapping = {
+          'payment_screenshot': 'screenshot',
+          'year_of_study': 'yearOfStudy',
+          'first_name': 'firstName',
+          'last_name': 'lastName',
+          'roll_number': 'rollNumber',
+          'ldap_id': 'ldapId'
+        };
+
+        const mappedErrors = {};
+        Object.keys(formattedErrors).forEach(key => {
+          const frontendKey = fieldMapping[key] || key;
+          mappedErrors[frontendKey] = formattedErrors[key];
+        });
+
+        setErrors(mappedErrors);
+        alert('❌ Please correct the errors highlighted in the form.');
+      } else {
+        alert('❌ There was an error with your submission. Please check your data.');
+      }
+    }
+  } catch (error) {
+    console.error('❌ Submission failed:', error);
+    alert('❌ Failed to submit the form. Please check your internet connection and try again.');
+  } finally {
+    setIsSubmitting(false);
+  }
+};
+  
   const QRCodeSVG = () => (
     <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect width="200" height="200" fill="white"/>
@@ -218,24 +311,43 @@ const RegistrationPage = () => {
         {/* Form */}
         <div className="form-container">
           <div className="form-content">
-            {/* Name and Roll Number */}
+            {/* First Name and Last Name */}
             <div className="form-row">
               <div className="form-group">
-                <label htmlFor="name">
-                  Name <span className="required">*</span>
+                <label htmlFor="firstName">
+                  First Name <span className="required">*</span>
                 </label>
                 <input
                   type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
+                  id="firstName"
+                  name="firstName"
+                  value={formData.firstName}
                   onChange={handleInputChange}
-                  className={`form-input ${errors.name ? 'error' : ''}`}
-                  placeholder="Enter your full name"
+                  className={`form-input ${errors.firstName ? 'error' : ''}`}
+                  placeholder="Enter your first name"
                 />
-                {errors.name && <p className="error-message">{errors.name}</p>}
+                {errors.firstName && <p className="error-message">{errors.firstName}</p>}
               </div>
 
+              <div className="form-group">
+                <label htmlFor="lastName">
+                  Last Name <span className="required">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="lastName"
+                  name="lastName"
+                  value={formData.lastName}
+                  onChange={handleInputChange}
+                  className={`form-input ${errors.lastName ? 'error' : ''}`}
+                  placeholder="Enter your last name"
+                />
+                {errors.lastName && <p className="error-message">{errors.lastName}</p>}
+              </div>
+            </div>
+
+            {/* Roll Number and LDAP ID */}
+            <div className="form-row">
               <div className="form-group">
                 <label htmlFor="rollNumber">
                   Roll Number <span className="required">*</span>
@@ -250,6 +362,22 @@ const RegistrationPage = () => {
                   placeholder="Enter your roll number"
                 />
                 {errors.rollNumber && <p className="error-message">{errors.rollNumber}</p>}
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="ldapId">
+                  LDAP ID <span className="required">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="ldapId"
+                  name="ldapId"
+                  value={formData.ldapId}
+                  onChange={handleInputChange}
+                  className={`form-input ${errors.ldapId ? 'error' : ''}`}
+                  placeholder="Enter your LDAP ID"
+                />
+                {errors.ldapId && <p className="error-message">{errors.ldapId}</p>}
               </div>
             </div>
 
@@ -288,23 +416,6 @@ const RegistrationPage = () => {
               </div>
             </div>
 
-            {/* LDAP ID */}
-            <div className="form-group full-width">
-              <label htmlFor="ldapId">
-                LDAP ID <span className="required">*</span>
-              </label>
-              <input
-                type="text"
-                id="ldapId"
-                name="ldapId"
-                value={formData.ldapId}
-                onChange={handleInputChange}
-                className={`form-input ${errors.ldapId ? 'error' : ''}`}
-                placeholder="Enter your LDAP ID"
-              />
-              {errors.ldapId && <p className="error-message">{errors.ldapId}</p>}
-            </div>
-
             {/* Department and Year */}
             <div className="form-row">
               <div className="form-group">
@@ -312,17 +423,18 @@ const RegistrationPage = () => {
                   Department <span className="required">*</span>
                 </label>
                 <select
-                  id="department"
-                  name="department"
-                  value={formData.department}
-                  onChange={handleInputChange}
-                  className={`form-select ${errors.department ? 'error' : ''}`}
-                >
-                  <option value="">Select Department</option>
-                  {departments.map(dept => (
-                    <option key={dept} value={dept}>{dept}</option>
-                  ))}
-                </select>
+  id="department"
+  name="department"
+  value={formData.department}
+  onChange={handleInputChange}
+  className={`form-select ${errors.department ? 'error' : ''}`}
+>
+  <option value="">Select Department</option>
+  {departments.map(dept => (
+    <option key={dept.value} value={dept.value}>{dept.label}</option>
+  ))}
+</select>
+
                 {errors.department && <p className="error-message">{errors.department}</p>}
               </div>
 
@@ -331,17 +443,18 @@ const RegistrationPage = () => {
                   Year of Study <span className="required">*</span>
                 </label>
                 <select
-                  id="yearOfStudy"
-                  name="yearOfStudy"
-                  value={formData.yearOfStudy}
-                  onChange={handleInputChange}
-                  className={`form-select ${errors.yearOfStudy ? 'error' : ''}`}
-                >
-                  <option value="">Select Year</option>
-                  {years.map(year => (
-                    <option key={year} value={year}>{year}</option>
-                  ))}
-                </select>
+  id="yearOfStudy"
+  name="yearOfStudy"
+  value={formData.yearOfStudy}
+  onChange={handleInputChange}
+  className={`form-select ${errors.yearOfStudy ? 'error' : ''}`}
+>
+  <option value="">Select Year</option>
+  {years.map(year => (
+    <option key={year.value} value={year.value}>{year.label}</option>
+  ))}
+</select>
+
                 {errors.yearOfStudy && <p className="error-message">{errors.yearOfStudy}</p>}
               </div>
             </div>

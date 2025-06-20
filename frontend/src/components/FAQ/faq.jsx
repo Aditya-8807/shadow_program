@@ -2,10 +2,11 @@
 import React from 'react';
 import { useState } from 'react';
 import './faq.css';
-
+import { useNavigate } from 'react-router-dom';
 const FAQ = ({ isOpen, onClose }) => {
     const [openItems, setOpenItems] = useState({});
 
+    const navigate = useNavigate();
     const faqData = [
         {
             id: 1,
@@ -48,6 +49,7 @@ const FAQ = ({ isOpen, onClose }) => {
 
     if (!isOpen) return null;
 
+
     return (
         <div className="faq-overlay" onClick={onClose}>
             <div className="faq-modal" onClick={(e) => e.stopPropagation()}>
@@ -81,7 +83,9 @@ const FAQ = ({ isOpen, onClose }) => {
 
                 <div className="faq-footer">
 
-                    <p className="website-info">shadowprogramme.com</p>
+                    <button className="b1" onClick={() => navigate('/RegistrationPage')}>
+                        Register Now
+                    </button>
                 </div>
             </div>
         </div>

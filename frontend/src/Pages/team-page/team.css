@@ -1,3 +1,21 @@
+.header {
+    animation: slideDownStatic 0.5s ease-out;
+    position: relative;
+    /* OR absolute, if you want it on top */
+    z-index: 10;
+}
+
+@keyframes slideDownStatic {
+    from {
+        transform: translateY(-200px);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
 .header h4 {
     font-style: italic;
     font-size: 20px;
@@ -7,7 +25,6 @@
 .body {
     background-color: #ffd19648;
     margin: 20px;
-    border: 1px solid #ffbf00be;
     border-radius: 30px;
 }
 

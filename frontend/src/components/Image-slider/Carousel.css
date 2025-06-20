@@ -7,6 +7,25 @@
   box-sizing: border-box;
 }
 
+
+.gallery h1 {
+  margin-top: 0px;
+  font-size: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery h4 {
+  font-size: 1.5rem;
+  font-style: italic;
+  color: #405450;
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .slide {
   /* padding: 12px; */
   display: flex !important;
@@ -28,7 +47,8 @@
 .carousel-image {
   min-width: 100%;
   min-height: 100%;
-  object-fit: fill; /* Preserve aspect ratio */
+  object-fit: fill;
+  /* Preserve aspect ratio */
   border-radius: 16px;
   pointer-events: none;
   user-select: none;
@@ -47,6 +67,7 @@
   transform: scale(1);
   pointer-events: auto;
 }
+
 .slide {
   transition: transform 0.5s ease, filter 0.5s ease, box-shadow 0.4s ease;
   overflow: hidden;

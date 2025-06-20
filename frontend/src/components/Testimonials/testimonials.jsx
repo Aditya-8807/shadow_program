@@ -106,7 +106,8 @@ export default function Testimonials() {
 
     return (
         <div className="testimonials-section">
-            <h2 className="heading">Testimonials</h2>
+            <h1 className="heading">Testimonials</h1>
+            <h4 className='subheading'>Glimpses of transformation — one testimony at a time.</h4>
             <Slider {...settings} className="slider" >
                 {testimonials.map((t, index) => {
                     const isActive = index === currentSlide % testimonials.length;
