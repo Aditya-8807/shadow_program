@@ -5,6 +5,7 @@ import PastEventPage from "./Pages/PastEventPage";
 import RegistrationPage from "./Pages/RegistrationPage";
 import TeamPage from "./Pages/TeamPage";
 import Navbar from "./components/Navbar"
+import Footer from "./components/Footer/footer"
 
 export default function App() {
 
@@ -20,6 +21,8 @@ export default function App() {
           <Route path="/TeamPage" element={<TeamPage />} />
         </Routes>
       </div>
+      <Footer />
     </div>
+
   );
 }

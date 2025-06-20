@@ -27,7 +27,7 @@ export default function Card() {
 
     return (
         <section className="container">
-            <h2 className="title">Past Shadow Events</h2>
+            <h1 className="title">Past Shadow Events</h1>
             <p className="subtitle">
                 Take a look at our previous successful shadow programs and their impact.
             </p>
@@ -42,7 +42,7 @@ export default function Card() {
                                 onError={(e) => (e.target.style.display = 'none')}
                             />
                         </div>
-                        <div className="content" style={{ padding: '15px 20px' }}>
+                        <div className="card-content" style={{ padding: '15px 20px' }}>
                             <h3>{event.title}</h3>
                             <p className="info1">
                                 <FaCalendarAlt className="icon" /> {event.date}

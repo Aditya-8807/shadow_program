@@ -1,18 +1,28 @@
 .testimonials-section {
     text-align: center;
-    padding: 3rem 0;
-    font-family: 'Segoe UI', sans-serif;
+    padding: 1rem 0;
+    border-radius: 50px;
     width: 100%;
     overflow: hidden;
+    background-color: #fab869;
+
 }
 
 
 
 .heading {
-    font-size: 2.5rem;
+    font-size: 2rem;
     margin-bottom: 2rem;
     font-weight: 600;
     color: #111827;
+}
+
+.subheading {
+    font-style: italic;
+    font-size: 25px;
+    color: #405450;
+    margin-top: -20px;
+    margin-bottom: 40px;
 }
 
 .slider {
@@ -45,8 +55,8 @@
 }
 
 .quote-box {
-    background-color: #3b82f6;
-    color: white;
+    background-color: #2c2c3c;
+    color: rgb(200, 200, 200);
     border-radius: 12px;
     padding: 4rem 2rem 5rem;
     width: 100%;
@@ -69,7 +79,8 @@
 
 .quote {
     margin-top: 2rem;
-    font-size: 1rem;
+    font-size: 1.1rem;
+    font-style: italic;
     line-height: 1.6;
     text-align: center;
     z-index: 1;

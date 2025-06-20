@@ -48,7 +48,7 @@
 .close-btn {
     background: none;
     border: none;
-    color: #1a1f5f;
+    color: black;
     font-size: 24px;
     cursor: pointer;
     padding: 0;
@@ -62,7 +62,7 @@
 }
 
 .close-btn:hover {
-    background-color: #333;
+    background-color: #ffffff;
     color: white;
 }
 
@@ -84,7 +84,7 @@
     width: 100%;
     background: none;
     border: none;
-    color: #ffe4b2;
+    color: #ffffff;
     text-align: left;
     padding: 20px 24px;
     font-size: 1rem;
@@ -94,10 +94,11 @@
     justify-content: space-between;
     align-items: center;
     transition: background-color 0.2s ease;
+    margin: 0px;
 }
 
 .faq-question:hover {
-    background: #ffe4b2;
+    background: #ffe4b240;
 }
 
 
@@ -106,7 +107,7 @@
     font-size: 1.5rem;
     font-weight: 300;
     transition: transform 0.2s ease;
-    color: rgb(43, 45, 106);
+    color: #ffe4b2;
 }
 
 .faq-icon.open {
@@ -114,15 +115,16 @@
 }
 
 .faq-answer {
-    padding: 0 24px 20px 24px;
-    background-color: #fab869;
-    animation: slideDown 0.3s ease;
+    padding: 10px;
+    background-color: #5a5a6e;
+    animation: slideDown 0.8s ease;
+    margin: 0px;
 }
 
 .faq-answer p {
     margin: 0;
     line-height: 1.6;
-    color: rgb(35, 37, 83);
+    color: rgb(0, 0, 0);
     font-size: 0.95rem;
 }
 
@@ -130,6 +132,7 @@
     padding: 20px 24px;
     border-top: 1px solid #333;
     text-align: center;
+    background-color: #131325;
 }
 
 
@@ -180,5 +183,6 @@
 
     .faq-footer {
         padding: 16px 20px;
+        background-color: #131325;
     }
 }

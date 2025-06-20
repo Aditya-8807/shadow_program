@@ -10,7 +10,7 @@
     margin: 20px;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
 
-    border-radius: 45px;
+    border-radius: 12px;
 }
 
 .event-card:hover {
@@ -24,7 +24,7 @@
 }
 
 .event-header {
-    background-color: #131325;
+    background-color: #2c2c3c;
 
     margin: 0;
     color: white;

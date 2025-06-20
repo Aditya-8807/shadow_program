@@ -1,3 +1,22 @@
+.header {
+    animation: slideDownStatic 0.5s ease-out;
+    position: relative;
+    /* OR absolute, if you want it on top */
+    z-index: 10;
+}
+
+@keyframes slideDownStatic {
+    from {
+        transform: translateY(-200px);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
 .header h4 {
     font-style: italic;
     font-size: 20px;
@@ -23,6 +42,21 @@
 
 .overall-cordi .card {
     width: 250px;
+}
+
+.asmp h1 {
+    color: #131326;
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+
+}
+
+.web h1 {
+    color: #131326;
+    display: flex;
+    justify-items: center;
+    justify-content: center;
 }
 
 .ctm-grid {
