@@ -32,7 +32,7 @@ export default function Carousel() {
       {
         breakpoint: 1024,
         settings: {
-    centerPadding: "35px",
+    centerPadding: "60px",
           
           slidesToShow: 3,
           slidesToScroll: 1,
@@ -44,7 +44,7 @@ export default function Carousel() {
       {
         breakpoint: 768,
         settings: {
-    centerPadding: "35px",
+    centerPadding: "60px",
 
           slidesToShow: 1,
           slidesToScroll: 1,

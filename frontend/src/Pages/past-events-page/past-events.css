@@ -6,7 +6,7 @@
     justify-content: center;
     height: 200px;
     color: #ffe4b2;
-    box-shadow: 0 4px 8px #ffd196;
+    box-shadow: 0 4px 8px #00000048;
 
     border-bottom-right-radius: 50px;
     border-bottom-left-radius: 50px;
@@ -16,16 +16,23 @@
 
 }
 
+.body {
+    background-color: #ffd19648;
+    padding: 3px;
+    margin: 20px;
+    border-radius: 50px;
+}
+
 .title_container h1 {
     text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.304);
     font-family: 'Segoe UI' sans-serif;
     font-size: 45px;
     margin: 0%;
-
-
+    
 }
 
 .title_container h4 {
+
     font-size: 20px;
     font-style: italic;
     color: #80a69f;
@@ -82,4 +89,16 @@
     box-sizing: border-box;
     justify-items: center;
     justify-content: center;
+}
+
+.carousel {
+    background-color: #fab96990;
+    border-radius: 50px;
+}
+@media (max-width: 768px){
+    .page-info{
+        display: flex;
+       justify-content: center;
+       align-items: center;
+    }
 }

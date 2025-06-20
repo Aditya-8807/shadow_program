@@ -8,7 +8,7 @@ export default function HomePage() {
   const navigate = useNavigate();
 
   return (
-    <div className="app">
+    <div className="body">
       <div className="home-container">
         <div className="block1">
           <div>

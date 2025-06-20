@@ -1,5 +1,7 @@
 import React from 'react';
 import "./EventCard.css"
+import { FaCalendarAlt } from 'react-icons/fa';
+
 function EventCard({ event }) {
     return (
         <div className="event-card">
@@ -14,9 +16,10 @@ function EventCard({ event }) {
                 </div>
             </div>
             <div className="event-header">
-
                 <h3>{event.company}</h3>
-                <p>{event.date}</p>
+                <p className="date">
+                    <FaCalendarAlt className="icon" /> {event.date}
+                </p>
             </div>
 
         </div>

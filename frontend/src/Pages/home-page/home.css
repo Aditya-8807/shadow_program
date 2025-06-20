@@ -5,8 +5,6 @@
   padding: 4rem 5rem;
   flex-wrap: wrap;
   /* gap: 2rem; */
-  color: white;
-  border-bottom: 1px solid white;
   /* background: linear-gradient(to bottom right, #f9fbfd, #e8eef5); */
 }
 
@@ -16,7 +14,6 @@
   margin-left: 0;
 
   margin-top: 0;
-  color: white;
 }
 
 .info {
@@ -38,7 +35,6 @@
 
 button {
   background: linear-gradient(to right, #31587f, #6a90b5);
-  color: #ffffff;
   margin: 20px 0 24px 0;
   padding: 0.6rem 1.2rem;
   font-size: 26px;
@@ -61,8 +57,9 @@ button:hover {
   object-fit: cover;
 }
 
-.app {
-  background: linear-gradient(to bottom right, #043464, #1a4876, #739cc2);
+.body{
+    background-color: #ffd19648;
+    color: #ffe4b2;
 }
 
 @media (max-width: 1242px) {

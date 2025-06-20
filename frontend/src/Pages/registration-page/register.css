@@ -2,7 +2,7 @@
 .registration-container {
   min-height: 100vh;
   background-color: #f9fafb;
-  padding: 2rem 1rem;
+
 }
 
 .registration-card {
@@ -16,15 +16,21 @@
 
 /* Header Styles */
 .header {
-  background: linear-gradient(-60deg, #063035, #123354);
-  ;
+  background: #131325;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 200px;
-  color: rgb(200, 236, 255);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+
+  color: #ffe4b2;
+  box-shadow: 0 4px 8px #00000048;
+
+  border-bottom-right-radius: 50px;
+  border-bottom-left-radius: 50px;
+  margin-left: 10px;
+
+  margin-right: 10px;
 }
 
 .header h1 {
@@ -46,6 +52,9 @@
 /* Form Container */
 .form-container {
   padding: 2rem;
+  background-color: #aaa33e31;
+  border-radius: 45px;
+  margin: 20px;
 }
 
 .form-content {
@@ -94,9 +103,9 @@ label {
 .form-select {
   width: 100%;
   padding: 0.75rem 1rem;
-  border: 1px solid #79c5c5be;
-  background-color: #73aac64b;
-  border-radius: 0.5rem;
+  border: 1px solid #ffbf00be;
+  background-color: #ffd19648;
+  border-radius: 1.5rem;
   font-size: 1rem;
   transition: all 0.2s ease-in-out;
   box-sizing: border-box;
@@ -128,7 +137,7 @@ label {
 
 /* Payment Section */
 .payment-section {
-  background-color: #73aac64b;
+  background-color: #e4bf734b;
   padding: 1.5rem;
   border-radius: 0.5rem;
   border: 1px solid #e5e7eb;
@@ -137,7 +146,7 @@ label {
 .payment-section h3 {
   font-size: 1.125rem;
   font-weight: 600;
-  color: rgb(45, 109, 104);
+  color: rgba(0, 0, 0, 0.829);
   margin-bottom: 1rem;
   text-align: center;
   margin-top: 0;
@@ -152,7 +161,7 @@ label {
 .qr-code-wrapper {
   text-align: center;
   padding: 1.5rem;
-  background-color: rgba(69, 124, 156, 0.251);
+  background-color: #ffd19648;
   border-radius: 0.5rem;
   border: 2px solid #dbeafe;
 }
@@ -293,12 +302,12 @@ label {
   border: none;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
-  background: rgb(17, 122, 122);
+  background: #131325;
   color: white;
 }
 
 .submit-button:hover:not(:disabled) {
-  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  background: #454166;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   transform: translateY(-1px);
 }
