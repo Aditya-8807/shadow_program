@@ -1,73 +1,78 @@
 body {
-  margin: 0;
-  background-color: white;
-  color: black;
+    margin: 0;
+    background-color: white;
+    color: black;
 }
 
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #f2d298;
-  padding: 0.8rem 1.5rem;
-  top: 0;
-  position: sticky;
-  z-index: 1000;
-  flex-wrap: wrap;
-  /* height: 60px; */
-  color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f2d298;
+    padding: 0.8rem 1.5rem;
+    position: relative;
+    z-index: 1000;
+    flex-wrap: wrap;
+    color: white;
+    height: 60px;
 }
 
 .logo-container {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .sarc-logo {
-  width: 80px;
-  height: 80px;
-  margin-right: 10px;
-  vertical-align: middle;
-  border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    margin-right: 30px;
+    vertical-align: middle;
+    border-radius: 50%;
+
 }
 
 .nav-links {
-  display: flex;
-  gap: 2rem;
-  list-style: none;
-  align-items: center;
+    display: flex;
+    gap: 3rem;
+    list-style: none;
+    align-items: center;
+
+
 }
 
 .navbar .Logo {
-  text-decoration: none;
-  font-size: 1.6rem;
-  font-weight: bold;
-  color: #131325;
-  transition: color 0.3s ease;
-  cursor: pointer;
+    text-decoration: none;
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #131325;
+    transition: color 0.3s ease;
+    cursor: pointer;
+
+
 }
 
 .nav-links li a {
-  text-decoration: none;
-  color: #01162b;
-  font-size: 1.4rem;
-  position: relative;
-  transition: color 0.3s ease;
+    text-decoration: none;
+    color: #01162b;
+    font-size: 1.4rem;
+    position: relative;
+    transition: color 0.3s ease;
+
 }
 
-.nav-links li a:not(.register)::after  {
-  content: '';
-  position: absolute;
-  width: 0%;
-  height: 2px;
-  bottom: -2px;
-  left: 0;
-  background-color: white;
-  transition: width 0.3s ease;
+.nav-links li a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: white;
+    transition: width 0.3s ease;
 }
 
-.nav-links li a:not(.register):hover::after {
-  width: 100%;
+.nav-links li a:hover::after {
+    width: 100%;
 }
 
 .register {
@@ -101,30 +106,17 @@ a:focus,
     transform: scale(0.95);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
-.faq-btn {
-    background: none;
-    border: none;
-    color: #01162b;
 
-    font-size: 20px;
-    font-family: inherit;
-    cursor: pointer;
-    padding: 0;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-.nav-links li .faq-btn {
-    display: block;
-    padding: 0.5rem 1rem;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.faq-btn:hover {
-    color: #fab869;
-    /* Or whatever your hover color is */
-}
-
+/* Hamburger button styles */
+/* .hamburger {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: white;
+  background: none;
+  border: none;
+  padding: 0;
+} */
 .hamburger {
     font-size: 1.6rem;
     color: #fab869;
@@ -138,6 +130,34 @@ a:focus,
     box-shadow: 0 0 0 3px rgba(146, 133, 255, 0.7);
     border-radius: 4px;
 }
+
+.faq-btn {
+    background: none;
+    border: none;
+    color: #01162b;
+
+    font-size: 20px;
+    font-family: inherit;
+    cursor: pointer;
+    padding: 0;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.faq-btn:hover {
+    color: #fab869;
+    /* Or whatever your hover color is */
+}
+
+/* Make sure the FAQ button follows the same styling as other nav links */
+.nav-links li .faq-btn {
+    display: block;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+/*  Media Query for <768px */
 @media (max-width: 768px) {
     .hamburger {
         display: block;
