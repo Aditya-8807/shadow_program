@@ -5,10 +5,11 @@ import "slick-carousel/slick/slick-theme.css";
 import "./Carousel.css";
 
 const carouselImages = [
-  "/images/Deloitte.png",
-  "/images/L&T.png",
-  "/images/WorldQuant.png",
-  "/images/sarclogo.png"
+   '/images/img_1.jpg',
+  '/images/img_2.jpg',
+  '/images/img_3.jpg',
+  '/images/img_4.jpg',
+  '/images/img_5.jpg'
   // Add more URLs as needed
 ];
 
@@ -17,7 +18,7 @@ export default function Carousel() {
 
   const settings = {
     centerMode: true,
-    centerPadding: "0px",
+    centerPadding: "60px",
     slidesToShow: Math.min(3, carouselImages.length),
     infinite: carouselImages.length > 1,
     arrows: false,
@@ -27,22 +28,33 @@ export default function Carousel() {
     speed: 500,
     // autoplay: true,
     beforeChange: (_, next) => setCurrentSlide(next),
-    responsive: [
+        responsive: [
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: Math.min(3, carouselImages.length),
-        },
+    centerPadding: "35px",
+          
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: false,
+          centerMode : true
+        }
       },
       {
         breakpoint: 768,
         settings: {
+    centerPadding: "35px",
+
           slidesToShow: 1,
-          centerMode: true,
-          centerPadding: "0px",
-        },
-      },
-    ],
+          slidesToScroll: 1,
+          centerMode : true,
+          infinite:true,
+          dots: false,
+          autoplay: true,
+        }
+      }
+    ]
   };
 
   return (
