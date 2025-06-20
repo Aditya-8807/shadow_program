@@ -50,7 +50,9 @@
 .event-header p {
     font-size: 17px;
     margin: 10px;
-
+    display: flex;
+    align-items: center;
+    justify-content: center
 }
 
 

@@ -1,7 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
-import EventCard from "../Components/EventCard"
+import EventCard from "../components/EventCard"
 import "../css/PastEvents.css"
+import Carousel from "../components/Image-slider/Carousel"
 
 function PastEvent() {
     const [activeYear, setActiveYear] = useState('2025');
@@ -112,8 +113,10 @@ function PastEvent() {
                     ))}
                 </div>
             </div>
+            <div className='carousel'> <Carousel /></div>
         </div>
-    </main>
+
+    </main >
 
 }
 

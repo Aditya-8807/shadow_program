@@ -4,7 +4,7 @@ import HomePage from "./Pages/HomePage";
 import PastEventPage from "./Pages/PastEventPage";
 import RegistrationPage from "./Pages/RegistrationPage";
 import TeamPage from "./Pages/TeamPage";
-import Navbar from "./Components/Navbar.jsx"
+import Navbar from "./components/Navbar"
 
 export default function App() {
 

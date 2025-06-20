@@ -92,3 +92,8 @@
     justify-items: center;
     justify-content: center;
 }
+
+.carousel {
+    background-color: #fab96990;
+    border-radius: 50px;
+}

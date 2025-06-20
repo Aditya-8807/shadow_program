@@ -1,0 +1,81 @@
+.info {
+    color: rgb(0, 0, 0);
+    text-align: justify;
+    margin: 0 5rem;
+}
+
+.ShadowTitle {
+    font-size: 42px;
+    margin-left: 5rem;
+    margin-top: 5rem;
+}
+
+.block1 {
+    border-bottom: 1px solid rgb(0, 0, 0);
+}
+
+.app {
+    background: white;
+}
+
+.content,
+.block1 {
+    color: white;
+
+}
+
+.b1 {
+    margin-left: 6rem;
+}
+
+.b2 {
+    margin-left: 1rem;
+    margin-bottom: 4rem;
+}
+
+button {
+    background: #27274d;
+    color: #ffe4b2;
+    margin: 20px 0 24px 0;
+    padding: 0.6rem 1.2rem;
+    font-size: larger;
+    cursor: pointer;
+    font-weight: 500;
+    border-radius: 25px;
+    border: none;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: linear-gradient(to right, #4a79a5, #8ca8d1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .info {
+        margin: 0 1.5rem;
+        font-size: 0.95rem;
+    }
+
+    .ShadowTitle {
+        font-size: 32px;
+        margin-left: 1.5rem;
+        margin-top: 3rem;
+    }
+
+    .b1 {
+        margin-left: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .b2 {
+        margin-left: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .b1,
+    .b2 {
+        /* width: 90%; */
+        font-size: 1rem;
+    }
+}
