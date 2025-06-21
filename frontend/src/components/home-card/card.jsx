@@ -8,17 +8,17 @@ const events = [
   {
     title: 'Deloitte',
     date: 'January 2024',
-    image: '../images/Deloitte.png',
+    image: '/images/img1.JPG',
   },
   {
     title: 'L&T',
     date: 'June 2024',
-    image: '../images/L&T.png',
+    image: '/images/img2.JPG',
   },
   {
     title: 'World Quant',
     date: 'October 2024',
-    image: '../images/WorldQuant.png',
+    image: '/images/img3.JPG',
   },
 ];
 
@@ -42,7 +42,7 @@ export default function Card() {
                 onError={(e) => (e.target.style.display = 'none')}
               />
             </div>
-            <div className="content" style={{ padding: '15px 20px' }}>
+            <div className="card-content" style={{ padding: '15px 20px' }}>
               <h3>{event.title}</h3>
               <p className="info1">
                 <FaCalendarAlt className="icon" /> {event.date}
@@ -53,7 +53,7 @@ export default function Card() {
       </div>
 
       <button
-        onClick={() => navigate('/PastEventPage')}
+        onClick={() => navigate('/PastEvent')}
         className="view-button"
         aria-label="View All Past Events"
       >

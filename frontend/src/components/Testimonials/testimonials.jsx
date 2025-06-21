@@ -47,7 +47,7 @@ export default function Testimonials() {
 
     const settings = {
         centerMode: true,
-        centerPadding: "0px",
+        centerPadding: "60px",
         slidesToShow: Math.min(3, testimonials.length),
         focusOnSelect: true,
         swipeToSlide: true,
@@ -58,26 +58,57 @@ export default function Testimonials() {
             {
                 breakpoint: 1024,
                 settings: {
-                    slidesToShow: 1,
-                    centerMode: true,
-                    centerPadding: "0px",
-                },
+                    centerPadding: "60px",
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    dots: false,
+                    centerMode: true
+                }
             },
             {
+                breakpoint: 900,
+                settings: {
+                    centerPadding: "130px",
+
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    centerMode: true,
+                    dots: false,
+                    infinite: true,
+                }
+            }
+            , {
                 breakpoint: 768,
                 settings: {
+                    centerPadding: "60px",
+
                     slidesToShow: 1,
+                    slidesToScroll: 1,
                     centerMode: true,
-                    centerPadding: "0px",
-                },
-            },
+                    dots: false,
+                    infinite: true,
+                }
+            }, {
+                breakpoint: 500,
+                settings: {
+                    centerPadding: "35px",
+
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    centerMode: true,
+                    dots: false,
+                    infinite: true,
+                }
+            }
         ],
     };
 
     return (
         <div className="testimonials-section">
-            <h2 className="heading">Testimonials</h2>
-            <Slider {...settings} className="slider">
+            <h1 className="heading">Testimonials</h1>
+            <h4 className='subheading'>Glimpses of transformation — one testimony at a time.</h4>
+            <Slider {...settings} className="slider" >
                 {testimonials.map((t, index) => {
                     const isActive = index === currentSlide % testimonials.length;
                     return (
@@ -98,6 +129,14 @@ export default function Testimonials() {
                     );
                 })}
             </Slider>
+            <div className="slider-bar-dots">
+                {testimonials.map((_, idx) => (
+                    <div
+                        key={idx}
+                        className={`bar ${idx === currentSlide % testimonials.length ? "active" : ""}`}
+                    />
+                ))}
+            </div>
         </div>
     );
 }

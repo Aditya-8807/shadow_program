@@ -5,10 +5,11 @@ import "slick-carousel/slick/slick-theme.css";
 import "./Carousel.css";
 
 const carouselImages = [
-  "/images/Deloitte.png",
-  "/images/L&T.png",
-  "/images/WorldQuant.png",
-  "/images/sarclogo.png"
+  '/images/img1.JPG',
+  '/images/img2.JPG',
+  '/images/img3.JPG',
+  '/images/img6.JPG',
+  '/images/img5.JPG'
   // Add more URLs as needed
 ];
 
@@ -17,7 +18,7 @@ export default function Carousel() {
 
   const settings = {
     centerMode: true,
-    centerPadding: "0px",
+    centerPadding: "60px",
     slidesToShow: Math.min(3, carouselImages.length),
     infinite: carouselImages.length > 1,
     arrows: false,
@@ -31,22 +32,37 @@ export default function Carousel() {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: Math.min(3, carouselImages.length),
-        },
+          centerPadding: "60px",
+
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: false,
+          centerMode: true
+        }
       },
       {
         breakpoint: 768,
         settings: {
+          centerPadding: "60px",
+
           slidesToShow: 1,
+          slidesToScroll: 1,
           centerMode: true,
-          centerPadding: "0px",
-        },
-      },
-    ],
+          infinite: true,
+          dots: false,
+          autoplay: true,
+        }
+      }
+    ]
   };
+
 
   return (
     <div className="carousel-container" role="region" aria-label="Event images carousel">
+      <div className='gallery'>
+        <h1>Past Memories</h1>
+        <h4>Moments that mentored. Memories that mattered.</h4></div>
       <Slider {...settings}>
         {carouselImages.map((img, index) => {
           const isActive = index === currentSlide;

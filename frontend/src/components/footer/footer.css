@@ -1,8 +1,8 @@
 .footer {
   display: flex;
   justify-content: space-between;
-  background: linear-gradient(to right, #01162b, #6a90b4);
-  color: white;
+  background: #1E1B2E;
+  color: #F5F0E6;
   padding: 2rem;
   flex-wrap: wrap;
 }
@@ -29,7 +29,8 @@
 
 .footer-nav a {
   text-decoration: none;
-  color: white;
+  color: #FFFFFF
+;
 }
 
 .footer-nav span {
@@ -66,51 +67,45 @@
 }
 
 .social-icons a {
-  color: white;
+  color:#F5F0E6 ;
   margin-right: 0.8rem;
   font-size: 1.2rem;
-  background-color: #333;
-  padding: 0.4rem;
-  border-radius: 4px;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  background-color: #1E1B2E;
+  padding: 0.5rem;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
 }
 
 .social-icons a:hover,
 .social-icons a:focus {
-  background-color: #57b6f6;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #EDCE94;
+  box-shadow: 0 0 10px #EDCE94;
+  transform: scale(1.1);
   outline: none;
-  color: white;
-  box-shadow: 0 0 6px 2px rgba(146, 133, 255, 0.7);
 }
-/* @media (max-width: 768px) {
-  .footer {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 1.5rem;
-  }
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background-color: #EDCE94;
+  color: #1E1B2E;
+  border: none;
+  border-radius: 50px;
+  padding: 0.7rem 1.2rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  z-index: 1000;
+  transition: all 0.3s ease-in-out;
+}
 
-  .footer-left,
-  .footer-center,
-  .footer-right {
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-  }
-
-  .footer-nav {
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 0.8rem;
-  }
-
-  .contact-item {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .social-icons {
-    justify-content: center;
-  }
-} */
+.back-to-top:hover {
+  background-color: #F5F0E6;
+  color: #1E1B2E;
+  transform: scale(1.05);
+}
