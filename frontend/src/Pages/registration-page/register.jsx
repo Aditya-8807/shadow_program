@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './register.css';
+import './RegistrationPage.css';
 
 const RegistrationPage = () => {
   const [formData, setFormData] = useState({
@@ -20,6 +20,7 @@ const RegistrationPage = () => {
   const [fileName, setFileName] = useState('');
 const departments = [
   { value: 'aerospace_engineering', label: 'Aerospace Engineering' },
+  { value: 'geophysics', label: 'Applied Geophysics' },
   { value: 'chemical_engineering', label: 'Chemical Engineering' },
   { value: 'civil_engineering', label: 'Civil Engineering' },
   { value: 'computer_science_engineering', label: 'Computer Science and Engineering' },
@@ -28,17 +29,19 @@ const departments = [
   { value: 'materials_science_engineering', label: 'Materials Science and Engineering' },
   { value: 'mechanical_engineering', label: 'Mechanical Engineering' },
   { value: 'metallurgical_engineering', label: 'Metallurgical Engineering and Materials Science' },
-  { value: 'mathematics_statistics', label: 'Mathematics and Statistics' },
+  { value: 'mathematics', label: 'Mathematics' },
   { value: 'chemistry', label: 'Chemistry' },
   { value: 'physics', label: 'Physics' },
   { value: 'biosciences_bioengineering', label: 'Biosciences and Bioengineering' },
   { value: 'earth_sciences', label: 'Earth Sciences' },
+   { value: 'economics', label: 'Economics' },
   { value: 'energy_science_engineering', label: 'Energy Science and Engineering' },
   { value: 'environmental_science_engineering', label: 'Environmental Science and Engineering' },
-  { value: 'industrial_design_centre', label: 'Industrial Design Centre' },
+  { value: 'industrial_engineering', label: 'Industrial Engineering and Operations Research' },
   { value: 'systems_control_engineering', label: 'Systems and Control Engineering' },
   { value: 'climate_studies', label: 'Climate Studies' },
-  { value: 'other', label: 'Other' }
+  { value: 'other', label: 'Other' },
+  
 ];
 
   const years = [
@@ -86,7 +89,15 @@ const departments = [
   } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
     newErrors.email = 'Please enter a valid email';
   }
-  if (!formData.ldapId.trim()) newErrors.ldapId = 'LDAP ID is required';
+ if (!formData.ldapId.trim()) {
+  newErrors.ldapId = 'LDAP ID is required';
+} else {
+  const parts = formData.ldapId.trim().split('@');
+  if (parts.length !== 2 || parts[1] !== 'iitb.ac.in') {
+    newErrors.ldapId = 'LDAP ID must be in the format ******@iitb.ac.in';
+  }
+}
+
   if (!formData.department) newErrors.department = 'Department is required';
   if (!formData.yearOfStudy) newErrors.yearOfStudy = 'Year of Study is required';
   
