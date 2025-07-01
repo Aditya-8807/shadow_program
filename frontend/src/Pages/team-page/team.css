@@ -114,6 +114,27 @@
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: #131325;
 }
+.social-icons-team a {
+  color:#F5F0E6 ;
+  margin-right: 0.8rem;
+  font-size: 1.2rem;
+  background-color: #1E1B2E;
+  padding: 0.5rem;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.social-icons-team a:hover,
+.social-icons-team a:focus {
+  background-color: #1E1B2E;
+  color: #EDCE94;
+  box-shadow: 0 0 10px #1E1B2E;;
+  transform: scale(1.1);
+  outline: none;
+}
 @media (max-width: 768px) {
   .asmp h1, .web h1 {
     font-size: 1.6rem;

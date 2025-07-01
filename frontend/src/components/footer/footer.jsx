@@ -55,7 +55,7 @@ export default function Footer() {
         </div>
 
         <div className="footer-right">
-          <p className="sarc-heading">SARC💜</p>
+          <p className="sarc-heading">SARC</p>
           <p className="description">
             Stay connected beyond your college years with SARC and keep the good times rolling! From campus life to post-grad success, we have got you covered.
           </p>

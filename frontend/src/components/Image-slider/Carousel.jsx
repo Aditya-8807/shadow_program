@@ -16,12 +16,26 @@ const carouselImages = [
 export default function Carousel() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
+const CustomPrevArrow = ({ onClick }) => (
+  <div className="custom-arrow left-arrow" onClick={onClick}>
+    &#10094;
+  </div>
+);
+
+const CustomNextArrow = ({ onClick }) => (
+  <div className="custom-arrow right-arrow" onClick={onClick}>
+    &#10095;
+  </div>
+);
+
   const settings = {
     centerMode: true,
     centerPadding: "60px",
     slidesToShow: Math.min(3, carouselImages.length),
     infinite: carouselImages.length > 1,
-    arrows: false,
+    arrows: true,
+    nextArrow: <CustomNextArrow />,
+    prevArrow: <CustomPrevArrow />,
     dots: false,
     swipeToSlide: true,
     focusOnSelect: true,

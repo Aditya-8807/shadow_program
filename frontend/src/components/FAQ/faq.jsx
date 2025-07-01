@@ -83,7 +83,10 @@ const FAQ = ({ isOpen, onClose }) => {
 
                 <div className="faq-footer">
 
-                    <button className="b1" onClick={() => navigate('/RegistrationPage')}>
+                    <button className="b1" onClick={() => {
+                        onClose();
+                        navigate('/RegistrationPage');
+                        }}>
                         Register Now
                     </button>
                 </div>
