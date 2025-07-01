@@ -60,7 +60,7 @@ const FAQ = ({ isOpen, onClose }) => {
 
                 <div className="faq-content">
                     {faqData.map((item) => (
-                        <div key={item.id} className="faq-item">
+                        <div key={item.id} className={`faq-item ${openItems[item.id] ? 'open' : ''}`}>
                             <button
                                 className="faq-question"
                                 onClick={() => toggleItem(item.id)}
@@ -83,7 +83,10 @@ const FAQ = ({ isOpen, onClose }) => {
 
                 <div className="faq-footer">
 
-                    <button className="b1" onClick={() => navigate('/RegistrationPage')}>
+                    <button className="b1" onClick={() => {
+                        onClose();
+                        navigate('/RegistrationPage');
+                    }}>
                         Register Now
                     </button>
                 </div>

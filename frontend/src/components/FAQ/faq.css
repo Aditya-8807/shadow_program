@@ -95,11 +95,25 @@
     align-items: center;
     transition: background-color 0.2s ease;
     margin: 0px;
+    border-radius: 0px;
+
 }
 
 .faq-question:hover {
     background: #ffe4b240;
+    border-radius: 30px;
 }
+
+
+.faq-item.open .faq-question {
+    background: #ffe4b240;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+
+}
+
 
 
 
@@ -119,6 +133,8 @@
     background-color: #5a5a6e;
     animation: slideDown 0.8s ease;
     margin: 0px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
 }
 
 .faq-answer p {
@@ -175,6 +191,7 @@
     .faq-question {
         padding: 16px 20px;
         font-size: 0.95rem;
+
     }
 
     .faq-answer {
