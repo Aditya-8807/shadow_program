@@ -22,7 +22,7 @@ export default function HomePage() {
                         <button className="b1" onClick={() => navigate('/RegistrationPage')}>
                             Register Now
                         </button>
-                        <button className="b2" onClick={() => navigate('/PastEvent')}>
+                        <button className="b2" onClick={() => navigate('/PastEventPage')}>
                             Past Shadows
                         </button>
                     </div>
