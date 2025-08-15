@@ -7,35 +7,35 @@ import "./testimonials.css";
 const testimonials = [
     {
         name: "Jane Rowling",
-        role: "Copywriter",
+        company: "Copywriter",
         text:
             "The new OptinMonster with the web backend is just amazing. We found an easier and more effective way to increase subscribers. Worth every penny!",
         image: "/images/Deloitte.png",
     },
     {
         name: "Emilia Bubu",
-        role: "UI/UX Designer",
+        company: "UI/UX Designer",
         text:
             "I was once a disbeliever myself. I didn’t like popups at all. But we doubled our email signups, so the results speak for themselves. It just works. OptinMonster is super easy and worth the money.",
         image: "/images/L&T.png",
     },
     {
         name: "Judy Dawson",
-        role: "Prod Developer",
+        company: "Prod Developer",
         text:
             "OptinMonster brought me more subscribers, which is a given, but what’s more important is the ease of setup and amazing support.",
         image: "/images/WorldQuant.png",
     },
     {
         name: "Alex Moore",
-        role: "Marketer",
+        company: "Marketer",
         text:
             "This tool boosted my conversions and made email collection effortless. Highly recommended!",
         image: "/images/Extra1.png",
     },
     {
         name: "Riya Kapoor",
-        role: "Freelancer",
+        company: "Freelancer",
         text:
             "Super intuitive and effective. The design is clean, and performance is top-notch!",
         image: "/images/Extra2.png",
@@ -107,7 +107,7 @@ export default function Testimonials() {
     return (
         <div className="testimonials-section">
             <h1 className="heading">Testimonials</h1>
-            <h4 className='subheading'>Glimpses of transformation — one testimony at a time.</h4>
+            <h4 className='subheading'>Hear it from those who’ve been there</h4>
             <Slider {...settings} className="slider" >
                 {testimonials.map((t, index) => {
                     const isActive = index === currentSlide % testimonials.length;
@@ -115,13 +115,10 @@ export default function Testimonials() {
                         <div key={index} className="testimonial-slide">
                             <div className={`testimonial-card ${isActive ? "active" : ""}`}>
                                 <div className="quote-box">
-                                    <p className="quote">“{t.text}”</p>
-                                </div>
-                                <div className="profile-wrapper">
-                                    <img src={t.image} alt={t.name} className="profile-img" />
-                                    <div className="profile-text">
+                                    <p className="quote">{t.text}</p>
+                                    <div className="profile-text-bottom">
                                         <p className="name">{t.name}</p>
-                                        <p className="role">{t.role}</p>
+                                        <p className="company">{t.company}</p> 
                                     </div>
                                 </div>
                             </div>

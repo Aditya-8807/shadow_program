@@ -75,8 +75,8 @@ const CustomNextArrow = ({ onClick }) => (
   return (
     <div className="carousel-container" role="region" aria-label="Event images carousel">
       <div className='gallery'>
-        <h1>Past Memories</h1>
-        <h4>Moments that mentored. Memories that mattered.</h4></div>
+        <h1>Shadow Showcase</h1>
+        <h4>Excursions that expand knowledge beyond the classroom</h4></div>
       <Slider {...settings}>
         {carouselImages.map((img, index) => {
           const isActive = index === currentSlide;

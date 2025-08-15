@@ -90,9 +90,9 @@ function PastEvent() {
 
     return <main>
         <div className='title_container'>
-            <h1 className='page_title'>Past Shadow Events</h1>
+            <h1 className='page_title'>Past Shadow Programs</h1>
 
-            <h4 className='page-info'>Where mentorship meets momentum — see our programs in action.</h4>
+            <h4 className='page-info'>Take a look at our previous successful shadow programs and their impact</h4>
         </div>
         <div className='body'>
             {/* Year Tabs */}

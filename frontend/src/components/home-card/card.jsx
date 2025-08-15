@@ -27,7 +27,7 @@ export default function Card() {
 
   return (
     <section className="container">
-      <h2 className="title">Past Shadow Events</h2>
+      <h2 className="title">Past Shadow Programs</h2>
       <p className="subtitle">
         Take a look at our previous successful shadow programs and their impact.
       </p>

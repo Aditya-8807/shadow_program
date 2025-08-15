@@ -202,6 +202,7 @@ a:focus,
         transition: color 0.3s ease;
     }
     .register{
+      margin-right: -20px;
       align-items: center;
     }
 

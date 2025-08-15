@@ -38,18 +38,18 @@ export default function Footer() {
 
         <div className="footer-center">
           <div className="contact-item">
-            <FaMapMarkerAlt className="icon" />
+            <FaMapMarkerAlt className="footer-icon" />
             <span>SARC Room, SAC, IITB</span>
           </div>
           <div className="contact-item">
-            <FaPhoneAlt className="icon" />
+            <FaPhoneAlt className="footer-icon" />
             <span>
               Arush Srivastav: +91 9005549919<br />
               Khushi Yadav: +91 8930097733
             </span>
           </div>
           <div className="contact-item">
-            <FaEnvelope className="icon" />
+            <FaEnvelope className="footer-icon" />
             <a href="mailto:web@sarc-iitb.org">web@sarc-iitb.org</a>
           </div>
         </div>
