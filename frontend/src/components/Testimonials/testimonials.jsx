@@ -16,7 +16,7 @@ const testimonials = [
         name: "Emilia Bubu",
         company: "UI/UX Designer",
         text:
-            "I was once a disbeliever myself. I didn’t like popups at all. But we doubled our email signups, so the results speak for themselves. It just works. OptinMonster is super easy and worth the money.",
+            "I was once a disbeliever myself. I didn’t like popups at all. But we doubled our email signups, so the results speak for themselves. It just workss once a disbeliever myself. I didn’t like popups at all. But we doubled our email signups, so the results speak for themselves. It just works. OptinMonster is super easy and worth the money.",
         image: "/images/L&T.png",
     },
     {
@@ -45,6 +45,18 @@ const testimonials = [
 export default function Testimonials() {
     const [currentSlide, setCurrentSlide] = useState(0);
 
+    const CustomPrevArrow = ({ onClick }) => (
+        <div className="custom-arrow left-arrow" onClick={onClick}>
+            &#10094;
+        </div>
+    );
+
+    const CustomNextArrow = ({ onClick }) => (
+        <div className="custom-arrow right-arrow" onClick={onClick}>
+            &#10095;
+        </div>
+    );
+
     const settings = {
         centerMode: true,
         centerPadding: "60px",
@@ -52,7 +64,9 @@ export default function Testimonials() {
         focusOnSelect: true,
         swipeToSlide: true,
         infinite: true,
-        arrows: false,
+        arrows: true,
+        nextArrow: <CustomNextArrow />,
+        prevArrow: <CustomPrevArrow />,
         beforeChange: (_, next) => setCurrentSlide(next),
         responsive: [
             {
@@ -118,7 +132,7 @@ export default function Testimonials() {
                                     <p className="quote">{t.text}</p>
                                     <div className="profile-text-bottom">
                                         <p className="name">{t.name}</p>
-                                        <p className="company">{t.company}</p> 
+                                        <p className="company">{t.company}</p>
                                     </div>
                                 </div>
                             </div>
