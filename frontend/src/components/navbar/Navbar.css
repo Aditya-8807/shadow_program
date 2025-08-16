@@ -1,3 +1,5 @@
+/* Navbar.css */
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -71,82 +73,83 @@
   width: 100%;
 }
 
-.register {
+/* Unified button styles */
+
+.btn {
+  display: inline-flex;
   align-items: center;
-  text-decoration: none;
-  background: #fab869;
-  color: #131325 !important;
-  border: none;
-  padding: 4px 10px 6px 10px;
+  justify-content: center;
+  font-family: inherit;
   border-radius: 999px;
   font-weight: bold;
+  font-size: 1.2rem;
+  padding: 6px 14px;
   cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.1s ease;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
 }
 
-.register:focus {
+.btn:focus {
   outline: none;
   box-shadow: 0 0 5px 2px rgba(255, 255, 255, 0.6);
-}
-
-a:focus,
-.register:focus {
-  outline: none;
   text-shadow: 0 0 4px rgba(255, 255, 255, 0.8);
 }
 
-.register:hover {
-  background-color: #e0e0e0;
-  color: black;
-}
-
-.register:active {
+.btn:active {
   transform: scale(0.95);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.faq-btn {
-  background: none;
-  border: none;
+/* Register button - filled style */
+.register {
+  composes: btn;
+  background-color: #fab869;
+  color: #131325 !important;
+}
+
+.register:hover {
+  background-color: #e0e0e0;
+  color: black !important;
+}
+
+/* FAQ button - transparent style */
+.faq-btn,
+.faq-link {
+  composes: btn;
+  background-color: transparent;
   color: #01162b;
-  font-size: 18px;
-  font-family: inherit;
-  cursor: pointer;
-  padding: 0;
-  text-decoration: none;
-  transition: color 0.3s ease;
+  padding: 6px 14px;
+  font-size: 1.2rem;
 }
 
-.nav-links li .faq-btn {
-  display: block;
-  padding: 0.5rem 1rem;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.faq-btn:hover {
+.faq-btn:hover,
+.faq-link:hover {
+  background-color: #fab869;
   color: black;
-  background: #fab869;
 }
 
+/* Hamburger button */
 .hamburger {
-  font-size: 1.6rem;
+  composes: btn;
+  background-color: transparent;
   color: #000000;
-  cursor: pointer;
-  display: none;
-  user-select: none;
-  background: none;
-  border: none;
+  font-size: 1.6rem;
   padding: 5px;
+  display: none;
+}
+
+.hamburger:hover {
+  background-color: #e0e0e0;
 }
 
 .hamburger:focus {
   outline: none;
 }
 
-.hamburger:hover {
-  background: #e0e0e0;
-}
-
+/* Responsive styles */
 @media (max-width: 900px) {
   .hamburger {
     display: block;
@@ -185,27 +188,13 @@ a:focus,
     width: 100%;
   }
 
-  .nav-links a {
-    display: block;
-    width: 100%;
-  }
-
-  .nav-links li a {
+  .nav-links a,
+  .faq-btn,
+  .faq-link,
+  .register {
     display: block;
     width: 100%;
     color: #f2d298;
-  }
-
-  .faq-btn {
-    background: none;
-    border: none;
-    color: #f2d298;
-    font-size: 18px;
-    font-family: inherit;
-    cursor: pointer;
-    padding: 0;
-    text-decoration: none;
-    transition: color 0.3s ease;
   }
 
   .register {

@@ -19,9 +19,7 @@ export default function HomePage() {
               (SARC), is a one-day initiative that connects students with
               distinguished alumni in their workplaces. It offers firsthand
               exposure to real-world work environments, helping bridge the gap
-              between academics and industry. Through professional interactions
-              and workplace visits, students gain insights into career paths,
-              company culture, and industry trends—beyond what textbooks offer.
+              between academics and industry.
             </p>
             <button
               className="b1"
@@ -43,7 +41,10 @@ export default function HomePage() {
         <div className="container1">
           <Card />
           <Carousel />
-          <FAQ />
+          {/* Give this wrapper the id for scrolling */}
+          <div id="faq">
+            <FAQ />
+          </div>
           <Testimonials />
         </div>
       </div>

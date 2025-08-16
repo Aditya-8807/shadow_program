@@ -58,7 +58,7 @@ const FAQ = () => {
     <section className="faq-section">
       {/* Animated title */}
       <ScrollVelocity
-        texts={["Frequently Asked Questions", "Frequently Asked Questions"]}
+        texts={["Frequently Asked Questions", "Frequently Asked Questions "]}
         velocity={velocity}
         className="custom-scroll-text"
         scrollerStyle={{
