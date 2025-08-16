@@ -1,31 +1,28 @@
-body {
-  margin: 0;
-  background-color: white;
-  color: black;
-}
-
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: #f2d298;
-  padding: 0.8rem 1.5rem;
+  padding: 0.8rem 1rem;
   top: 0;
   position: sticky;
   z-index: 1000;
-  flex-wrap: wrap;
   height: 85px;
   color: white;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .logo-container {
   display: flex;
   align-items: center;
+  flex-shrink: 0;
 }
 
 .sarc-logo {
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   margin-right: 10px;
   vertical-align: middle;
   border-radius: 50%;
@@ -33,30 +30,34 @@ body {
 
 .nav-links {
   display: flex;
-  gap: 2rem;
+  gap: 1.5rem;
   list-style: none;
   align-items: center;
+  margin: 0;
+  padding: 0;
 }
 
 .navbar .Logo {
   text-decoration: none;
-  font-size: 1.9rem;
+  font-size: 1.7rem;
   font-weight: bold;
   color: #131325;
   transition: color 0.3s ease;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .nav-links li a {
   text-decoration: none;
   color: #01162b;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   position: relative;
   transition: color 0.3s ease;
+  white-space: nowrap;
 }
 
-.nav-links li a:not(.register)::after  {
-  content: '';
+.nav-links li a:not(.register)::after {
+  content: "";
   position: absolute;
   width: 0%;
   height: 2px;
@@ -72,138 +73,143 @@ body {
 
 .register {
   align-items: center;
-    text-decoration: none;
-    background: #fab869;
-    color: #131325 !important;
-    border: none;
-    padding: 4px 10px 6px 10px;
-    border-radius: 999px;
-    font-weight: bold;
-    cursor: pointer;
+  text-decoration: none;
+  background: #fab869;
+  color: #131325 !important;
+  border: none;
+  padding: 4px 10px 6px 10px;
+  border-radius: 999px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .register:focus {
-    outline: none;
-    box-shadow: 0 0 5px 2px rgba(255, 255, 255, 0.6);
+  outline: none;
+  box-shadow: 0 0 5px 2px rgba(255, 255, 255, 0.6);
 }
 
 a:focus,
 .register:focus {
-    outline: none;
-    text-shadow: 0 0 4px rgba(255, 255, 255, 0.8);
+  outline: none;
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.8);
 }
 
 .register:hover {
-    background-color: #e0e0e0;
-    color: black;
+  background-color: #e0e0e0;
+  color: black;
 }
 
 .register:active {
-    transform: scale(0.95);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transform: scale(0.95);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
+
 .faq-btn {
+  background: none;
+  border: none;
+  color: #01162b;
+  font-size: 18px;
+  font-family: inherit;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-links li .faq-btn {
+  display: block;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.faq-btn:hover {
+  color: black;
+  background: #fab869;
+}
+
+.hamburger {
+  font-size: 1.6rem;
+  color: #000000;
+  cursor: pointer;
+  display: none;
+  user-select: none;
+  background: none;
+  border: none;
+  padding: 5px;
+}
+
+.hamburger:focus {
+  outline: none;
+}
+
+.hamburger:hover {
+  background: #e0e0e0;
+}
+
+@media (max-width: 900px) {
+  .hamburger {
+    display: block;
+  }
+
+  .navbar {
+    padding: 0.8rem 1rem;
+  }
+
+  .navbar .Logo {
+    font-size: 1.4rem;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    background-color: #01162bd2;
+    backdrop-filter: blur(10px);
+    padding: 1rem 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    display: none;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links li {
+    padding: 0.5rem 1.5rem;
+    width: 100%;
+  }
+
+  .nav-links a {
+    display: block;
+    width: 100%;
+  }
+
+  .nav-links li a {
+    display: block;
+    width: 100%;
+    color: #f2d298;
+  }
+
+  .faq-btn {
     background: none;
     border: none;
-    color: #01162b;
-
-    font-size: 20px;
+    color: #f2d298;
+    font-size: 18px;
     font-family: inherit;
     cursor: pointer;
     padding: 0;
     text-decoration: none;
     transition: color 0.3s ease;
-}
-.nav-links li .faq-btn {
-    display: block;
-    padding: 0.5rem 1rem;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
+  }
 
-.faq-btn:hover {
-    color: black;
-    background: #fab869;
-    /* Or whatever your hover color is */
-}
-
-
-.hamburger {
-    font-size: 1.6rem;
-    color: #000000;
-    cursor: pointer;
-    display: none;
-    user-select: none;
-}
-
-.hamburger:focus {
-    outline: none;
-
-
-}
-
-.hamburger:hover {
-    background: #e0e0e0
-}
-
-@media (max-width: 900px) {
-    .hamburger {
-        display: block;
-        margin-top: 3px;
-
-
-    }
-
-    .nav-links {
-        flex-direction: column;
-        width: 100%;
-        background-color: #01162bd2;
-
-        backdrop-filter: blur(10px);
-        padding: 1rem 0;
-        position: absolute;
-        top: 100%;
-        right: 0;
-        z-index: 50;
-        display: none;
-        margin-top: 0px;
-    }
-
-    .nav-links.active {
-        display: flex;
-    }
-
-    .nav-links li {
-        padding: 0.5rem 1.5rem;
-
-    }
-
-    .nav-links a {
-        display: block;
-        width: 100%;
-
-    }
-
-    .nav-links li a {
-        display: block;
-        width: 100%;
-        color: #f2d298
-    }
-
-    .faq-btn {
-        background: none;
-        border: none;
-        color: #f2d298;
-        font-size: 20px;
-        font-family: inherit;
-        cursor: pointer;
-        padding: 0;
-        text-decoration: none;
-        transition: color 0.3s ease;
-    }
-    .register{
-      margin-right: -20px;
-      align-items: center;
-    }
-
+  .register {
+    margin: 0;
+    align-items: center;
+  }
 }
