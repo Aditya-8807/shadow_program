@@ -56,7 +56,7 @@ const FAQ = () => {
 
   // Conditional text based on device
   const scrollTexts = isMobile
-    ? ["Freq. Asked Questions", "Freq. Asked Questions"]
+    ? ["Frequently Asked Ques.", "Frequently Asked Ques."]
     : ["Frequently Asked Questions", "Frequently Asked Questions"];
 
   // Adjust velocity and repetition for mobiles
