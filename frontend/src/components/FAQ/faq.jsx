@@ -54,22 +54,30 @@ const FAQ = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // Conditional text based on device
+  const scrollTexts = isMobile
+    ? ["Freq. Asked Questions", "Freq. Asked Questions"]
+    : ["Frequently Asked Questions", "Frequently Asked Questions"];
+
+  // Adjust velocity and repetition for mobiles
+  const scrollVelocity = isMobile ? velocity : velocity;
+  const scrollCopies = isMobile ? 6 : 6;
+  const scrollGap = isMobile ? "1rem" : "1rem";
+
   return (
     <section className="faq-section">
       {/* Animated title */}
       <ScrollVelocity
-        texts={["Frequently Asked Questions", "Frequently Asked Questions "]}
-        velocity={velocity}
+        texts={scrollTexts}
+        velocity={scrollVelocity}
         className="custom-scroll-text"
-        scrollerStyle={{
-          gap: isMobile ? "0" : "-1.5rem",
-        }}
+        scrollerStyle={{ gap: scrollGap }}
+        numCopies={scrollCopies}
       />
 
       <div className="faq-grid">
         {faqData.map((item) => (
           <div key={item.id} className="faq-item">
-            {/* Use ShinyText only on question */}
             <h3 className="faq-question">
               <ShinyText text={item.question} speed={5} />
             </h3>

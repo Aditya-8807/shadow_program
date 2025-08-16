@@ -94,8 +94,6 @@
 
 .btn:focus {
   outline: none;
-  box-shadow: 0 0 5px 2px rgba(255, 255, 255, 0.6);
-  text-shadow: 0 0 4px rgba(255, 255, 255, 0.8);
 }
 
 .btn:active {
@@ -105,7 +103,6 @@
 
 /* Register button - filled style */
 .register {
-  composes: btn;
   background-color: #fab869;
   color: #131325 !important;
 }
@@ -118,7 +115,6 @@
 /* FAQ button - transparent style */
 .faq-btn,
 .faq-link {
-  composes: btn;
   background-color: transparent;
   color: #01162b;
   padding: 6px 14px;
@@ -133,12 +129,14 @@
 
 /* Hamburger button */
 .hamburger {
-  composes: btn;
   background-color: transparent;
   color: #000000;
   font-size: 1.6rem;
   padding: 5px;
   display: none;
+  cursor: pointer;
+  border: none;
+  user-select: none;
 }
 
 .hamburger:hover {
