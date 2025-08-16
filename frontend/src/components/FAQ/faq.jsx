@@ -1,5 +1,7 @@
+// FAQ.jsx
 import React, { useEffect, useState } from "react";
 import ScrollVelocity from "./ScrollVelocity";
+import ShinyText from "./ShinyText"; // Import the ShinyText component
 import "./faq.css";
 
 const faqData = [
@@ -42,7 +44,7 @@ const faqData = [
 ];
 
 const FAQ = () => {
-  const [velocity] = useState(101);
+  const [velocity] = useState(80);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -67,7 +69,10 @@ const FAQ = () => {
       <div className="faq-grid">
         {faqData.map((item) => (
           <div key={item.id} className="faq-item">
-            <h3 className="faq-question">{item.question}</h3>
+            {/* Use ShinyText only on question */}
+            <h3 className="faq-question">
+              <ShinyText text={item.question} speed={5} />
+            </h3>
             <p className="faq-answer">{item.answer}</p>
           </div>
         ))}

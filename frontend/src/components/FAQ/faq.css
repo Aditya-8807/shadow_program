@@ -1,3 +1,4 @@
+/* faq.css */
 .faq-section {
   padding: 60px 0 80px 0; /* Reduced top padding to balance spacing */
   background-color: #131325;
@@ -97,4 +98,33 @@
   .scroller span {
     margin-right: 0 !important;
   }
+}
+
+/* ShinyText.css */
+.shiny-text {
+  color: #e7eb91a4; /* Adjust this color to change intensity/style */
+  background: linear-gradient(
+    120deg,
+    rgb(104, 104, 51) 40%,
+    rgb(255, 255, 255) 50%,
+    rgb(104, 104, 51) 60%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  display: inline-block;
+  animation: shine 5ms linear infinite;
+}
+
+@keyframes shine {
+  0% {
+    background-position: 100%;
+  }
+  100% {
+    background-position: -100%;
+  }
+}
+
+.shiny-text.disabled {
+  animation: none;
 }

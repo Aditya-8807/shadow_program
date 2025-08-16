@@ -1,0 +1,8 @@
+react-router-dom  
+react-fast-marquee  
+motion  
+framer-motion  
+react-icons  
+react-slick  
+slick-carousel
+
