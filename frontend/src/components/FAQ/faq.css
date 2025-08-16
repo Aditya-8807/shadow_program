@@ -1,7 +1,5 @@
-/* Section */
-
 .faq-section {
-  padding: 80px 0;
+  padding: 60px 0 80px 0; /* Reduced top padding to balance spacing */
   background-color: #131325;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   text-align: center;
@@ -10,42 +8,27 @@
   max-width: 100%;
   overflow-x: hidden;
   border-radius: 50px;
+  margin-top: 0;
 }
 
-/* Marquee wrapper - CRITICAL FIX */
-.marquee-wrapper {
-  width: 100%;
-  max-width: 100%;
-  margin-bottom: 3rem;
-  overflow-x: hidden;
-  position: relative;
-}
-
-.marquee-container {
-  width: 100%;
-  max-width: 100%;
-  margin: 0 auto;
-  background: #1e1e34;
-  border-radius: 1px;
-  box-shadow: 0 2px 8px rgba(26, 35, 126, 0.1);
+/* ScrollVelocity animated title container styling */
+.custom-scroll-text {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-top: 0.2rem; /* small positive margin instead of negative */
+  margin-bottom: 1rem;
+  color: #ffe4b2;
+  user-select: none;
   overflow: hidden;
+  white-space: nowrap;
   position: relative;
-}
-
-.top-marquee {
-  transform: rotate(-2deg);
-  z-index: 1;
-}
-
-.bottom-marquee {
-  transform: rotate(2deg);
-  margin-top: -1rem;
-  background: #1a237e;
-  z-index: 2;
+  width: 100%;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* 2x3 grid container */
-
 .faq-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -58,7 +41,6 @@
 }
 
 /* FAQ Item */
-
 .faq-item {
   background-color: #1e1e34;
   border: 1px solid #ffe4b2;
@@ -70,7 +52,6 @@
 }
 
 /* Question */
-
 .faq-question {
   font-size: 1.2rem;
   font-weight: 600;
@@ -80,7 +61,6 @@
 }
 
 /* Answer text same color as question */
-
 .faq-answer {
   font-size: 1rem;
   line-height: 1.6;
@@ -90,10 +70,13 @@
 }
 
 /* Responsive */
-
 @media (max-width: 768px) {
   .faq-section {
     padding: 60px 15px;
+  }
+
+  .custom-scroll-text {
+    font-size: 1.8rem !important;
   }
 
   .faq-grid {
@@ -109,5 +92,9 @@
 
   .faq-answer {
     font-size: 0.95rem;
+  }
+
+  .scroller span {
+    margin-right: 0 !important;
   }
 }

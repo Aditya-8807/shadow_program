@@ -1,8 +1,6 @@
-import React from "react";
-import Marquee from "react-fast-marquee";
+import React, { useEffect, useState } from "react";
+import ScrollVelocity from "./ScrollVelocity";
 import "./faq.css";
-
-const marqueeText = "Frequently Asked Questions";
 
 const faqData = [
   {
@@ -43,56 +41,39 @@ const faqData = [
   },
 ];
 
-const FAQ = () => (
-  <section className="faq-section">
-    {/* Marquee Banner */}
-    <div className="marquee-wrapper">
-      {/* Top Marquee */}
-      <div className="marquee-container top-marquee">
-        <Marquee
-          direction="right"
-          gradient={false}
-          speed={35}
-          style={{
-            color: "#ffe4b2",
-            fontWeight: 700,
-            fontSize: "1.6em",
-            padding: "0.5rem 0",
-            letterSpacing: "0.04em",
-            fontFamily: "inherit",
-          }}
-        >
-          {marqueeText} &nbsp; {marqueeText} &nbsp; {marqueeText}
-        </Marquee>
-      </div>
+const FAQ = () => {
+  const [velocity] = useState(101);
+  const [isMobile, setIsMobile] = useState(false);
 
-      {/* Bottom Marquee */}
-      <div className="marquee-container bottom-marquee">
-        <Marquee
-          direction="right"
-          gradient={false}
-          speed={35}
-          style={{
-            color: "#fff",
-            fontWeight: 700,
-            fontSize: "1.1em",
-            padding: "0.25rem 0",
-          }}
-        >
-          {marqueeText} &nbsp; {marqueeText}
-        </Marquee>
-      </div>
-    </div>
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
-    <div className="faq-grid">
-      {faqData.map((item) => (
-        <div key={item.id} className="faq-item">
-          <h3 className="faq-question">{item.question}</h3>
-          <p className="faq-answer">{item.answer}</p>
-        </div>
-      ))}
-    </div>
-  </section>
-);
+  return (
+    <section className="faq-section">
+      {/* Animated title */}
+      <ScrollVelocity
+        texts={["Frequently Asked Questions", "Frequently Asked Questions"]}
+        velocity={velocity}
+        className="custom-scroll-text"
+        scrollerStyle={{
+          gap: isMobile ? "0" : "-1.5rem",
+        }}
+      />
+
+      <div className="faq-grid">
+        {faqData.map((item) => (
+          <div key={item.id} className="faq-item">
+            <h3 className="faq-question">{item.question}</h3>
+            <p className="faq-answer">{item.answer}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+};
 
 export default FAQ;
