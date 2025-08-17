@@ -9,61 +9,61 @@ function PastEvent() {
         {
             id: 1, company: "WorldQuant", date: "Oct,2025",
 
-            photo: "/images/img1.JPG",
+            photo: "/images/past_event/world_quant.jpg",
             info: ""
         },
         {
             id: 2, company: "FYND", date: "Oct,2025",
 
-            photo: "/images/img2.JPG",
+            photo: "/images/past_event/fynd.jpg",
             info: ""
         },
         {
             id: 3, company: "Bajaj Auto", date: "Oct,2025",
 
-            photo: "/images/img3.JPG",
+            photo: "/images/past_event/bajaj_auto.png",
             info: ""
         },
         {
             id: 4, company: "Deloitte", date: "Oct,2025",
 
-            photo: "/images/img5.JPG",
+            photo: "/images/past_event/deloitte.png",
             info: ""
         },
         {
             id: 5, company: "SBI", date: "Jan,2024",
 
-            photo: "/images/img6.JPG",
+            photo:"/images/past_event/sbi.jpg",
             info: ""
         },
         {
             id: 6, company: "L&T", date: "Apr,2024",
 
-            photo: "/images/img7.JPG",
+            photo: "/images/past_event/lnt.png",
             info: ""
         },
         {
             id: 7, company: "NSE", date: "Oct,2024",
 
-            photo: "",
+            photo: "/images/past_event/nse.png",
             info: ""
         },
         {
             id: 8, company: "CSDL", date: "Nov,2024",
 
-            photo: "",
+            photo: "/images/past_event/cdsl.jpg",
             info: ""
         },
         {
             id: 9, company: "HUL", date: "Mar,2023",
 
-            photo: "",
+            photo: "/images/past_event/hul.png",
             info: ""
         },
         {
             id: 10, company: "BSE", date: "Oct,2022",
 
-            photo: "",
+            photo: "/images/past_event/bse.png",
             info: ""
         }
 

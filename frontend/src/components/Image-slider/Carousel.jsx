@@ -5,12 +5,18 @@ import "slick-carousel/slick/slick-theme.css";
 import "./Carousel.css";
 
 const carouselImages = [
-  '/images/img1.JPG',
-  '/images/img2.JPG',
-  '/images/img3.JPG',
-  '/images/img6.JPG',
-  '/images/img5.JPG'
-  // Add more URLs as needed
+  '/images/bajaj auto (2).png',
+  '/images/bse.png',
+  '/images/cdsl.png',
+  '/images/delloite.png',
+  '/images/fynd.png',
+  '/images/hindustan unilever.png',
+  '/images/Larsen & Toubro.png',
+  '/images/NSE.png',
+  '/images/scheinder electric.png',
+  '/images/state bank of india.png',
+  '/images/world quant.png'
+
 ];
 
 export default function Carousel() {
