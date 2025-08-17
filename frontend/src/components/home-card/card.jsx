@@ -8,17 +8,17 @@ const events = [
   {
     title: 'Deloitte',
     date: 'January 2024',
-    image: '/images/img1.JPG',
+    image: '/images/past_event/deloitte.png',
   },
   {
     title: 'L&T',
     date: 'June 2024',
-    image: '/images/img2.JPG',
+    image: '/images/past_event/lnt.png',
   },
   {
     title: 'World Quant',
     date: 'October 2024',
-    image: '/images/img3.JPG',
+    image: '/images/past_event/world_quant.jpg',
   },
 ];
 

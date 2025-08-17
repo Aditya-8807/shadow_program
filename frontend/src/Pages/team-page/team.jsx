@@ -14,6 +14,8 @@ import vaibhavweb from './image/vaibhavweb.png';
 import Vaibhav from './image/Vaibhav.png';
 import vanshika from './image/vanshika.png';
 import tarun from './image/Tarun.png';
+import arush from './image/arush.png';
+import khushi from './image/khushi.png';
 
 import {
     FaPhoneAlt, FaMapMarkerAlt, FaEnvelope, FaFacebookF, FaInstagram, FaLinkedinIn, FaGithub
@@ -163,7 +165,7 @@ export default function TeamPage() {
                 <h1>WEB Team</h1>
                 <div className='ctm-grid'>
                     <div className="card">
-                        <img src="/images/L&T.png" className="member-img" />
+                        <img src={khushi} className="member-img" />
                         <h4>Khushi Yadav</h4>
                         <p>SARC Web CTM 2025-26</p>
                         <div className="social-icons-team">
@@ -178,7 +180,7 @@ export default function TeamPage() {
                        </div>
                     </div>
                     <div className="card">
-                        <img src="/images/L&T.png" className="member-img" />
+                        <img src={arush} className="member-img" />
                         <h4>Arush Srivastav</h4>
                         <p>SARC Web CTM 2025-26</p>
                         <div className="social-icons-team">
