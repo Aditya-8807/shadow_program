@@ -35,13 +35,13 @@ export default function Footer() {
         <div className="footer-left">
           <img src="../images/sarclogo.png" alt="SARC Logo" className="logo" />
           <nav className="footer-nav">
-            <Link to="/">Home</Link>
+            <Link to="/" onClick={scrollToTop}>Home</Link>
             <span>|</span>
-            <Link to="/PastEventPage">Past Events</Link>
+            <Link to="/PastEvent" onClick={scrollToTop}>Past Events</Link>
             <span>|</span>
-            <Link to="/TeamPage">Team</Link>
+            <Link to="/TeamPage" onClick={scrollToTop}>Team</Link>
             <span>|</span>
-            <Link to="/RegistrationPage">Register</Link>
+            <Link to="/RegistrationPage" onClick={scrollToTop}>Register</Link>
           </nav>
         </div>
 
@@ -180,12 +180,9 @@ export default function Footer() {
       </footer>
 
       {showButton && (
-        <button
-          className="back-to-top"
-          onClick={scrollToTop}
-          aria-label="Back to top"
-        >
-          ↑ Back to Top
+        <button className="back-to-top" onClick={scrollToTop} aria-label="Back to top">
+          <span className="arrow">↑ </span>
+          <span className="text">Back to Top</span>
         </button>
       )}
     </>
