@@ -1,10 +1,12 @@
 .footer {
   display: flex;
   justify-content: space-between;
-  background: #1E1B2E;
-  color: #F5F0E6;
+  background: #1e1b2e;
+  color: #f5f0e6;
   padding: 2rem;
   flex-wrap: wrap;
+  overflow: hidden;
+  position: relative;
 }
 
 .footer-left,
@@ -29,8 +31,7 @@
 
 .footer-nav a {
   text-decoration: none;
-  color: #FFFFFF
-;
+  color: #ffffff;
 }
 
 .footer-nav span {
@@ -67,10 +68,10 @@
 }
 
 .social-icons a {
-  color:#F5F0E6 ;
+  color: #f5f0e6;
   margin-right: 0.8rem;
   font-size: 1.2rem;
-  background-color: #1E1B2E;
+  background-color: #1e1b2e;
   padding: 0.5rem;
   border-radius: 50%;
   display: inline-flex;
@@ -82,8 +83,8 @@
 .social-icons a:hover,
 .social-icons a:focus {
   background-color: rgba(255, 255, 255, 0.1);
-  color: #EDCE94;
-  box-shadow: 0 0 10px #EDCE94;
+  color: #edce94;
+  box-shadow: 0 0 10px #edce94;
   transform: scale(1.1);
   outline: none;
 }
@@ -91,21 +92,21 @@
   position: fixed;
   bottom: 2rem;
   right: 2rem;
-  background-color: #EDCE94;
-  color: #1E1B2E;
+  background-color: #edce94;
+  color: #1e1b2e;
   border: none;
   border-radius: 50px;
   padding: 0.7rem 1.2rem;
   font-size: 0.9rem;
   font-weight: bold;
   cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   z-index: 1000;
   transition: all 0.3s ease-in-out;
 }
 
 .back-to-top:hover {
-  background-color: #F5F0E6;
-  color: #1E1B2E;
+  background-color: #f5f0e6;
+  color: #1e1b2e;
   transform: scale(1.05);
 }

@@ -1,9 +1,16 @@
-import './Footer.css';
-import { Link } from 'react-router-dom';
+import "./Footer.css";
+import { Link } from "react-router-dom";
 import {
-  FaPhoneAlt, FaMapMarkerAlt, FaEnvelope, FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube
-} from 'react-icons/fa';
-import { useEffect, useState } from 'react';
+  FaPhoneAlt,
+  FaMapMarkerAlt,
+  FaEnvelope,
+  FaFacebookF,
+  FaInstagram,
+  FaLinkedinIn,
+  FaYoutube,
+} from "react-icons/fa";
+import { useEffect, useState } from "react";
+import Marquee from "react-fast-marquee";
 
 export default function Footer() {
   const [showButton, setShowButton] = useState(false);
@@ -12,13 +19,15 @@ export default function Footer() {
     const handleScroll = () => {
       setShowButton(window.scrollY > 200);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
+  const marqueeText = "Connecting students and alumni across generations...";
 
   return (
     <>
@@ -44,7 +53,8 @@ export default function Footer() {
           <div className="contact-item">
             <FaPhoneAlt className="footer-icon" />
             <span>
-              Arush Srivastav: +91 9005549919<br />
+              Arush Srivastav: +91 9005549919
+              <br />
               Khushi Yadav: +91 8930097733
             </span>
           </div>
@@ -57,19 +67,124 @@ export default function Footer() {
         <div className="footer-right">
           <p className="sarc-heading">SARC</p>
           <p className="description">
-            Stay connected beyond your college years with SARC and keep the good times rolling! From campus life to post-grad success, we have got you covered.
+            Stay connected beyond your college years with SARC and keep the good
+            times rolling! From campus life to post-grad success, we have got
+            you covered.
           </p>
           <div className="social-icons">
-            <a href="https://www.facebook.com/SARC.IITB/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><FaFacebookF /></a>
-            <a href="https://www.instagram.com/sarc_iitb/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><FaInstagram /></a>
-            <a href="https://in.linkedin.com/company/student-alumni-relations-cell" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FaLinkedinIn /></a>
-            <a href="https://www.youtube.com/c/SARCIITBombay" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><FaYoutube /></a>
+            <a
+              href="https://www.facebook.com/SARC.IITB/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+            >
+              <FaFacebookF />
+            </a>
+            <a
+              href="https://www.instagram.com/sarc_iitb/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+            >
+              <FaInstagram />
+            </a>
+            <a
+              href="https://in.linkedin.com/company/student-alumni-relations-cell"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+            >
+              <FaLinkedinIn />
+            </a>
+            <a
+              href="https://www.youtube.com/c/SARCIITBombay"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="YouTube"
+            >
+              <FaYoutube />
+            </a>
+          </div>
+        </div>
+
+        {/* Marquees centered and full width, below the flex row */}
+        <div
+          style={{
+            width: "120vw",
+            marginTop: "0.5rem",
+            marginLeft: "-10vw",
+            marginRight: "-10vw",
+          }}
+        >
+          {/* Top Marquee */}
+          <div
+            style={{
+              width: "100%",
+              minWidth: "500px",
+              maxWidth: "none",
+              margin: "0 auto",
+              background: "#f2d298",
+              borderRadius: "1px",
+              boxShadow: "0 2px 8px rgba(26,35,126,0.10)",
+              transform: "rotate(-3deg)",
+              overflow: "hidden",
+              position: "relative",
+              zIndex: 1,
+            }}
+          >
+            <Marquee
+              direction="right"
+              gradient={false}
+              speed={35}
+              style={{
+                color: "#1e1b2e",
+                fontWeight: 700,
+                fontSize: "1.1em",
+                padding: "0.25rem 0",
+              }}
+            >
+              {marqueeText} &nbsp; {marqueeText}
+            </Marquee>
+          </div>
+          {/* Bottom Marquee */}
+          <div
+            style={{
+              width: "100%",
+              minWidth: "500px",
+              maxWidth: "none",
+              margin: "-1.5rem auto 0 auto",
+              background: "#f2d298",
+              borderRadius: "1px",
+              boxShadow: "0 2px 8px rgba(26,35,126,0.10)",
+              transform: "rotate(3deg)",
+              overflow: "hidden",
+              position: "relative",
+              zIndex: 2,
+            }}
+          >
+            <Marquee
+              direction="right"
+              gradient={false}
+              speed={35}
+              style={{
+                color: "#1e1b2e",
+                fontWeight: 700,
+                fontSize: "1.1em",
+                padding: "0.25rem 0",
+              }}
+            >
+              {marqueeText} &nbsp; {marqueeText}
+            </Marquee>
           </div>
         </div>
       </footer>
 
       {showButton && (
-        <button className="back-to-top" onClick={scrollToTop} aria-label="Back to top">
+        <button
+          className="back-to-top"
+          onClick={scrollToTop}
+          aria-label="Back to top"
+        >
           ↑ Back to Top
         </button>
       )}
