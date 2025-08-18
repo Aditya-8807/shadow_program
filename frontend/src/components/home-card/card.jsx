@@ -1,24 +1,23 @@
-import React from 'react';
-import './card.css';
-import { useNavigate } from 'react-router-dom';
-import { FaCalendarAlt } from 'react-icons/fa';
-
+import React from "react";
+import "./card.css";
+import { useNavigate } from "react-router-dom";
+import { FaCalendarAlt } from "react-icons/fa";
 
 const events = [
   {
-    title: 'Deloitte',
-    date: 'January 2024',
-    image: '/images/past_event/deloitte.png',
+    title: "Deloitte",
+    date: "January 2024",
+    image: "/images/past_event/deloitte.png",
   },
   {
-    title: 'L&T',
-    date: 'June 2024',
-    image: '/images/past_event/lnt.png',
+    title: "L&T",
+    date: "June 2024",
+    image: "/images/past_event/lnt.png",
   },
   {
-    title: 'World Quant',
-    date: 'October 2024',
-    image: '/images/past_event/world_quant.jpg',
+    title: "World Quant",
+    date: "October 2024",
+    image: "/images/past_event/world_quant.jpg",
   },
 ];
 
@@ -39,21 +38,23 @@ export default function Card() {
               <img
                 src={event.image}
                 alt={event.title}
-                onError={(e) => (e.target.style.display = 'none')}
+                onError={(e) => (e.target.style.display = "none")}
               />
             </div>
-            <div className="card-content" style={{ padding: '15px 20px' }}>
-              <h3>{event.title}</h3>
-              <p className="info1">
-                <FaCalendarAlt className="icon" /> {event.date}
-              </p>
+            <div className="card-content">
+              <div className="title-date-row">
+                <h3>{event.title}</h3>
+                <p className="info1">
+                  <FaCalendarAlt className="icon" /> {event.date}
+                </p>
+              </div>
             </div>
           </article>
         ))}
       </div>
 
       <button
-        onClick={() => navigate('/PastEvent')}
+        onClick={() => navigate("/PastEvent")}
         className="view-button"
         aria-label="View All Past Events"
       >

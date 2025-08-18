@@ -82,9 +82,9 @@ export default function Footer() {
           <div className="contact-item">
             <FaPhoneAlt className="footer-icon" />
             <span>
-              Arush Srivastav: +91 9005549919
+              Aastha Maliwal: +91 94035 21022
               <br />
-              Khushi Yadav: +91 8930097733
+              Aadit Sule: +91 84595 39918
             </span>
           </div>
           <div className="contact-item">
