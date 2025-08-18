@@ -57,8 +57,8 @@ export default function TeamPage() {
                 <div className='ctm-grid'>
                     <div className="card">
                         <img src={Aastha} className="member-img" />
-                        <h4>Astha Maliwal</h4>
-                        <p>SARC ASMP CTM 2025-26</p>
+                        <h4>Aastha Maliwal</h4>
+                        <p>Core Team Member</p>
                         <div className="social-icons-team">
                             <a href='https://www.instagram.com/aasthamaliwal/' target="_blank" rel="noopener noreferrer" aria-label="Instagram"><FaInstagram /></a>
                             <a href='https://www.linkedin.com/in/aastha-maliwal-2ba2b0287/' target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FaLinkedinIn /></a>
@@ -71,8 +71,8 @@ export default function TeamPage() {
                     </div>
                     <div className="card">
                         <img src={Aadit} className="member-img" />
-                        <h4>Adit Sule</h4>
-                        <p>SARC ASMP CTM 2025-26</p>
+                        <h4>Aadit Sule</h4>
+                        <p> Core Team Member</p>
                         <div className="social-icons-team">
                             <a href="https://www.instagram.com/aaadit_s/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><FaInstagram /></a>
                             <a href="https://www.linkedin.com/in/aadit-sule/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FaLinkedinIn /></a>
@@ -90,7 +90,7 @@ export default function TeamPage() {
                         <div className="card">
                             <img src={JasnoorKaur} className="member-img" />
                             <h4>Jasnoor Kaur</h4>
-                            <p>SARC ASMP Coordinator 2025-26</p>
+                            <p>Coordinator</p>
                             <div className="social-icons-team">
                                 <a href='https://www.instagram.com/_noor._.78/' target="_blank" rel="noopener noreferrer" aria-label="Instagram"><FaInstagram /></a>
                                 <a href= 'https://www.linkedin.com/in/jasnoor-kaur-24b40734a/' target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FaLinkedinIn /></a>
@@ -104,7 +104,7 @@ export default function TeamPage() {
                         <div className="card">
                             <img src={ Manas} className="member-img" />
                             <h4>Manas Gupta</h4>
-                            <p>SARC ASMP Coordinator 2025-26</p>
+                            <p>Coordinator</p>
                             <div className="social-icons-team">
                                 <a href='https://www.instagram.com/manasgupta1014/' target="_blank" rel="noopener noreferrer" aria-label="Instagram"><FaInstagram /></a>
                                 <a href='https://www.linkedin.com/in/manas-gupta-bb487b317' target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FaLinkedinIn /></a>
@@ -118,7 +118,7 @@ export default function TeamPage() {
                         <div className="card">
                             <img src={Ridham } className="member-img" />
                             <h4>Ridham Saxena</h4>
-                            <p>SARC ASMP Coordinator 2025-26</p>
+                            <p>Coordinator</p>
                             <div className="social-icons-team">
                                 <a href='https://www.instagram.com/ridham.2006/' target="_blank" rel="noopener noreferrer" aria-label="Instagram"><FaInstagram /></a>
                                 <a href='https://www.linkedin.com/in/ridham-saxena-5a1555318?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app' target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FaLinkedinIn /></a>
@@ -132,7 +132,7 @@ export default function TeamPage() {
                         <div className="card">
                             <img src={Srishti} className="member-img" />
                             <h4>Srishti Poddar</h4>
-                            <p>SARC ASMP Coordinator 2025-26</p>
+                            <p>Coordinator</p>
                             <div className="social-icons-team">
                                 <a href='https://www.instagram.com/srishtipodda.r/' target="_blank" rel="noopener noreferrer" aria-label="Instagram"><FaInstagram /></a>
                                 <a href='https://www.linkedin.com/in/srishti-poddar-855944260/' target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FaLinkedinIn /></a>
@@ -146,7 +146,7 @@ export default function TeamPage() {
                         <div className="card">
                             <img src={Vaibhav } className="member-img" />
                             <h4>Vaibhav Kumar</h4>
-                            <p>SARC ASMP Coordinator 2025-26</p>
+                            <p>Coordinator</p>
                             <div className="social-icons-team">
                                 <a href='https://www.instagram.com/fr._.vaibhav/' target="_blank" rel="noopener noreferrer" aria-label="Instagram"><FaInstagram /></a>
                                 <a href='https://www.linkedin.com/in/vaibhav-kumar-6a7b84330/'target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FaLinkedinIn /></a>
@@ -167,7 +167,7 @@ export default function TeamPage() {
                     <div className="card">
                         <img src={khushi} className="member-img" />
                         <h4>Khushi Yadav</h4>
-                        <p>SARC Web CTM 2025-26</p>
+                        <p>Core Team Member</p>
                         <div className="social-icons-team">
 
                             <a href='https://www.instagram.com/yadavk_18/' target="_blank" rel="noopener noreferrer" aria-label="Instagram"><FaInstagram /></a>
@@ -182,7 +182,7 @@ export default function TeamPage() {
                     <div className="card">
                         <img src={arush} className="member-img" />
                         <h4>Arush Srivastav</h4>
-                        <p>SARC Web CTM 2025-26</p>
+                        <p>Core Team Member</p>
                         <div className="social-icons-team">
                             <a href='https://www.instagram.com/itss.arushhh/' target="_blank" rel="noopener noreferrer" aria-label="Instagram"><FaInstagram /></a>
                             <a href='https://www.linkedin.com/in/arush-narayan-srivastav-001/' target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FaLinkedinIn /></a>
@@ -201,7 +201,7 @@ export default function TeamPage() {
                         <div className="card">
                             <img src={Aditya} className="member-img" />
                             <h4>Aditya Chaurasiya</h4>
-                            <p>SARC Web Coordinator 2025-26</p>
+                            <p>Coordinator</p>
                             <div className="social-icons-team">
                                 <a href="https://www.instagram.com/adityachaurasiya.8807/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><FaInstagram /></a>
                                 <a href="https://www.linkedin.com/in/aditya-chaurasiya-70785531b/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FaLinkedinIn /></a>
@@ -215,7 +215,7 @@ export default function TeamPage() {
                         <div className="card">
                             <img src={Kapil} className="member-img" />
                             <h4>Kapil Chhipa</h4>
-                            <p>SARC Web Coordinator 2025-26</p>
+                            <p>Coordinator</p>
                             <div className="social-icons-team">
                                 <a href="https://www.instagram.com/kapi_lchhipa/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><FaInstagram /></a>
                                 <a href="https://www.linkedin.com/in/kapil-chhipa-05a741330/"target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FaLinkedinIn /></a>
@@ -229,7 +229,7 @@ export default function TeamPage() {
                         <div className="card">
                             <img src={Rutika} className="member-img" />
                             <h4>Rutika Hake</h4>
-                            <p>SARC Web Coordinator 2025-26</p>
+                            <p>Coordinator</p>
                             <div className="social-icons-team">
                                 <a href="https://www.instagram.com/rutikahake" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><FaInstagram /></a>
                                 <a href="https://www.linkedin.com/in/rutika-hake-990787322" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FaLinkedinIn /></a>
@@ -243,7 +243,7 @@ export default function TeamPage() {
                         <div className="card">
                             <img src={tarun} className="member-img" />
                             <h4>Tarun Kadam</h4>
-                            <p>SARC Web Coordinator 2025-26</p>
+                            <p>Coordinator</p>
                             <div className="social-icons-team">
                                 <a href="https://www.instagram.com/tarunkadam06" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><FaInstagram /></a>
                                 <a href="https://www.linkedin.com/in/tarun-kadam-657a44330" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FaLinkedinIn /></a>
@@ -257,7 +257,7 @@ export default function TeamPage() {
                         <div className="card">
                             <img src={vaibhavweb} className="member-img" />
                             <h4>Vaibhav Singh </h4>
-                            <p>SARC Web Coordinator 2025-26</p>
+                            <p>Coordinator</p>
                             <div className="social-icons-team">
 
                                 <a href='https://www.instagram.com/cheekycaibhav/' target="_blank" rel="noopener noreferrer" aria-label="Instagram"><FaInstagram /></a>
@@ -272,7 +272,7 @@ export default function TeamPage() {
                         <div className="card">
                             <img src={vanshika} className="member-img" />
                             <h4>Vanshika Nalamasa </h4>
-                            <p>SARC Web Coordinator 2025-26</p>
+                            <p>Coordinator</p>
                             <div className="social-icons-team">
                                 <a href="https://www.instagram.com/vanshikazz0405" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><FaInstagram /></a>
                                 <a href="https://www.linkedin.com/in/vanshika-nalamasa-04b6bb326" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FaLinkedinIn /></a>
