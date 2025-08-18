@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
+import Swal from 'sweetalert2';
 import './register.css';
+import BackgroundBeams from "../../components/BackgroundBeams";
+
+
+
+
 
 const RegistrationPage = () => {
+  
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -20,13 +27,12 @@ const RegistrationPage = () => {
   const [fileName, setFileName] = useState('');
 const departments = [
   { value: 'aerospace_engineering', label: 'Aerospace Engineering' },
-  { value: 'geophysics', label: 'Applied Geophysics' },
+  { value: 'applied geophysics', label: 'Applied Geophysics' },
   { value: 'chemical_engineering', label: 'Chemical Engineering' },
   { value: 'civil_engineering', label: 'Civil Engineering' },
   { value: 'computer_science_engineering', label: 'Computer Science and Engineering' },
   { value: 'electrical_engineering', label: 'Electrical Engineering' },
   { value: 'engineering_physics', label: 'Engineering Physics' },
-  { value: 'materials_science_engineering', label: 'Materials Science and Engineering' },
   { value: 'mechanical_engineering', label: 'Mechanical Engineering' },
   { value: 'metallurgical_engineering', label: 'Metallurgical Engineering and Materials Science' },
   { value: 'mathematics', label: 'Mathematics' },
@@ -54,7 +60,6 @@ const departments = [
   { value: 'msc', label: 'MSc' },
   { value: 'mtech', label: 'MTech' }
 ];
-
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -154,16 +159,20 @@ const departments = [
 // Updated handleSubmit function with file debugging
 const handleSubmit = async () => {
   if (!validateForm()) {
+    Swal.fire({
+      icon: 'warning',
+      title: 'Invalid Credentials',
+      text: 'Please correct the highlighted errors before submitting.',
+    });
     return;
   }
 
-  // Debug: Check if file exists before submitting
-  console.log('Form data before submit:', formData);
-  console.log('Screenshot file:', formData.screenshot);
-  
   if (!formData.screenshot) {
-    console.error('No screenshot file found!');
-    alert('Please select a payment screenshot before submitting.');
+    Swal.fire({
+      icon: 'error',
+      title: 'Missing Screenshot',
+      text: 'Please select a payment screenshot before submitting.',
+    });
     return;
   }
 
@@ -179,15 +188,8 @@ const handleSubmit = async () => {
     form.append('ldap_id', formData.ldapId);
     form.append('department', formData.department);
     form.append('year_of_study', formData.yearOfStudy);
-    
-    // Debug: Log file before appending
-    console.log('Appending file to FormData:', formData.screenshot);
     form.append('payment_screenshot', formData.screenshot);
-form.append('confirmation_accepted', formData.confirmation); 
-    // Debug: Check FormData contents
-    for (let pair of form.entries()) {
-      console.log(pair[0] + ': ' + pair[1]);
-    }
+    form.append('confirmation_accepted', formData.confirmation);
 
     const response = await fetch('http://127.0.0.1:8000/api/registrations/create/', {
       method: 'POST',
@@ -196,8 +198,12 @@ form.append('confirmation_accepted', formData.confirmation);
 
     if (response.ok) {
       const data = await response.json();
-      alert('✅ Registration successful!');
-      
+      Swal.fire({
+        icon: 'success',
+        title: 'Registration Successful 🎉',
+        text: 'Welcome to the Shadow Program!',
+      });
+
       // Reset form
       setFormData({
         firstName: '',
@@ -215,22 +221,16 @@ form.append('confirmation_accepted', formData.confirmation);
     } else {
       const errorData = await response.json();
       console.error('❌ Validation errors:', errorData);
-      
-      // Handle specific field errors from backend
+
       if (errorData.errors) {
         // Convert backend error format to frontend format
         const formattedErrors = {};
-        
         Object.keys(errorData.errors).forEach(key => {
-          // Backend returns arrays, take the first error message
-          if (Array.isArray(errorData.errors[key])) {
-            formattedErrors[key] = errorData.errors[key][0];
-          } else {
-            formattedErrors[key] = errorData.errors[key];
-          }
+          formattedErrors[key] = Array.isArray(errorData.errors[key])
+            ? errorData.errors[key][0]
+            : errorData.errors[key];
         });
 
-        // Map backend field names to frontend field names if needed
         const fieldMapping = {
           'payment_screenshot': 'screenshot',
           'year_of_study': 'yearOfStudy',
@@ -247,71 +247,89 @@ form.append('confirmation_accepted', formData.confirmation);
         });
 
         setErrors(mappedErrors);
-        alert('❌ Please correct the errors highlighted in the form.');
+
+        // Show duplicate registration / field error popup
+        Swal.fire({
+          icon: 'error',
+          title: 'Registration Failed ❌',
+          text: errorData.errors.roll_number || errorData.errors.ldap_id
+            ? 'This Roll Number or LDAP ID is already registered.'
+            : 'Please correct the errors highlighted in the form.',
+        });
       } else {
-        alert('❌ There was an error with your submission. Please check your data.');
+        Swal.fire({
+          icon: 'error',
+          title: 'Submission Error',
+          text: 'There was an error with your submission. Please try again.',
+        });
       }
     }
   } catch (error) {
     console.error('❌ Submission failed:', error);
-    alert('❌ Failed to submit the form. Please check your internet connection and try again.');
+    Swal.fire({
+      icon: 'error',
+      title: 'Network Error',
+      text: 'Failed to submit the form. Please check your internet connection.',
+    });
   } finally {
     setIsSubmitting(false);
   }
 };
-  
-  const QRCodeSVG = () => (
-    <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect width="200" height="200" fill="white"/>
-      {/* Outer corners */}
-      <rect x="10" y="10" width="70" height="70" fill="black"/>
-      <rect x="20" y="20" width="50" height="50" fill="white"/>
-      <rect x="30" y="30" width="30" height="30" fill="black"/>
-      
-      <rect x="120" y="10" width="70" height="70" fill="black"/>
-      <rect x="130" y="20" width="50" height="50" fill="white"/>
-      <rect x="140" y="30" width="30" height="30" fill="black"/>
-      
-      <rect x="10" y="120" width="70" height="70" fill="black"/>
-      <rect x="20" y="130" width="50" height="50" fill="white"/>
-      <rect x="30" y="140" width="30" height="30" fill="black"/>
-      
-      {/* Inner pattern */}
-      <rect x="90" y="90" width="10" height="10" fill="black"/>
-      <rect x="110" y="90" width="10" height="10" fill="black"/>
-      <rect x="90" y="110" width="10" height="10" fill="black"/>
-      <rect x="110" y="110" width="10" height="10" fill="black"/>
-      
-      {/* Additional pattern elements */}
-      <rect x="90" y="20" width="10" height="10" fill="black"/>
-      <rect x="90" y="40" width="10" height="10" fill="black"/>
-      <rect x="90" y="60" width="10" height="10" fill="black"/>
-      <rect x="20" y="90" width="10" height="10" fill="black"/>
-      <rect x="40" y="90" width="10" height="10" fill="black"/>
-      <rect x="60" y="90" width="10" height="10" fill="black"/>
-      
-      {/* Bottom right pattern */}
-      <rect x="120" y="120" width="10" height="10" fill="black"/>
-      <rect x="140" y="120" width="10" height="10" fill="black"/>
-      <rect x="160" y="120" width="10" height="10" fill="black"/>
-      <rect x="180" y="120" width="10" height="10" fill="black"/>
-      <rect x="120" y="140" width="10" height="10" fill="black"/>
-      <rect x="140" y="140" width="10" height="10" fill="black"/>
-      <rect x="160" y="140" width="10" height="10" fill="black"/>
-      <rect x="180" y="140" width="10" height="10" fill="black"/>
-      <rect x="120" y="160" width="10" height="10" fill="black"/>
-      <rect x="140" y="160" width="10" height="10" fill="black"/>
-      <rect x="160" y="160" width="10" height="10" fill="black"/>
-      <rect x="180" y="160" width="10" height="10" fill="black"/>
-      <rect x="120" y="180" width="10" height="10" fill="black"/>
-      <rect x="140" y="180" width="10" height="10" fill="black"/>
-      <rect x="160" y="180" width="10" height="10" fill="black"/>
-      <rect x="180" y="180" width="10" height="10" fill="black"/>
-    </svg>
-  );
 
+  const QRCodeSVG = () => {
   return (
+    <div className="flex flex-col items-center">
+      <img
+        src="/qr.png"
+        alt="Payment QR Code"
+        style={{ width: "200px", height: "200px" }}
+      />
+      <p className="mt-2 text-center"> Payment QR Code</p>
+      <p className="text-blue-600 font-bold">Registration Fee: ₹50</p>
+    </div>
+  );
+};
+
+
+
+ return (
     <div className="registration-container">
+       <BackgroundBeams className="z-[-1]" />
+      <div class="wrapper">
+        <div class="event-card">
+          <div class="card-content">
+            <div class="logo-section">
+
+              <img src="/placeholder.svg?height=80&width=80" alt="Company Logo" class="company-logo"></img>
+            </div>
+
+            <div class="info-section">
+              <h1 class="event-title">Shadow Program – Company Name</h1>
+
+              <div class="event-details">
+                <div class="detail-item">
+                  <span class="detail-label">Venue:</span>
+                  <span class="detail-value">LHC 101, IIT Bombay</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-label">Date:</span>
+                  <span class="detail-value">25th August 2025</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-label">Time:</span>
+                  <span class="detail-value">6:00 PM – 8:00 PM</span>
+                </div>
+              </div>
+
+              <div class="event-note">
+                <span class="note-label">Note:</span>
+                Open to all first & second year UG students
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className="registration-card">
         {/* Header */}
         <div className="header">
@@ -477,13 +495,12 @@ form.append('confirmation_accepted', formData.confirmation);
               <div className="qr-container">
                 <div className="qr-code-wrapper">
                   <QRCodeSVG />
-                  <p className="qr-label">Google Pay QR Code</p>
-                  <p className="fee-amount">Registration Fee: ₹50</p>
+                  
                 </div>
               </div>
               
               <div className="refund-notice">
-                <p>💰 This amount will be fully refunded after you successfully attend the Shadow Program</p>
+                <p> This amount will be fully refunded after the Shadow Program</p>
               </div>
             </div>
 
@@ -543,7 +560,7 @@ form.append('confirmation_accepted', formData.confirmation);
               disabled={isSubmitting}
               className={`submit-button ${isSubmitting ? 'submitting' : ''}`}
             >
-              {isSubmitting ? 'Processing Registration...' : 'Register for Shadow Program'}
+              {isSubmitting ? 'Processing Registration...' : 'Register'}
             </button>
           </div>
         </div>
@@ -552,4 +569,7 @@ form.append('confirmation_accepted', formData.confirmation);
   );
 };
 
+ 
+
 export default RegistrationPage;
+
