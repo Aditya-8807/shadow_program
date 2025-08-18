@@ -12,18 +12,20 @@
 
 .event-poster {
   width: 50%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f9f9f9; /* clean background */
+  background-color: #f9f9f9;
 }
 
 .event-poster img {
-  width: 80%;
-  aspect-ratio: 1 / 1; /* ensures square shape */
-  object-fit: contain; /* keeps whole logo visible */
-  border-radius: 8px; /* optional rounding */
-  background: white; /* makes logo look neat */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: white;
+  border-radius: 0;
+  display: block;
 }
 
 .event-details {
@@ -76,11 +78,16 @@
 
   .event-poster {
     width: 100%;
-    padding: 20px 0; /* spacing for square logo */
+    height: 220px;
+    padding: 0;
   }
 
   .event-poster img {
-    width: 60%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0;
+    background: none;
   }
 
   .event-details {
@@ -98,5 +105,21 @@
 
   .info {
     font-size: 13px;
+  }
+}
+
+/* EXTRA SMALL MOBILE – below 480px */
+@media (max-width: 480px) {
+  .event-poster {
+    height: 160px;
+  }
+  .company-name {
+    font-size: 20px;
+  }
+  .date {
+    font-size: 13px;
+  }
+  .info {
+    font-size: 12px;
   }
 }

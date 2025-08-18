@@ -6,6 +6,7 @@ import Carousel from "../../components/Image-slider/Carousel";
 function PastEvent() {
   const [activeYear, setActiveYear] = useState("All");
   const events = [
+    // ... your events array unchanged ...
     {
       id: 1,
       company: "WorldQuant",
