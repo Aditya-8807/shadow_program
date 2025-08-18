@@ -14,7 +14,11 @@ import Marquee from "react-fast-marquee";
 
 export default function Footer() {
   const [showButton, setShowButton] = useState(false);
+  const [repeatCount, setRepeatCount] = useState(5);
 
+  const marqueeText = "Connecting students and alumni across generations...";
+
+  // Back-to-top button toggle
   useEffect(() => {
     const handleScroll = () => {
       setShowButton(window.scrollY > 200);
@@ -23,11 +27,28 @@ export default function Footer() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Dynamically calculate how many times to repeat text
+  useEffect(() => {
+    const calculateRepeat = () => {
+      const charWidthEstimate = 12; // approx px per character
+      const textLength = marqueeText.length * charWidthEstimate;
+      const count = Math.ceil(window.innerWidth / textLength) + 4; // +4 buffer
+      setRepeatCount(count);
+    };
+
+    calculateRepeat();
+    window.addEventListener("resize", calculateRepeat);
+    return () => window.removeEventListener("resize", calculateRepeat);
+  }, [marqueeText]);
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const marqueeText = "Connecting students and alumni across generations...";
+  // Generate repeated text dynamically
+  const repeatedMarqueeText = Array(repeatCount)
+    .fill(marqueeText + " \u00A0 ")
+    .join("");
 
   return (
     <>
@@ -35,13 +56,21 @@ export default function Footer() {
         <div className="footer-left">
           <img src="../images/sarclogo.png" alt="SARC Logo" className="logo" />
           <nav className="footer-nav">
-            <Link to="/" onClick={scrollToTop}>Home</Link>
+            <Link to="/" onClick={scrollToTop}>
+              Home
+            </Link>
             <span>|</span>
-            <Link to="/PastEvent" onClick={scrollToTop}>Past Events</Link>
+            <Link to="/PastEvent" onClick={scrollToTop}>
+              Past Events
+            </Link>
             <span>|</span>
-            <Link to="/TeamPage" onClick={scrollToTop}>Team</Link>
+            <Link to="/TeamPage" onClick={scrollToTop}>
+              Team
+            </Link>
             <span>|</span>
-            <Link to="/RegistrationPage" onClick={scrollToTop}>Register</Link>
+            <Link to="/RegistrationPage" onClick={scrollToTop}>
+              Register
+            </Link>
           </nav>
         </div>
 
@@ -121,7 +150,6 @@ export default function Footer() {
             style={{
               width: "100%",
               minWidth: "500px",
-              maxWidth: "none",
               margin: "0 auto",
               background: "#f2d298",
               borderRadius: "1px",
@@ -143,15 +171,15 @@ export default function Footer() {
                 padding: "0.25rem 0",
               }}
             >
-              {marqueeText} &nbsp; {marqueeText}
+              {repeatedMarqueeText}
             </Marquee>
           </div>
+
           {/* Bottom Marquee */}
           <div
             style={{
               width: "100%",
               minWidth: "500px",
-              maxWidth: "none",
               margin: "-1.5rem auto 0 auto",
               background: "#f2d298",
               borderRadius: "1px",
@@ -173,14 +201,18 @@ export default function Footer() {
                 padding: "0.25rem 0",
               }}
             >
-              {marqueeText} &nbsp; {marqueeText}
+              {repeatedMarqueeText}
             </Marquee>
           </div>
         </div>
       </footer>
 
       {showButton && (
-        <button className="back-to-top" onClick={scrollToTop} aria-label="Back to top">
+        <button
+          className="back-to-top"
+          onClick={scrollToTop}
+          aria-label="Back to top"
+        >
           <span className="arrow">↑ </span>
           <span className="text">Back to Top</span>
         </button>
