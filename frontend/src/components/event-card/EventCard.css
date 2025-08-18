@@ -1,125 +1,105 @@
 .event-card {
   display: flex;
-  flex-direction: row;
-  width: 600px;
-  height: 300px;
-  margin: 20px auto;
-  background: #ffffff;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  border-radius: 12px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  width: 100%;
+  max-width: 320px;
+  min-width: 260px;
+  height: 340px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.16);
   overflow: hidden;
+  margin: auto;
+  transition: box-shadow 0.15s;
 }
 
+.event-card:hover {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+/* Image area */
 .event-poster {
-  width: 50%;
-  height: 100%;
+  width: 100%;
+  height: 68%;
+  background: #f9f9f9;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f9f9f9;
+  overflow: hidden;
 }
 
 .event-poster img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  background: white;
-  border-radius: 0;
+  object-fit: contain;
   display: block;
+  background: #fff;
 }
 
+/* Details bar at bottom */
 .event-details {
-  width: 50%;
-  background-color: #2c2c3c;
+  width: 100%;
+  height: 32%;
+  background: #2c2c3c;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   color: #ffe4b2;
-  padding: 20px;
-  box-sizing: border-box;
+  padding: 0;
+}
+
+.details-content {
+  width: 100%;
+  padding: 0.5rem 0;
+  text-align: center;
 }
 
 .company-name {
   margin: 0;
-  font-size: 28px;
-  text-align: center;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+  font-size: 22px;
+  font-family: "Segoe UI", sans-serif;
+  font-weight: bold;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.16);
+  color: #ffe4b2;
+  letter-spacing: 1px;
 }
 
 .date {
-  margin: 8px 0 0;
-  font-size: 16px;
+  margin: 5px 0 0;
+  font-size: 15px;
   display: flex;
   align-items: center;
-  color: #ffffff;
+  justify-content: center;
+  color: #fff;
 }
 
 .icon {
-  margin-right: 6px;
+  margin-right: 5px;
+  font-size: 15px;
   color: #ffe4b2;
 }
 
-.info {
-  margin-top: 12px;
-  color: #ddd;
-  font-size: 14px;
-  text-align: center;
-}
-
-/* MOBILE (stacked) */
-@media (max-width: 768px) {
+/* Responsive */
+@media (max-width: 900px) {
   .event-card {
-    flex-direction: column;
-    width: 100%;
-    max-width: 400px;
-    height: auto;
-  }
-
-  .event-poster {
-    width: 100%;
-    height: 220px;
-    padding: 0;
-  }
-
-  .event-poster img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 0;
-    background: none;
-  }
-
-  .event-details {
-    width: 100%;
-    padding: 16px;
-  }
-
-  .company-name {
-    font-size: 24px;
-  }
-
-  .date {
-    font-size: 14px;
-  }
-
-  .info {
-    font-size: 13px;
+    max-width: 280px;
+    height: 300px;
   }
 }
 
-/* EXTRA SMALL MOBILE – below 480px */
-@media (max-width: 480px) {
-  .event-poster {
-    height: 160px;
+@media (max-width: 600px) {
+  .event-card {
+    min-width: 180px;
+    max-width: 100%;
+    height: 220px;
+  }
+  .event-details,
+  .details-content {
+    font-size: 15px;
   }
   .company-name {
-    font-size: 20px;
-  }
-  .date {
-    font-size: 13px;
-  }
-  .info {
-    font-size: 12px;
+    font-size: 16px;
   }
 }

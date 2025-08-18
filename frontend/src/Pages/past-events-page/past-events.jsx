@@ -6,11 +6,11 @@ import Carousel from "../../components/Image-slider/Carousel";
 function PastEvent() {
   const [activeYear, setActiveYear] = useState("All");
   const events = [
-    // ... your events array unchanged ...
     {
       id: 1,
       company: "WorldQuant",
       date: "Oct,2025",
+
       photo: "/images/past_event/world_quant.jpg",
       info: "",
     },
@@ -18,6 +18,7 @@ function PastEvent() {
       id: 2,
       company: "FYND",
       date: "Oct,2025",
+
       photo: "/images/past_event/fynd.jpg",
       info: "",
     },
@@ -25,6 +26,7 @@ function PastEvent() {
       id: 3,
       company: "Bajaj Auto",
       date: "Oct,2025",
+
       photo: "/images/past_event/bajaj_auto.png",
       info: "",
     },
@@ -32,6 +34,7 @@ function PastEvent() {
       id: 4,
       company: "Deloitte",
       date: "Oct,2025",
+
       photo: "/images/past_event/deloitte.png",
       info: "",
     },
@@ -39,6 +42,7 @@ function PastEvent() {
       id: 5,
       company: "SBI",
       date: "Jan,2024",
+
       photo: "/images/past_event/sbi.jpg",
       info: "",
     },
@@ -46,6 +50,7 @@ function PastEvent() {
       id: 6,
       company: "L&T",
       date: "Apr,2024",
+
       photo: "/images/past_event/lnt.png",
       info: "",
     },
@@ -53,6 +58,7 @@ function PastEvent() {
       id: 7,
       company: "NSE",
       date: "Oct,2024",
+
       photo: "/images/past_event/nse.png",
       info: "",
     },
@@ -60,6 +66,7 @@ function PastEvent() {
       id: 8,
       company: "CSDL",
       date: "Nov,2024",
+
       photo: "/images/past_event/cdsl.jpg",
       info: "",
     },
@@ -67,6 +74,7 @@ function PastEvent() {
       id: 9,
       company: "HUL",
       date: "Mar,2023",
+
       photo: "/images/past_event/hul.png",
       info: "",
     },
@@ -74,6 +82,7 @@ function PastEvent() {
       id: 10,
       company: "BSE",
       date: "Oct,2022",
+
       photo: "/images/past_event/bse.png",
       info: "",
     },
@@ -100,6 +109,7 @@ function PastEvent() {
     <main>
       <div className="title_container">
         <h1 className="page_title">Past Shadow Programs</h1>
+
         <h4 className="page-info">
           Take a look at our previous successful shadow programs and their
           impact
@@ -115,13 +125,15 @@ function PastEvent() {
             All
           </button>
           {years.map((year) => (
-            <button
-              key={year}
-              className={`year-tab ${activeYear === year ? "active" : ""}`}
-              onClick={() => setActiveYear(year)}
-            >
-              {year}
-            </button>
+            <div>
+              <button
+                key={year}
+                className={`year-tab ${activeYear === year ? "active" : ""}`}
+                onClick={() => setActiveYear(year)}
+              >
+                {year}
+              </button>
+            </div>
           ))}
         </div>
 
@@ -133,6 +145,7 @@ function PastEvent() {
           </div>
         </div>
         <div className="carousel">
+          {" "}
           <Carousel />
         </div>
       </div>
