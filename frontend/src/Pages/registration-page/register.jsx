@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 import './register.css';
-import BackgroundBeams from "../../components/BackgroundBeams";
+//import BackgroundBeams from "../../components/BackgroundBeams";
 
 
 
@@ -294,7 +294,6 @@ const handleSubmit = async () => {
 
  return (
     <div className="registration-container">
-       <BackgroundBeams className="z-[-1]" />
       <div class="wrapper">
         <div class="event-card">
           <div class="card-content">
@@ -527,7 +526,7 @@ const handleSubmit = async () => {
                   ) : (
                     <div className="file-placeholder">
                       <p className="upload-text">📷 Click here to upload your payment screenshot</p>
-                      <p className="file-formats">Supported formats: JPG, PNG, GIF</p>
+                      <p className="file-formats">Supported formats: JPG, PNG, JPEG, WEBP, HEIC</p>
                     </div>
                   )}
                 </div>
