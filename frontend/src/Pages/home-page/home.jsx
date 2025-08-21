@@ -41,8 +41,14 @@ export default function HomePage() {
         </div>
         <div class="card_container">
           <div class="wrapper">
+            <div class="side_text left_text">
+              <p> Learn directly from industry experts</p>
+              <p> Expand your professional network</p>
+            </div>
             <div class="event_card">
+
               <div class="card_content">
+
                 <div class="logo_section">
 
                   <img src="/placeholder.svg?height=80&width=80" alt="Company Logo" class="company-logo"></img>
@@ -70,8 +76,16 @@ export default function HomePage() {
                     <span class="note_label">Note:</span>
                     Open to all first & second year UG students
                   </div>
+
                 </div>
+
               </div>
+
+            </div>
+            <div class="side_text right_text">
+              <p> Don’t miss this opportunity!</p>
+              <p> Limited seats available</p>
+              <p> Register Now!!!</p>
             </div>
           </div>
         </div>
