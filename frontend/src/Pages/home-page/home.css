@@ -26,6 +26,10 @@
   overflow-x: hidden;
 }
 
+.card_container {
+  background-color: #ffe4b2;
+}
+
 .block1 {
   display: flex;
   justify-content: space-between;
@@ -111,6 +115,7 @@ button:hover {
     transform: translateY(-500px);
     opacity: 1;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;
@@ -122,14 +127,17 @@ button:hover {
     width: 70%;
     height: auto;
   }
+
   .ShadowTitle {
     font-size: 4rem;
   }
+
   .block1 {
     flex-direction: column;
     align-items: center;
     padding: 2rem;
   }
+
   .info {
     font-size: 1.3rem;
     max-width: 90%;
@@ -142,17 +150,21 @@ button:hover {
     align-items: center;
     padding: 2rem;
   }
+
   .ShadowTitle {
     font-size: 3rem;
   }
+
   .info {
     font-size: 1.1rem;
   }
+
   .b1,
   .b2 {
     font-size: 0.95rem;
     margin-left: 1rem;
   }
+
   .block1 img {
     align-items: center;
     width: 80%;

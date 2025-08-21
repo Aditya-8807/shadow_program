@@ -21,6 +21,7 @@ export default function HomePage() {
               exposure to real-world work environments, helping bridge the gap
               between academics and industry.
             </p>
+
             <button
               className="b1"
               onClick={() => navigate("/RegistrationPage")}
@@ -30,12 +31,49 @@ export default function HomePage() {
             <button className="b2" onClick={() => navigate("/PastEvent")}>
               Past Shadows
             </button>
+
           </div>
           <img
-            src="/images/img6.JPG"
+            src="/images/cdsl.png"
             alt="Student visiting workplace of alumni"
             loading="lazy"
           />
+        </div>
+        <div class="card_container">
+          <div class="wrapper">
+            <div class="event_card">
+              <div class="card_content">
+                <div class="logo_section">
+
+                  <img src="/placeholder.svg?height=80&width=80" alt="Company Logo" class="company-logo"></img>
+                </div>
+
+                <div class="info_section">
+                  <h1 class="event_title">Shadow Program – Company Name</h1>
+
+                  <div class="event_details">
+                    <div class="detail_item">
+                      <span class="detail_label">Venue:</span>
+                      <span class="detail_value">LHC 101, IIT Bombay</span>
+                    </div>
+                    <div class="detail_item">
+                      <span class="detail_label">Date:</span>
+                      <span class="detail_value">25th August 2025</span>
+                    </div>
+                    <div class="detail_item">
+                      <span class="detail_label">Time:</span>
+                      <span class="detail_value">6:00 PM – 8:00 PM</span>
+                    </div>
+                  </div>
+
+                  <div class="event_note">
+                    <span class="note_label">Note:</span>
+                    Open to all first & second year UG students
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="container1">

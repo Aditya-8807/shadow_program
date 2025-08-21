@@ -3,6 +3,7 @@
   min-height: 100vh;
   background-color: #f9fafb;
 }
+
 * {
   margin: 0;
   padding: 0;
@@ -20,7 +21,7 @@ body {
   min-height: 100vh;
 }
 
-.event-card {
+.event_card {
   width: 1000px;
   height: 300px;
   background: #131325;
@@ -31,15 +32,16 @@ body {
   overflow: hidden;
   display: flex;
   align-items: stretch;
+  margin: 10px;
 }
 
-.card-content {
+.card_content {
   display: flex;
   width: 100%;
   height: 100%;
 }
 
-.logo-section {
+.logo_section {
   width: 200px;
   display: flex;
   align-items: center;
@@ -58,7 +60,7 @@ body {
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
 }
 
-.info-section {
+.info_section {
   flex: 1;
   padding: 30px 40px 30px 20px;
   display: flex;
@@ -68,7 +70,7 @@ body {
   position: relative;
 }
 
-.event-title {
+.event_title {
   font-size: 35px;
   font-weight: 700;
   font-family: "Segoe UI", sans-serif;
@@ -78,32 +80,32 @@ body {
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.event-details {
+.event_details {
   display: flex;
   flex-direction: column;
   gap: 8px;
   margin-bottom: 20px;
 }
 
-.detail-item {
+.detail_item {
   display: flex;
   align-items: center;
   font-size: 20px;
   font-weight: 500;
 }
 
-.detail-label {
+.detail_label {
   font-weight: 600;
   min-width: 70px;
   margin-right: 10px;
 }
 
-.detail-value {
+.detail_value {
   font-weight: 400;
   opacity: 0.95;
 }
 
-.event-note {
+.event_note {
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(10px);
   padding: 12px 16px;
@@ -114,14 +116,14 @@ body {
   margin-top: auto;
 }
 
-.note-label {
+.note_label {
   color: #fbbf24;
   font-weight: 600;
   margin-right: 8px;
 }
 
 /* Decorative elements */
-.event-card::before {
+.event_card::before {
   content: "";
   position: absolute;
   top: -50%;
@@ -132,7 +134,7 @@ body {
   border-radius: 50%;
 }
 
-.event-card::after {
+.event_card::after {
   content: "";
   position: absolute;
   bottom: -30px;
@@ -145,24 +147,24 @@ body {
 
 /* Responsive design */
 @media (max-width: 768px) {
-  .event-card {
+  .event_card {
     width: 90%;
     max-width: 500px;
     height: auto;
     flex-direction: column;
   }
 
-  .logo-section {
+  .logo_section {
     width: auto;
     height: 120px;
     margin: 20px 20px 10px 20px;
   }
 
-  .info-section {
+  .info_section {
     padding: 20px 30px 30px 30px;
   }
 
-  .event-title {
+  .event_title {
     font-size: 24px;
   }
 }
@@ -173,6 +175,7 @@ body {
   align-items: center;
   min-height: 0vh;
 }
+
 .registration-card {
   max-width: 64rem;
   margin: 0 auto;

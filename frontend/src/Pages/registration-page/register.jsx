@@ -8,7 +8,7 @@ import './register.css';
 
 
 const RegistrationPage = () => {
-  
+
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -25,41 +25,41 @@ const RegistrationPage = () => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [fileName, setFileName] = useState('');
-const departments = [
-  { value: 'aerospace_engineering', label: 'Aerospace Engineering' },
-  { value: 'applied geophysics', label: 'Applied Geophysics' },
-  { value: 'chemical_engineering', label: 'Chemical Engineering' },
-  { value: 'civil_engineering', label: 'Civil Engineering' },
-  { value: 'computer_science_engineering', label: 'Computer Science and Engineering' },
-  { value: 'electrical_engineering', label: 'Electrical Engineering' },
-  { value: 'engineering_physics', label: 'Engineering Physics' },
-  { value: 'mechanical_engineering', label: 'Mechanical Engineering' },
-  { value: 'metallurgical_engineering', label: 'Metallurgical Engineering and Materials Science' },
-  { value: 'mathematics', label: 'Mathematics' },
-  { value: 'chemistry', label: 'Chemistry' },
-  { value: 'physics', label: 'Physics' },
-  { value: 'biosciences_bioengineering', label: 'Biosciences and Bioengineering' },
-  { value: 'earth_sciences', label: 'Earth Sciences' },
-   { value: 'economics', label: 'Economics' },
-  { value: 'energy_science_engineering', label: 'Energy Science and Engineering' },
-  { value: 'environmental_science_engineering', label: 'Environmental Science and Engineering' },
-  { value: 'industrial_engineering', label: 'Industrial Engineering and Operations Research' },
-  { value: 'systems_control_engineering', label: 'Systems and Control Engineering' },
-  { value: 'climate_studies', label: 'Climate Studies' },
-  { value: 'other', label: 'Other' },
-  
-];
+  const departments = [
+    { value: 'aerospace_engineering', label: 'Aerospace Engineering' },
+    { value: 'applied geophysics', label: 'Applied Geophysics' },
+    { value: 'chemical_engineering', label: 'Chemical Engineering' },
+    { value: 'civil_engineering', label: 'Civil Engineering' },
+    { value: 'computer_science_engineering', label: 'Computer Science and Engineering' },
+    { value: 'electrical_engineering', label: 'Electrical Engineering' },
+    { value: 'engineering_physics', label: 'Engineering Physics' },
+    { value: 'mechanical_engineering', label: 'Mechanical Engineering' },
+    { value: 'metallurgical_engineering', label: 'Metallurgical Engineering and Materials Science' },
+    { value: 'mathematics', label: 'Mathematics' },
+    { value: 'chemistry', label: 'Chemistry' },
+    { value: 'physics', label: 'Physics' },
+    { value: 'biosciences_bioengineering', label: 'Biosciences and Bioengineering' },
+    { value: 'earth_sciences', label: 'Earth Sciences' },
+    { value: 'economics', label: 'Economics' },
+    { value: 'energy_science_engineering', label: 'Energy Science and Engineering' },
+    { value: 'environmental_science_engineering', label: 'Environmental Science and Engineering' },
+    { value: 'industrial_engineering', label: 'Industrial Engineering and Operations Research' },
+    { value: 'systems_control_engineering', label: 'Systems and Control Engineering' },
+    { value: 'climate_studies', label: 'Climate Studies' },
+    { value: 'other', label: 'Other' },
+
+  ];
 
   const years = [
-  { value: '1st_year', label: '1st Year' },
-  { value: '2nd_year', label: '2nd Year' },
-  { value: '3rd_year', label: '3rd Year' },
-  { value: '4th_year', label: '4th Year' },
-  { value: '5th_year', label: '5th Year' },
-  { value: 'phd', label: 'PhD' },
-  { value: 'msc', label: 'MSc' },
-  { value: 'mtech', label: 'MTech' }
-];
+    { value: '1st_year', label: '1st Year' },
+    { value: '2nd_year', label: '2nd Year' },
+    { value: '3rd_year', label: '3rd Year' },
+    { value: '4th_year', label: '4th Year' },
+    { value: '5th_year', label: '5th Year' },
+    { value: 'phd', label: 'PhD' },
+    { value: 'msc', label: 'MSc' },
+    { value: 'mtech', label: 'MTech' }
+  ];
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -77,251 +77,251 @@ const departments = [
     }
   };
 
-  
+
   const validateForm = () => {
-  const newErrors = {};
+    const newErrors = {};
 
-  if (!formData.firstName.trim()) newErrors.firstName = 'First Name is required';
-  if (!formData.lastName.trim()) newErrors.lastName = 'Last Name is required';
-  if (!formData.rollNumber.trim()) newErrors.rollNumber = 'Roll Number is required';
-  if (!formData.contact.trim()) {
-    newErrors.contact = 'Contact Number is required';
-  } else if (!/^\d{10}$/.test(formData.contact)) {
-    newErrors.contact = 'Contact Number must be 10 digits';
-  }
-  if (!formData.email.trim()) {
-    newErrors.email = 'Email is required';
-  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-    newErrors.email = 'Please enter a valid email';
-  }
- if (!formData.ldapId.trim()) {
-  newErrors.ldapId = 'LDAP ID is required';
-} else {
-  const parts = formData.ldapId.trim().split('@');
-  if (parts.length !== 2 || parts[1] !== 'iitb.ac.in') {
-    newErrors.ldapId = 'LDAP ID must be in the format ******@iitb.ac.in';
-  }
-}
-
-  if (!formData.department) newErrors.department = 'Department is required';
-  if (!formData.yearOfStudy) newErrors.yearOfStudy = 'Year of Study is required';
-  
-  // More specific file validation
-  if (!formData.screenshot) {
-    newErrors.screenshot = 'Payment screenshot is required';
-  } else if (!(formData.screenshot instanceof File)) {
-    newErrors.screenshot = 'Invalid file selected';
-  } else if (!formData.screenshot.type.startsWith('image/')) {
-    newErrors.screenshot = 'Please select an image file';
-  }
-  
-  if (!formData.confirmation) newErrors.confirmation = 'You must confirm your registration';
-
-  console.log('Validation errors:', newErrors); // Debug log
-  setErrors(newErrors);
-  return Object.keys(newErrors).length === 0;
-};
-  
- const handleFileChange = (e) => {
-  const file = e.target.files[0];
-  console.log('File selected:', file); // Debug log
-  
-  if (file) {
-    console.log('File details:', {
-      name: file.name,
-      size: file.size,
-      type: file.type
-    }); // Debug log
-    
-    setFormData(prev => ({
-      ...prev,
-      screenshot: file
-    }));
-    setFileName(file.name);
-    
-    // Clear file error
-    if (errors.screenshot) {
-      setErrors(prev => ({
-        ...prev,
-        screenshot: ''
-      }));
+    if (!formData.firstName.trim()) newErrors.firstName = 'First Name is required';
+    if (!formData.lastName.trim()) newErrors.lastName = 'Last Name is required';
+    if (!formData.rollNumber.trim()) newErrors.rollNumber = 'Roll Number is required';
+    if (!formData.contact.trim()) {
+      newErrors.contact = 'Contact Number is required';
+    } else if (!/^\d{10}$/.test(formData.contact)) {
+      newErrors.contact = 'Contact Number must be 10 digits';
     }
-  } else {
-    console.log('No file selected'); // Debug log
-    setFormData(prev => ({
-      ...prev,
-      screenshot: null
-    }));
-    setFileName('');
-  }
-};
-
-// Updated handleSubmit function with file debugging
-const handleSubmit = async () => {
-  if (!validateForm()) {
-    Swal.fire({
-      icon: 'warning',
-      title: 'Invalid Credentials',
-      text: 'Please correct the highlighted errors before submitting.',
-    });
-    return;
-  }
-
-  if (!formData.screenshot) {
-    Swal.fire({
-      icon: 'error',
-      title: 'Missing Screenshot',
-      text: 'Please select a payment screenshot before submitting.',
-    });
-    return;
-  }
-
-  setIsSubmitting(true);
-
-  try {
-    const form = new FormData();
-    form.append('first_name', formData.firstName);
-    form.append('last_name', formData.lastName);
-    form.append('roll_number', formData.rollNumber);
-    form.append('contact', formData.contact);
-    form.append('email', formData.email);
-    form.append('ldap_id', formData.ldapId);
-    form.append('department', formData.department);
-    form.append('year_of_study', formData.yearOfStudy);
-    form.append('payment_screenshot', formData.screenshot);
-    form.append('confirmation_accepted', formData.confirmation);
-
-    const response = await fetch('http://127.0.0.1:8000/api/registrations/create/', {
-      method: 'POST',
-      body: form,
-    });
-
-    if (response.ok) {
-      const data = await response.json();
-      Swal.fire({
-        icon: 'success',
-        title: 'Registration Successful 🎉',
-        text: 'Welcome to the Shadow Program!',
-      });
-
-      // Reset form
-      setFormData({
-        firstName: '',
-        lastName: '',
-        rollNumber: '',
-        contact: '',
-        email: '',
-        ldapId: '',
-        department: '',
-        yearOfStudy: '',
-        screenshot: null,
-        confirmation: false,
-      });
-      setFileName('');
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = 'Please enter a valid email';
+    }
+    if (!formData.ldapId.trim()) {
+      newErrors.ldapId = 'LDAP ID is required';
     } else {
-      const errorData = await response.json();
-      console.error('❌ Validation errors:', errorData);
-
-      if (errorData.errors) {
-        // Convert backend error format to frontend format
-        const formattedErrors = {};
-        Object.keys(errorData.errors).forEach(key => {
-          formattedErrors[key] = Array.isArray(errorData.errors[key])
-            ? errorData.errors[key][0]
-            : errorData.errors[key];
-        });
-
-        const fieldMapping = {
-          'payment_screenshot': 'screenshot',
-          'year_of_study': 'yearOfStudy',
-          'first_name': 'firstName',
-          'last_name': 'lastName',
-          'roll_number': 'rollNumber',
-          'ldap_id': 'ldapId'
-        };
-
-        const mappedErrors = {};
-        Object.keys(formattedErrors).forEach(key => {
-          const frontendKey = fieldMapping[key] || key;
-          mappedErrors[frontendKey] = formattedErrors[key];
-        });
-
-        setErrors(mappedErrors);
-
-        // Show duplicate registration / field error popup
-        Swal.fire({
-          icon: 'error',
-          title: 'Registration Failed ❌',
-          text: errorData.errors.roll_number || errorData.errors.ldap_id
-            ? 'This Roll Number or LDAP ID is already registered.'
-            : 'Please correct the errors highlighted in the form.',
-        });
-      } else {
-        Swal.fire({
-          icon: 'error',
-          title: 'Submission Error',
-          text: 'There was an error with your submission. Please try again.',
-        });
+      const parts = formData.ldapId.trim().split('@');
+      if (parts.length !== 2 || parts[1] !== 'iitb.ac.in') {
+        newErrors.ldapId = 'LDAP ID must be in the format ******@iitb.ac.in';
       }
     }
-  } catch (error) {
-    console.error('❌ Submission failed:', error);
-    Swal.fire({
-      icon: 'error',
-      title: 'Network Error',
-      text: 'Failed to submit the form. Please check your internet connection.',
-    });
-  } finally {
-    setIsSubmitting(false);
-  }
-};
+
+    if (!formData.department) newErrors.department = 'Department is required';
+    if (!formData.yearOfStudy) newErrors.yearOfStudy = 'Year of Study is required';
+
+    // More specific file validation
+    if (!formData.screenshot) {
+      newErrors.screenshot = 'Payment screenshot is required';
+    } else if (!(formData.screenshot instanceof File)) {
+      newErrors.screenshot = 'Invalid file selected';
+    } else if (!formData.screenshot.type.startsWith('image/')) {
+      newErrors.screenshot = 'Please select an image file';
+    }
+
+    if (!formData.confirmation) newErrors.confirmation = 'You must confirm your registration';
+
+    console.log('Validation errors:', newErrors); // Debug log
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    console.log('File selected:', file); // Debug log
+
+    if (file) {
+      console.log('File details:', {
+        name: file.name,
+        size: file.size,
+        type: file.type
+      }); // Debug log
+
+      setFormData(prev => ({
+        ...prev,
+        screenshot: file
+      }));
+      setFileName(file.name);
+
+      // Clear file error
+      if (errors.screenshot) {
+        setErrors(prev => ({
+          ...prev,
+          screenshot: ''
+        }));
+      }
+    } else {
+      console.log('No file selected'); // Debug log
+      setFormData(prev => ({
+        ...prev,
+        screenshot: null
+      }));
+      setFileName('');
+    }
+  };
+
+  // Updated handleSubmit function with file debugging
+  const handleSubmit = async () => {
+    if (!validateForm()) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Invalid Credentials',
+        text: 'Please correct the highlighted errors before submitting.',
+      });
+      return;
+    }
+
+    if (!formData.screenshot) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Missing Screenshot',
+        text: 'Please select a payment screenshot before submitting.',
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const form = new FormData();
+      form.append('first_name', formData.firstName);
+      form.append('last_name', formData.lastName);
+      form.append('roll_number', formData.rollNumber);
+      form.append('contact', formData.contact);
+      form.append('email', formData.email);
+      form.append('ldap_id', formData.ldapId);
+      form.append('department', formData.department);
+      form.append('year_of_study', formData.yearOfStudy);
+      form.append('payment_screenshot', formData.screenshot);
+      form.append('confirmation_accepted', formData.confirmation);
+
+      const response = await fetch('http://127.0.0.1:8000/api/registrations/create/', {
+        method: 'POST',
+        body: form,
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        Swal.fire({
+          icon: 'success',
+          title: 'Registration Successful 🎉',
+          text: 'Welcome to the Shadow Program!',
+        });
+
+        // Reset form
+        setFormData({
+          firstName: '',
+          lastName: '',
+          rollNumber: '',
+          contact: '',
+          email: '',
+          ldapId: '',
+          department: '',
+          yearOfStudy: '',
+          screenshot: null,
+          confirmation: false,
+        });
+        setFileName('');
+      } else {
+        const errorData = await response.json();
+        console.error('❌ Validation errors:', errorData);
+
+        if (errorData.errors) {
+          // Convert backend error format to frontend format
+          const formattedErrors = {};
+          Object.keys(errorData.errors).forEach(key => {
+            formattedErrors[key] = Array.isArray(errorData.errors[key])
+              ? errorData.errors[key][0]
+              : errorData.errors[key];
+          });
+
+          const fieldMapping = {
+            'payment_screenshot': 'screenshot',
+            'year_of_study': 'yearOfStudy',
+            'first_name': 'firstName',
+            'last_name': 'lastName',
+            'roll_number': 'rollNumber',
+            'ldap_id': 'ldapId'
+          };
+
+          const mappedErrors = {};
+          Object.keys(formattedErrors).forEach(key => {
+            const frontendKey = fieldMapping[key] || key;
+            mappedErrors[frontendKey] = formattedErrors[key];
+          });
+
+          setErrors(mappedErrors);
+
+          // Show duplicate registration / field error popup
+          Swal.fire({
+            icon: 'error',
+            title: 'Registration Failed ❌',
+            text: errorData.errors.roll_number || errorData.errors.ldap_id
+              ? 'This Roll Number or LDAP ID is already registered.'
+              : 'Please correct the errors highlighted in the form.',
+          });
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Submission Error',
+            text: 'There was an error with your submission. Please try again.',
+          });
+        }
+      }
+    } catch (error) {
+      console.error('❌ Submission failed:', error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Network Error',
+        text: 'Failed to submit the form. Please check your internet connection.',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   const QRCodeSVG = () => {
+    return (
+      <div className="flex flex-col items-center">
+        <img
+          src="/qr.png"
+          alt="Payment QR Code"
+          style={{ width: "200px", height: "200px" }}
+        />
+        <p className="mt-2 text-center"> Payment QR Code</p>
+        <p className="text-blue-600 font-bold">Registration Fee: ₹50</p>
+      </div>
+    );
+  };
+
+
+
   return (
-    <div className="flex flex-col items-center">
-      <img
-        src="/qr.png"
-        alt="Payment QR Code"
-        style={{ width: "200px", height: "200px" }}
-      />
-      <p className="mt-2 text-center"> Payment QR Code</p>
-      <p className="text-blue-600 font-bold">Registration Fee: ₹50</p>
-    </div>
-  );
-};
-
-
-
- return (
     <div className="registration-container">
       <div class="wrapper">
-        <div class="event-card">
-          <div class="card-content">
-            <div class="logo-section">
+        <div class="event_card">
+          <div class="card_content">
+            <div class="logo_section">
 
               <img src="/placeholder.svg?height=80&width=80" alt="Company Logo" class="company-logo"></img>
             </div>
 
-            <div class="info-section">
-              <h1 class="event-title">Shadow Program – Company Name</h1>
+            <div class="info_section">
+              <h1 class="event_title">Shadow Program – Company Name</h1>
 
-              <div class="event-details">
-                <div class="detail-item">
-                  <span class="detail-label">Venue:</span>
-                  <span class="detail-value">LHC 101, IIT Bombay</span>
+              <div class="event_details">
+                <div class="detail_item">
+                  <span class="detail_label">Venue:</span>
+                  <span class="detail_value">LHC 101, IIT Bombay</span>
                 </div>
-                <div class="detail-item">
-                  <span class="detail-label">Date:</span>
-                  <span class="detail-value">25th August 2025</span>
+                <div class="detail_item">
+                  <span class="detail_label">Date:</span>
+                  <span class="detail_value">25th August 2025</span>
                 </div>
-                <div class="detail-item">
-                  <span class="detail-label">Time:</span>
-                  <span class="detail-value">6:00 PM – 8:00 PM</span>
+                <div class="detail_item">
+                  <span class="detail_label">Time:</span>
+                  <span class="detail_value">6:00 PM – 8:00 PM</span>
                 </div>
               </div>
 
-              <div class="event-note">
-                <span class="note-label">Note:</span>
+              <div class="event_note">
+                <span class="note_label">Note:</span>
                 Open to all first & second year UG students
               </div>
             </div>
@@ -451,17 +451,17 @@ const handleSubmit = async () => {
                   Department <span className="required">*</span>
                 </label>
                 <select
-  id="department"
-  name="department"
-  value={formData.department}
-  onChange={handleInputChange}
-  className={`form-select ${errors.department ? 'error' : ''}`}
->
-  <option value="">Select Department</option>
-  {departments.map(dept => (
-    <option key={dept.value} value={dept.value}>{dept.label}</option>
-  ))}
-</select>
+                  id="department"
+                  name="department"
+                  value={formData.department}
+                  onChange={handleInputChange}
+                  className={`form-select ${errors.department ? 'error' : ''}`}
+                >
+                  <option value="">Select Department</option>
+                  {departments.map(dept => (
+                    <option key={dept.value} value={dept.value}>{dept.label}</option>
+                  ))}
+                </select>
 
                 {errors.department && <p className="error-message">{errors.department}</p>}
               </div>
@@ -471,17 +471,17 @@ const handleSubmit = async () => {
                   Year of Study <span className="required">*</span>
                 </label>
                 <select
-  id="yearOfStudy"
-  name="yearOfStudy"
-  value={formData.yearOfStudy}
-  onChange={handleInputChange}
-  className={`form-select ${errors.yearOfStudy ? 'error' : ''}`}
->
-  <option value="">Select Year</option>
-  {years.map(year => (
-    <option key={year.value} value={year.value}>{year.label}</option>
-  ))}
-</select>
+                  id="yearOfStudy"
+                  name="yearOfStudy"
+                  value={formData.yearOfStudy}
+                  onChange={handleInputChange}
+                  className={`form-select ${errors.yearOfStudy ? 'error' : ''}`}
+                >
+                  <option value="">Select Year</option>
+                  {years.map(year => (
+                    <option key={year.value} value={year.value}>{year.label}</option>
+                  ))}
+                </select>
 
                 {errors.yearOfStudy && <p className="error-message">{errors.yearOfStudy}</p>}
               </div>
@@ -490,14 +490,14 @@ const handleSubmit = async () => {
             {/* Payment Section */}
             <div className="payment-section">
               <h3>Payment Information</h3>
-              
+
               <div className="qr-container">
                 <div className="qr-code-wrapper">
                   <QRCodeSVG />
-                  
+
                 </div>
               </div>
-              
+
               <div className="refund-notice">
                 <p> This amount will be fully refunded after the Shadow Program</p>
               </div>
@@ -568,7 +568,7 @@ const handleSubmit = async () => {
   );
 };
 
- 
+
 
 export default RegistrationPage;
 
