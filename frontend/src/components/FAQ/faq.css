@@ -31,7 +31,7 @@
 /* Reduce spacing only on desktop */
 @media (min-width: 769px) {
   .custom-scroll-text {
-    margin-bottom: 0rem; /* much smaller gap */
+    margin-bottom: -0.3rem; /* much smaller gap */
   }
 }
 
