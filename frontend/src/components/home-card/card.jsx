@@ -2,6 +2,7 @@ import React from "react";
 import "./card.css";
 import { useNavigate } from "react-router-dom";
 import { FaCalendarAlt } from "react-icons/fa";
+import TiltedCard from "./tilted";
 
 const events = [
   {
@@ -33,23 +34,34 @@ export default function Card() {
 
       <div className="grid">
         {events.map((event, index) => (
-          <article className="home-card" key={index}>
-            <div className="card-image">
-              <img
-                src={event.image}
-                alt={event.title}
-                onError={(e) => (e.target.style.display = "none")}
-              />
-            </div>
-            <div className="card-content">
-              <div className="title-date-row">
-                <h3>{event.title}</h3>
-                <p className="info1">
-                  <FaCalendarAlt className="icon" /> {event.date}
-                </p>
+          <div className="home-card-wrapper" key={index}>
+            <TiltedCard
+              containerWidth="100%"
+              containerHeight="100%"
+              rotateAmplitude={8}
+              scaleOnHover={1.03}
+              showMobileWarning={false}
+              showTooltip={false}
+              displayOverlayContent={false}
+            >
+              <div className="home-card">
+                <div className="card-image">
+                  <img
+                    src={event.image}
+                    alt={event.title}
+                    onError={(e) => (e.target.style.display = "none")}
+                    draggable={false}
+                  />
+                </div>
+                <div className="card-content">
+                  <h3>{event.title}</h3>
+                  <p className="info1">
+                    <FaCalendarAlt className="icon" /> {event.date}
+                  </p>
+                </div>
               </div>
-            </div>
-          </article>
+            </TiltedCard>
+          </div>
         ))}
       </div>
 
