@@ -95,19 +95,16 @@ function PastEvent() {
   const years = getUniqueYears();
   const filteredEvents = filterEventsByYear(activeYear);
 
-  // Animation Variants
+  // Simple Animation Variants
   const cardVariants = {
-    hidden: { opacity: 0, y: 50, scale: 0.9, filter: "blur(6px)" },
+    hidden: { opacity: 0, y: 30 },
     visible: (i) => ({
       opacity: 1,
       y: 0,
-      scale: 1,
-      filter: "blur(0px)",
       transition: {
-        delay: i * 0.15,
-        type: "spring",
-        stiffness: 120,
-        damping: 20,
+        delay: i * 0.1, // small stagger
+        duration: 0.4,
+        ease: "easeOut",
       },
     }),
   };
@@ -152,13 +149,13 @@ function PastEvent() {
                 variants={cardVariants}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.25 }}
+                viewport={{ once: true, amount: 0.2 }}
                 custom={index}
                 whileHover={{
-                  scale: 1.05,
-                  y: -5,
-                  boxShadow: "0px 12px 25px rgba(0,0,0,0.25)",
-                  transition: { type: "spring", stiffness: 200, damping: 12 },
+                  scale: 1.03,
+                  y: -3,
+                  boxShadow: "0px 6px 15px rgba(0,0,0,0.2)",
+                  transition: { duration: 0.25 },
                 }}
               >
                 <EventCard event={event} />
