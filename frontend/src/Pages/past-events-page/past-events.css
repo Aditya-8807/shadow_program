@@ -18,6 +18,7 @@
   /* OR absolute, if you want it on top */
   z-index: 10;
 }
+
 @keyframes slideDownStatic {
   from {
     transform: translateY(-200px);
@@ -39,15 +40,16 @@
 
 .title_container h1 {
   text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.304);
-  font-family: "Segoe UI" sans-serif;
-  font-size: 45px;
-  margin: 0%;
+  font-family: "Segoe UI", sans-serif;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  margin: 0;
 }
 
 .title_container h4 {
-  font-size: 20px;
+  font-size: clamp(1rem, 3vw, 1.25rem);
   font-style: italic;
   color: #80a69f;
+  margin-top: 0.5rem;
 }
 
 /* Year Tabs Styling */
@@ -104,6 +106,7 @@
   background-color: #fab96990;
   border-radius: 50px;
 }
+
 @media (max-width: 768px) {
   .page-info {
     display: flex;
@@ -112,7 +115,6 @@
     text-align: center;
   }
 }
-
 
 @media (max-width: 768px) {
   .title_container {
@@ -123,50 +125,53 @@
     margin-left: 5px;
     margin-right: 5px;
   }
+}
 
+/* Responsive font sizes for title text */
+@media (min-width: 769px) {
   .title_container h1 {
-    font-size: 28px;
+    font-size: clamp(2.5rem, 3vw, 3.5rem);
   }
 
   .title_container h4 {
-    font-size: 16px;
-    margin-top: 0.5rem;
+    font-size: clamp(1.5rem, 2vw, 1.75rem);
   }
+}
 
-  .body {
-    margin: 10px;
-    border-radius: 25px;
-    padding: 10px;
-  }
+.body {
+  margin: 10px;
+  border-radius: 25px;
+  padding: 10px;
+}
 
-  .year-tabs-container {
-    margin: 20px auto;
-    padding: 3px;
-    border-radius: 6px;
-    gap: 0.4rem;
-    width: 100%;
-    max-width: 400px;
-    overflow-x: auto;
-    box-sizing: border-box;
-  }
+.year-tabs-container {
+  margin: 20px auto;
+  padding: 3px;
+  border-radius: 6px;
+  gap: 0.4rem;
+  width: 100%;
+  max-width: 400px;
+  overflow-x: auto;
+  box-sizing: border-box;
+}
 
-  .year-tabs-container::-webkit-scrollbar {
-    height: 6px;
-  }
+.year-tabs-container::-webkit-scrollbar {
+  height: 6px;
+}
 
-  .year-tabs-container::-webkit-scrollbar-thumb {
-    background-color: rgba(140, 220, 221, 0.525);
-    border-radius: 3px;
-  }
+.year-tabs-container::-webkit-scrollbar-thumb {
+  background-color: rgba(140, 220, 221, 0.525);
+  border-radius: 3px;
+}
 
-  .year-tabs-container::-webkit-scrollbar-track {
-    background-color: transparent;
-  }
+.year-tabs-container::-webkit-scrollbar-track {
+  background-color: transparent;
+}
 
-  .year-tab {
-    font-size: 14px;
-    padding: 8px 16px;
-    border-radius: 5px;
-    margin: 0 2px;
-    white-space: nowrap;
-  }
+.year-tab {
+  font-size: 14px;
+  padding: 8px 16px;
+  border-radius: 5px;
+  margin: 0 2px;
+  white-space: nowrap;
+}

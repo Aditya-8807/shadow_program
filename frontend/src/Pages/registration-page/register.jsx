@@ -549,7 +549,7 @@ const RegistrationPage = () => {
                   className="checkbox"
                 />
                 <label htmlFor="confirmation" className="checkbox-label">
-                  I confirm my registration for the Shadow Program and I understand that I will be attending this program at my own risk, and SARC will not be responsible for any mishaps. <span className="required">*</span>
+                  I confirm my registration for the Shadow Program and I understand that I will be attending this program at my own risk, and SARC will not be responsible for any mishaps.The final seat allocation for students will be determined solely at the discretion of the company.<span className="required">*</span>
                 </label>
               </div>
               {errors.confirmation && <p className="error-message">{errors.confirmation}</p>}

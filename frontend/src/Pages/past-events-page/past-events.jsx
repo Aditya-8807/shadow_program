@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
 import EventCard from "../../components/event-card/EventCard";
 import "./past-events.css";
 import Carousel from "../../components/Image-slider/Carousel";
@@ -11,103 +10,71 @@ function PastEvent() {
     {
       id: 1,
       company: "WorldQuant",
-      date: "Oct,2025",
+      date: "Oct, 2025",
       photo: "/images/past_event/world_quant.jpg",
-      info: "",
     },
     {
       id: 2,
       company: "FYND",
-      date: "Oct,2025",
+      date: "Oct, 2025",
       photo: "/images/past_event/fynd.jpg",
-      info: "",
     },
     {
       id: 3,
       company: "Bajaj Auto",
-      date: "Oct,2025",
+      date: "Oct, 2025",
       photo: "/images/past_event/bajaj_auto.png",
-      info: "",
     },
     {
       id: 4,
       company: "Deloitte",
-      date: "Oct,2025",
+      date: "Oct, 2025",
       photo: "/images/past_event/deloitte.png",
-      info: "",
     },
     {
       id: 5,
       company: "SBI",
-      date: "Jan,2024",
+      date: "Jan, 2024",
       photo: "/images/past_event/sbi.jpg",
-      info: "",
     },
     {
       id: 6,
       company: "L&T",
-      date: "Apr,2024",
+      date: "Apr, 2024",
       photo: "/images/past_event/lnt.png",
-      info: "",
     },
     {
       id: 7,
       company: "NSE",
-      date: "Oct,2024",
+      date: "Oct, 2024",
       photo: "/images/past_event/nse.png",
-      info: "",
     },
     {
       id: 8,
       company: "CSDL",
-      date: "Nov,2024",
+      date: "Nov, 2024",
       photo: "/images/past_event/cdsl.jpg",
-      info: "",
     },
     {
       id: 9,
       company: "HUL",
-      date: "Mar,2023",
+      date: "Mar, 2023",
       photo: "/images/past_event/hul.png",
-      info: "",
     },
     {
       id: 10,
       company: "BSE",
-      date: "Oct,2022",
+      date: "Oct, 2022",
       photo: "/images/past_event/bse.png",
-      info: "",
     },
   ];
 
-  // Filter events by year
-  const filterEventsByYear = (year) => {
-    if (year === "All") return events;
-    return events.filter((event) => event.date.includes(year));
-  };
-
-  // Get unique years
-  const getUniqueYears = () => {
-    const years = events.map((event) => event.date.split(",")[1]);
-    return [...new Set(years)].sort((a, b) => b - a);
-  };
-
-  const years = getUniqueYears();
+  const filterEventsByYear = (year) =>
+    year === "All" ? events : events.filter((e) => e.date.includes(year));
+  const years = [...new Set(events.map((e) => e.date.split(",")[1]))].sort(
+    (a, b) => b - a
+  );
   const filteredEvents = filterEventsByYear(activeYear);
-
-  // Simple Animation Variants
-  const cardVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: (i) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: i * 0.1, // small stagger
-        duration: 0.4,
-        ease: "easeOut",
-      },
-    }),
-  };
 
   return (
     <main>
@@ -140,26 +107,11 @@ function PastEvent() {
           ))}
         </div>
 
-        {/* Events with Scroll Animation */}
+        {/* Cards Grid */}
         <div className="Events">
           <div className="events-grid">
-            {filteredEvents.map((event, index) => (
-              <motion.div
-                key={event.id}
-                variants={cardVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
-                custom={index}
-                whileHover={{
-                  scale: 1.03,
-                  y: -3,
-                  boxShadow: "0px 6px 15px rgba(0,0,0,0.2)",
-                  transition: { duration: 0.25 },
-                }}
-              >
-                <EventCard event={event} />
-              </motion.div>
+            {filteredEvents.map((event) => (
+              <EventCard key={event.id} event={event} />
             ))}
           </div>
         </div>

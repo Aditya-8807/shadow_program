@@ -20,6 +20,7 @@
     font-style: italic;
     font-size: 20px;
     color: #80a69f;
+    
 }
 
 .body {
@@ -182,4 +183,18 @@
 
 .contact-details svg {
     color:black;
+}
+@media (max-width: 768px) {
+  .header {
+    text-align: center;
+  }
+  
+  .header h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .header h4 {
+    font-size: 1rem;
+  }
 }

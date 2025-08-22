@@ -1,5 +1,3 @@
-// Navbar.jsx
-
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
@@ -61,10 +59,7 @@ export default function Navbar() {
           </Link>
         </li>
         <li>
-          {/* FAQ uses button for custom scroll */}
-          <button className="faq-link btn" onClick={goToFAQ}>
-            FAQs
-          </button>
+          <a href="#faq-section" className="btn" onClick={goToFAQ}> FAQ</a>
         </li>
         <li>
           <Link

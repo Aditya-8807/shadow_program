@@ -1,105 +1,101 @@
-.event-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: stretch;
+.event-card-wrapper {
+  width: 300px;
+  height: 380px;
+  box-sizing: border-box;
+}
+
+/* Image Section (Square at top) */
+.event-image-section {
   width: 100%;
-  max-width: 320px;
-  min-width: 260px;
-  height: 340px;
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.16);
+  height: 280px;
   overflow: hidden;
-  margin: auto;
-  transition: box-shadow 0.15s;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  background: #f5f5f5;
 }
 
-.event-card:hover {
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-}
-
-/* Image area */
-.event-poster {
-  width: 100%;
-  height: 68%;
-  background: #f9f9f9;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
-
-.event-poster img {
+.event-card-image {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   display: block;
-  background: #fff;
 }
 
-/* Details bar at bottom */
-.event-details {
+/* Text Section (Rectangular at bottom) */
+.event-text-section {
   width: 100%;
-  height: 32%;
-  background: #2c2c3c;
+  height: 100px;
+  background-color: #1e1b2e;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  color: #ffe4b2;
-  padding: 0;
+  align-items: center;
+  padding: 16px;
+  box-sizing: border-box;
+  user-select: none;
 }
 
-.details-content {
-  width: 100%;
-  padding: 0.5rem 0;
+.event-company-name {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  color: #ffe4b2;
+  font-family: "Segoe UI", sans-serif;
   text-align: center;
 }
 
-.company-name {
+.event-date {
+  font-size: 14px;
+  color: #d0c7a8;
   margin: 0;
-  font-size: 22px;
-  font-family: "Segoe UI", sans-serif;
-  font-weight: bold;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.16);
-  color: #ffe4b2;
-  letter-spacing: 1px;
-}
-
-.date {
-  margin: 5px 0 0;
-  font-size: 15px;
+  text-align: center;
   display: flex;
   align-items: center;
-  justify-content: center;
-  color: #fff;
+  gap: 6px;
 }
 
-.icon {
-  margin-right: 5px;
-  font-size: 15px;
+.event-date-icon {
   color: #ffe4b2;
+  font-size: 16px;
 }
 
-/* Responsive */
-@media (max-width: 900px) {
-  .event-card {
-    max-width: 280px;
-    height: 300px;
-  }
+/* Grid Layout */
+.events-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem; /* Reduced gap for better spacing on smaller screens */
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
-@media (max-width: 600px) {
-  .event-card {
-    min-width: 180px;
-    max-width: 100%;
-    height: 220px;
+/* Responsive for smaller screens */
+@media (max-width: 768px) {
+  .event-card-wrapper {
+    width: 100vw; /* Dynamic width relative to viewport */
+    max-width: 320px;
+    height: auto; /* Allow height to adjust */
+    margin: 0 auto 1.5rem;
   }
-  .event-details,
-  .details-content {
-    font-size: 15px;
+
+  .event-image-section {
+    height: 90vw; /* Maintain square aspect ratio using viewport units */
+    max-height: 320px;
   }
-  .company-name {
-    font-size: 16px;
+
+  .event-text-section {
+    height: auto;
+    padding: 12px;
+  }
+
+  .event-company-name {
+    font-size: 1.3rem;
+  }
+
+  .event-date {
+    font-size: 1rem;
+    margin-top: -0.5rem;
   }
 }
