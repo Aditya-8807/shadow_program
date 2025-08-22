@@ -65,7 +65,7 @@ const FAQ = () => {
   const scrollGap = isMobile ? "1rem" : "1rem";
 
   return (
-    <section className="faq-section">
+    <section id="faq" className="faq-section">
       {/* Animated title */}
       <ScrollVelocity
         texts={scrollTexts}
