@@ -22,5 +22,7 @@
   .scroller {
     font-size: 5rem;
     line-height: 5rem;
+    margin-top: -0.6rem;
+    margin-bottom: -0.6rem;
   }
 }
