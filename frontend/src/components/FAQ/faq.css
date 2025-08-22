@@ -28,6 +28,12 @@
   margin-left: auto;
   margin-right: auto;
 }
+/* Reduce spacing only on desktop */
+@media (min-width: 769px) {
+  .custom-scroll-text {
+    margin-bottom: 0rem; /* much smaller gap */
+  }
+}
 
 /* 2x3 grid container */
 .faq-grid {
