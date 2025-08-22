@@ -9,37 +9,37 @@ const faqData = [
     id: 1,
     question: "What is Shadow Programme?",
     answer:
-      "Shadow Programme is an initiative that provides mentorship and guidance to students, helping them develop their skills and prepare for their future careers through hands-on learning experiences.",
+      "The Shadow Program, run by the Student Alumni Relations Cell (SARC), IIT Bombay, is like a guided company tour where students get the chance to accompany alumni or professionals in their workplace. It allows participants to experience industry operations up close, explore different career paths, and understand workplace culture, offering learning that goes far beyond lectures and textbooks.",
   },
   {
     id: 2,
-    question: "How can I register for the programme?",
+    question: "Who can apply for the program?",
     answer:
-      "You can register by clicking the 'Register' button in the navigation menu and filling out the registration form with your details and preferences.",
+      "The program is open to all IIT Bombay students, though the number of participants is limited. Selections are based on FCFS basis, and in some cases, specific eligibility criteria announced before each program.",
   },
   {
     id: 3,
-    question: "What are the requirements to join?",
+    question: "What do students gain from the program?",
     answer:
-      "We welcome students from all backgrounds. Basic requirements include being enrolled in a college/university and having enthusiasm to learn and grow.",
+      "Students gain several valuable benefits from the program. They get significant industry exposure and go on workplace tours to see how a professional environment operates. The program also offers networking opportunities with IITB alumni and industry experts, which helps them build important connections. Finally, they gain clarity on their career choices through real-world experiences and receive mentorship and guidance from professionals.",
   },
   {
     id: 4,
-    question: "Is there any fee for participation?",
+    question: "Is there any cost involved?",
     answer:
-      "No, the Shadow Programme is completely free for all participants. We believe in making quality mentorship accessible to everyone.",
+      "No, the Shadow Program is completely free for IIT Bombay students. A sum of Rs. 200 is collected at the time of registration which is completely refunded after the program.",
   },
   {
     id: 5,
-    question: "How long does the programme last?",
+    question: " Who should I contact for queries?",
     answer:
-      "The programme typically runs for 3–6 months, depending on the track you choose and your learning pace.",
+      "For queries, you can reach out to the ASMP Team. Contact details are given in the team page.",
   },
   {
     id: 6,
-    question: "What support will I receive?",
+    question: "Is prior industry knowledge required to participate?",
     answer:
-      "You'll receive one-on-one mentorship, access to workshops, networking opportunities, and resources to help you achieve your goals.",
+      "No, prior industry knowledge is not required to participate in the Shadow Program. The program is designed to give students first-hand exposure to workplaces and help them learn directly from professionals. Curiosity, eagerness to learn, and openness to explore different career paths are all that’s needed.",
   },
 ];
 
@@ -65,7 +65,7 @@ const FAQ = () => {
   const scrollGap = isMobile ? "1rem" : "1rem";
 
   return (
-    <section id="faq" className="faq-section">
+    <section className="faq-section">
       {/* Animated title */}
       <ScrollVelocity
         texts={scrollTexts}
