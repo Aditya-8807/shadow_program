@@ -6,39 +6,34 @@ import "./testimonials.css";
 
 const testimonials = [
     {
-        name: "Jane Rowling",
-        company: "Copywriter",
+        name: "Mridul  Mangal",
+        company: "Deloitte",
         text:
-            "The new OptinMonster with the web backend is just amazing. We found an easier and more effective way to increase subscribers. Worth every penny!",
-        image: "/images/Deloitte.png",
+            "It was an enriching experience—interacting with alumni gave me real insights into M&A consulting and strengthened my interest in the field.",
     },
     {
-        name: "Emilia Bubu",
-        company: "UI/UX Designer",
+        name: "Sachin Sharma",
+        company: "Bajaj Auto ",
         text:
-            "I was once a disbeliever myself. I didn’t like popups at all. But we doubled our email signups, so the results speak for themselves. It just workss once a disbeliever myself. I didn’t like popups at all. But we doubled our email signups, so the results speak for themselves. It just works. OptinMonster is super easy and worth the money.",
-        image: "/images/L&T.png",
+            "The Bajaj Auto shadow program offered great exposure to core mechanical engineering and electric mobility. Learning about the Chetak EV and witnessing the full manufacturing and electrical processes was an invaluable experience.",
     },
     {
         name: "Judy Dawson",
-        company: "Prod Developer",
+        company: "World Quant",
         text:
-            "OptinMonster brought me more subscribers, which is a given, but what’s more important is the ease of setup and amazing support.",
-        image: "/images/WorldQuant.png",
+            "Program gave me valuable insight into quantitative finance, where data, AI, and research drive investments, while the welcoming culture made the experience memorable",
     },
     {
-        name: "Alex Moore",
-        company: "Marketer",
+        name: "Komal yadav",
+        company: "NSE",
         text:
-            "This tool boosted my conversions and made email collection effortless. Highly recommended!",
-        image: "/images/Extra1.png",
+            "It offered insights into trading, clearing, and settlement while showcasing the scale and pace of India’s largest exchange. The interactive discussions made the visit both exciting and educational.",
     },
     {
-        name: "Riya Kapoor",
-        company: "Freelancer",
+        name: "Kapil Chippa",
+        company: "FYND",
         text:
-            "Super intuitive and effective. The design is clean, and performance is top-notch!",
-        image: "/images/Extra2.png",
+            "The Shadow Program at Fynd gave me real workplace insights, valuable mentorship, and clarity on career paths beyond classroom learning",
     },
 ];
 

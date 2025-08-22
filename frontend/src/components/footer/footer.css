@@ -69,7 +69,6 @@
   word-wrap: break-word;
   overflow-wrap: break-word;
   max-width: 100%;
-  text-align: center;
   /* center align on small screens */
 }
 
@@ -143,15 +142,29 @@
 }
 
 @media (max-width: 768px) {
-  .description{
-    max-width: 95%;
-  }
-
   .footer-left,
   .footer-center,
   .footer-right {
     flex: 1 1 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .description {
+    text-align: center;
+    max-width: 95%;
   }
 
+  .back-to-top {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    padding: 0;
+    font-size: 1.4rem;
+  }
 
+  .back-to-top .text {
+    display: none;
+  }
 }
