@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
 import './register.css';
 //import BackgroundBeams from "../../components/BackgroundBeams";
-
-
-
+import { useNavigate } from 'react-router-dom';
 
 
 const RegistrationPage = () => {
+  const navigate = useNavigate();
 
+  
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -25,6 +25,19 @@ const RegistrationPage = () => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [fileName, setFileName] = useState('');
+
+  const [registrationsOpen, setRegistrationsOpen] = useState(true);
+  useEffect(() => {
+  fetch("http://127.0.0.1:8000/api/registration-status/")
+    .then((res) => res.json())
+    .then((data) => {
+      console.log("API returned:", data); // Debug
+      setRegistrationsOpen(data.registrations_open);
+    })
+    .catch(() => setRegistrationsOpen(false));
+}, []);
+
+
   const departments = [
     { value: 'aerospace_engineering', label: 'Aerospace Engineering' },
     { value: 'applied geophysics', label: 'Applied Geophysics' },
@@ -158,7 +171,8 @@ const RegistrationPage = () => {
 
   // Updated handleSubmit function with file debugging
   const handleSubmit = async () => {
-    if (!validateForm()) {
+
+     if (!validateForm() && formData.screenshot) {
       Swal.fire({
         icon: 'warning',
         title: 'Invalid Credentials',
@@ -167,7 +181,7 @@ const RegistrationPage = () => {
       return;
     }
 
-    if (!formData.screenshot) {
+     if (!formData.screenshot) {
       Swal.fire({
         icon: 'error',
         title: 'Missing Screenshot',
@@ -175,6 +189,16 @@ const RegistrationPage = () => {
       });
       return;
     }
+    
+  // if (!registrationsOpen) {
+  //   Swal.fire({
+  //     icon: 'warning',
+  //     title: 'Registration Closed',
+  //     text: 'Registrations are closed currently.',
+  //   });
+  //   return;
+  // }
+    
 
     setIsSubmitting(true);
 
@@ -202,7 +226,9 @@ const RegistrationPage = () => {
           icon: 'success',
           title: 'Registration Successful 🎉',
           text: 'Welcome to the Shadow Program!',
-        });
+        }).then(() => {
+    navigate("/");  // Redirect to homepage after closing the alert
+  });
 
         // Reset form
         setFormData({
@@ -220,7 +246,7 @@ const RegistrationPage = () => {
         setFileName('');
       } else {
         const errorData = await response.json();
-        console.error('❌ Validation errors:', errorData);
+        console.error('❌ Validation errors:', errors.non_field_errors);
 
         if (errorData.errors) {
           // Convert backend error format to frontend format
@@ -279,14 +305,28 @@ const RegistrationPage = () => {
   const QRCodeSVG = () => {
     return (
       <div className="flex flex-col items-center">
+        <p style={{ color: 'black', fontWeight: 'bold', fontSize: '1.5rem' }}>
+  Registration Fee: ₹50
+</p>
+
+    <p style={{ color: 'black',  fontSize: '1.1rem' }}>
+  Scan either of the QR codes
+</p>
+<br></br>
         <img
+          src="/qr.png"
+          alt="Payment QR Code"
+          style={{ width: "200px", height: "200px", marginRight: "200px" }}
+        />
+         <img
           src="/qr.png"
           alt="Payment QR Code"
           style={{ width: "200px", height: "200px" }}
         />
-        <p className="mt-2 text-center"> Payment QR Code</p>
-        <p className="text-blue-600 font-bold">Registration Fee: ₹50</p>
-      </div>
+
+        
+        </div>
+      
     );
   };
 
@@ -299,7 +339,7 @@ const RegistrationPage = () => {
           <div class="card_content">
             <div class="logo_section">
 
-              <img src="bse.png" alt="Company Logo" class="company-logo"></img>
+              <img src="/placeholder.svg?height=80&width=80" alt="Company Logo" class="company-logo"></img>
             </div>
 
             <div class="info_section">
@@ -318,9 +358,6 @@ const RegistrationPage = () => {
                   <span class="detail_label">Time:</span>
                   <span class="detail_value">6:00 PM – 8:00 PM</span>
                 </div>
-              </div>
-              <div class="detail_item">
-                <p>Kindly note that the dress code will be semi-formal. Travel, along with breakfast, lunch, and snacks, will be taken care of by us.</p>
               </div>
 
               <div class="event_note">
@@ -492,7 +529,7 @@ const RegistrationPage = () => {
 
             {/* Payment Section */}
             <div className="payment-section">
-              <h3>Payment Information</h3>
+              <h3 style={{ fontSize: "2rem" }}>Payment</h3>
 
               <div className="qr-container">
                 <div className="qr-code-wrapper">
@@ -549,7 +586,7 @@ const RegistrationPage = () => {
                   className="checkbox"
                 />
                 <label htmlFor="confirmation" className="checkbox-label">
-                  I confirm my registration for the Shadow Program and I understand that I will be attending this program at my own risk, and SARC will not be responsible for any mishaps.The final seat allocation for students will be determined solely at the discretion of the company.<span className="required">*</span>
+                  I confirm my registration for the Shadow Program and I understand that I will be attending this program at my own risk, and SARC will not be responsible for any mishaps. <span className="required">*</span>
                 </label>
               </div>
               {errors.confirmation && <p className="error-message">{errors.confirmation}</p>}
