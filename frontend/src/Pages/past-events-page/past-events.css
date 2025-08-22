@@ -113,7 +113,6 @@
   }
 }
 
-
 @media (max-width: 768px) {
   .title_container {
     height: 140px;
@@ -122,51 +121,52 @@
     border-bottom-right-radius: 25px;
     margin-left: 5px;
     margin-right: 5px;
-  }}
-
-  .title_container h1 {
-    font-size: 28px;
   }
+}
 
-  .title_container h4 {
-    font-size: 16px;
-    margin-top: 0.5rem;
-  }
+.title_container h1 {
+  font-size: 45px;
+}
 
-  .body {
-    margin: 10px;
-    border-radius: 25px;
-    padding: 10px;
-  }
+.title_container h4 {
+  font-size: 25px;
+  margin-top: 0.5rem;
+}
 
-  .year-tabs-container {
-    margin: 20px auto;
-    padding: 3px;
-    border-radius: 6px;
-    gap: 0.4rem;
-    width: 100%;
-    max-width: 400px;
-    overflow-x: auto;
-    box-sizing: border-box;
-  }
+.body {
+  margin: 10px;
+  border-radius: 25px;
+  padding: 10px;
+}
 
-  .year-tabs-container::-webkit-scrollbar {
-    height: 6px;
-  }
+.year-tabs-container {
+  margin: 20px auto;
+  padding: 3px;
+  border-radius: 6px;
+  gap: 0.4rem;
+  width: 100%;
+  max-width: 400px;
+  overflow-x: auto;
+  box-sizing: border-box;
+}
 
-  .year-tabs-container::-webkit-scrollbar-thumb {
-    background-color: rgba(140, 220, 221, 0.525);
-    border-radius: 3px;
-  }
+.year-tabs-container::-webkit-scrollbar {
+  height: 6px;
+}
 
-  .year-tabs-container::-webkit-scrollbar-track {
-    background-color: transparent;
-  }
+.year-tabs-container::-webkit-scrollbar-thumb {
+  background-color: rgba(140, 220, 221, 0.525);
+  border-radius: 3px;
+}
 
-  .year-tab {
-    font-size: 14px;
-    padding: 8px 16px;
-    border-radius: 5px;
-    margin: 0 2px;
-    white-space: nowrap;
-  }
+.year-tabs-container::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.year-tab {
+  font-size: 14px;
+  padding: 8px 16px;
+  border-radius: 5px;
+  margin: 0 2px;
+  white-space: nowrap;
+}
