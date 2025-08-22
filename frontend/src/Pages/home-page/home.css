@@ -199,4 +199,20 @@ button:hover {
     width: 80%;
     height: auto;
   }
+
+  .wrapper {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .side_text {
+    text-align: center;
+    order: 1;
+  }
+
+  .event_card {
+    order: 0;
+    width: 100%;
+  }
 }

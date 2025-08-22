@@ -299,7 +299,7 @@ const RegistrationPage = () => {
           <div class="card_content">
             <div class="logo_section">
 
-              <img src="/placeholder.svg?height=80&width=80" alt="Company Logo" class="company-logo"></img>
+              <img src="bse.png" alt="Company Logo" class="company-logo"></img>
             </div>
 
             <div class="info_section">
@@ -318,6 +318,9 @@ const RegistrationPage = () => {
                   <span class="detail_label">Time:</span>
                   <span class="detail_value">6:00 PM – 8:00 PM</span>
                 </div>
+              </div>
+              <div class="detail_item">
+                <p>Kindly note that the dress code will be semi-formal. Travel, along with breakfast, lunch, and snacks, will be taken care of by us.</p>
               </div>
 
               <div class="event_note">

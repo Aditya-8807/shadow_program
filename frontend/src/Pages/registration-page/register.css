@@ -23,7 +23,7 @@ body {
 
 .event_card {
   width: 1000px;
-  height: 300px;
+  height: 350px;
   background: #131325;
   border-radius: 20px;
   padding: 0;
@@ -33,6 +33,7 @@ body {
   display: flex;
   align-items: stretch;
   margin: 10px;
+
 }
 
 .card_content {
@@ -54,9 +55,9 @@ body {
 }
 
 .company-logo {
-  width: 80px;
-  height: 80px;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: stretch;
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
 }
 
@@ -146,22 +147,37 @@ body {
 }
 
 /* Responsive design */
-@media (max-width: 768px) {
+
+@media (max-width: 800px) {
   .event_card {
-    width: 90%;
+    width: 100%;
     max-width: 500px;
     height: auto;
     flex-direction: column;
+    /* stack vertically instead of row */
+  }
+
+  .card_content {
+    flex-direction: column;
+    /* stack children vertically */
   }
 
   .logo_section {
-    width: auto;
-    height: 120px;
-    margin: 20px 20px 10px 20px;
+    width: 100%;
+    height: 320px;
+    margin: 0;
+    /* remove side margins */
+    border-radius: 0;
+    /* make it span full width neatly */
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
   }
 
   .info_section {
     padding: 20px 30px 30px 30px;
+    text-align: center;
+    /* optional: center align text */
+    flex: 1;
   }
 
   .event_title {
@@ -169,11 +185,13 @@ body {
   }
 }
 
+
 .wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 0vh;
+
 }
 
 .registration-card {

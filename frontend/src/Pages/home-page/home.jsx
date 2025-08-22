@@ -41,17 +41,14 @@ export default function HomePage() {
         </div>
         <div class="card_container">
           <div class="wrapper">
-            <div class="side_text left_text">
-              <p> Learn directly from industry experts</p>
-              <p> Expand your professional network</p>
-            </div>
+
             <div class="event_card">
 
               <div class="card_content">
 
                 <div class="logo_section">
 
-                  <img src="/placeholder.svg?height=80&width=80" alt="Company Logo" class="company-logo"></img>
+                  <img src="/images/past_event/bse.png" alt="Company Logo" class="company-logo"></img>
                 </div>
 
                 <div class="info_section">
@@ -70,7 +67,11 @@ export default function HomePage() {
                       <span class="detail_label">Time:</span>
                       <span class="detail_value">6:00 PM – 8:00 PM</span>
                     </div>
+                    <div class="detail_item">
+                      <p>Kindly note that the dress code will be semi-formal. Travel, along with breakfast, lunch, and snacks, will be taken care of by us.</p>
+                    </div>
                   </div>
+
 
                   <div class="event_note">
                     <span class="note_label">Note:</span>
@@ -82,11 +83,7 @@ export default function HomePage() {
               </div>
 
             </div>
-            <div class="side_text right_text">
-              <p> Don’t miss this opportunity!</p>
-              <p> Limited seats available</p>
-              <p> Register Now!!!</p>
-            </div>
+
           </div>
         </div>
 
