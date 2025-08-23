@@ -38,8 +38,8 @@ export default function Card() {
             <TiltedCard
               containerWidth="100%"
               containerHeight="100%"
-              rotateAmplitude={8}
-              scaleOnHover={1.03}
+              rotateAmplitude={15}
+              scaleOnHover={1.06}
               showMobileWarning={false}
               showTooltip={false}
               displayOverlayContent={false}
