@@ -1,0 +1,53 @@
+.typewriter-text {
+  display: inline-block;
+  font-size: clamp(
+    1rem,
+    4vw,
+    1.5rem
+  ); /* automatically scales from 1rem (mobile) to 1.5rem (desktop) */
+  font-weight: bold;
+  color: #80a69f;
+
+  border-right: 2px solid #405450;
+  padding-right: 4px;
+  letter-spacing: 0.01em;
+  max-width: 96vw; /* prevents overflow on small screens */
+  word-break: break-word;
+}
+
+/* Responsive cursor */
+.typewriter-cursor {
+  display: inline-block;
+  width: 2px;
+  background: #405450;
+  animation: blink 1s infinite step-end;
+  height: 1em;
+  vertical-align: middle;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Extra mobile tweaks if needed */
+@media (max-width: 768px) {
+  .typewriter-text {
+    font-size: clamp(1.1rem, 5vw, 1.3rem);
+    padding-right: 2px;
+    max-width: 95vw;
+    white-space: normal; /* allow auto-wrap */
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    word-break: break-word;
+  }
+  .typewriter-cursor {
+    height: 1em;
+  }
+}

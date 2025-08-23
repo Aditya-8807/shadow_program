@@ -2,6 +2,7 @@ import { useState } from "react";
 import EventCard from "../../components/event-card/EventCard";
 import "./past-events.css";
 import Carousel from "../../components/Image-slider/Carousel";
+import Typewriter from "./Typewriter";
 
 function PastEvent() {
   const [activeYear, setActiveYear] = useState("All");
@@ -80,10 +81,11 @@ function PastEvent() {
     <main>
       <div className="title_container">
         <h1 className="page_title">Past Shadow Programs</h1>
-        <h4 className="page-info">
-          Take a look at our previous successful shadow programs and their
-          impact
-        </h4>
+        <Typewriter
+          text="Take a look at our previous successful shadow programs and their impact"
+          speed={35}
+          className="page-info"
+        />
       </div>
 
       <div className="body">

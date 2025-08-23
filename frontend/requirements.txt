@@ -5,4 +5,5 @@ framer-motion
 react-icons  
 react-slick  
 slick-carousel
+npm i motion clsx tailwind-merge
 
