@@ -68,7 +68,7 @@ export default function Footer() {
               Team
             </Link>
             <span>|</span>
-            <Link to="/RegistrationPage" onClick={scrollToTop}>
+            <Link to="/register" onClick={scrollToTop}>
               Register
             </Link>
           </nav>

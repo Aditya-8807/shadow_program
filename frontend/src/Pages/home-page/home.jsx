@@ -24,7 +24,7 @@ export default function HomePage() {
 
             <button
               className="b1"
-              onClick={() => navigate("/RegistrationPage")}
+              onClick={() => navigate("/register")}
             >
               Register Now
             </button>

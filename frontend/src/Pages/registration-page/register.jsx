@@ -18,17 +18,13 @@ const RegistrationPage = () => {
     ldapId: '',
     department: '',
     yearOfStudy: '',
-      cpi: '', 
     screenshot: null,
-     passportPhoto: null,
-    
     confirmation: false
   });
 
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [fileName, setFileName] = useState('');
-   const [passportPhotoName, setPassportPhotoName] = useState('');
 
   const [registrationsOpen, setRegistrationsOpen] = useState(true);
   useEffect(() => {
@@ -119,11 +115,6 @@ const RegistrationPage = () => {
         newErrors.ldapId = 'LDAP ID must be in the format ******@iitb.ac.in';
       }
     }
-    if (!formData.cpi) {
-      newErrors.cpi = 'CPI is required';
-    } else if (isNaN(formData.cpi) || formData.cpi < 0 || formData.cpi > 10) {
-      newErrors.cpi = 'CPI must be a number between 0 and 10';
-    }
 
     if (!formData.department) newErrors.department = 'Department is required';
     if (!formData.yearOfStudy) newErrors.yearOfStudy = 'Year of Study is required';
@@ -136,25 +127,17 @@ const RegistrationPage = () => {
     } else if (!formData.screenshot.type.startsWith('image/')) {
       newErrors.screenshot = 'Please select an image file';
     }
-      // Passport photo validation
-  if (!formData.passportPhoto) {
-    newErrors.passportPhoto = 'Passport photo is required';
-  } else if (!(formData.passportPhoto instanceof File)) {
-    newErrors.passportPhoto = 'Invalid file selected';
-  } else if (!formData.passportPhoto.type.startsWith('image/')) {
-    newErrors.passportPhoto = 'Please select an image file';
-  }
 
     if (!formData.confirmation) newErrors.confirmation = 'You must confirm your registration';
 
-
+    console.log('Validation errors:', newErrors); // Debug log
     setErrors(newErrors);
-  return Object.keys(newErrors).length === 0;
-};
- const handleFileChange = (e) => {
-  const file = e.target.files[0];
-  const fieldName = e.target.name;
-  console.log('File selected:', file, 'for field:', fieldName); // Debug log
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    console.log('File selected:', file); // Debug log
 
     if (file) {
       console.log('File details:', {
@@ -164,65 +147,52 @@ const RegistrationPage = () => {
       }); // Debug log
 
       setFormData(prev => ({
-      ...prev,
-      [fieldName]: file
-    }));
-    
-    if (fieldName === 'screenshot') {
-      setFileName(file.name);
-    } else if (fieldName === 'passportPhoto') {
-      setPassportPhotoName(file.name);
-    }
-      // Clear file error
-     if (errors[fieldName]) {
-      setErrors(prev => ({
         ...prev,
-        [fieldName]: ''
+        screenshot: file
       }));
-    }
-  } else {
-    console.log('No file selected'); // Debug log
-    setFormData(prev => ({
-      ...prev,
-      [fieldName]: null
-    }));
-    
-    if (fieldName === 'screenshot') {
-      setFileName('');
-    } else if (fieldName === 'passportPhoto') {
-      setPassportPhotoName('');
-    }
-  }
-};
-   
+      setFileName(file.name);
 
+      // Clear file error
+      if (errors.screenshot) {
+        setErrors(prev => ({
+          ...prev,
+          screenshot: ''
+        }));
+      }
+    } else {
+      console.log('No file selected'); // Debug log
+      setFormData(prev => ({
+        ...prev,
+        screenshot: null
+      }));
+      setFileName('');
+    }
+  };
 
   // Updated handleSubmit function with file debugging
   const handleSubmit = async () => {
 
-    if (!validateForm()) {
-  Swal.fire({
-    icon: 'warning',
-    title: 'Invalid Credentials',
-    text: 'Please correct the highlighted errors before submitting.',
-  });
-  return;
-}
-    if (!formData.screenshot || !formData.passportPhoto) {
-        Swal.fire({
-          icon: 'error',
-          title: 'Missing Files',
-          text: 'Please upload both payment screenshot and passport photo before submitting.',
-        });
-        return;
-      }
+     if (!validateForm() && formData.screenshot) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Invalid Credentials',
+        text: 'Please correct the highlighted errors before submitting.',
+      });
+      return;
+    }
 
+     if (!formData.screenshot) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Missing Screenshot',
+        text: 'Please select a payment screenshot before submitting.',
+      });
+      return;
+    }
     
-    
-    
-  if (!registrationsOpen) {
+   if (!registrationsOpen) {
      Swal.fire({
-      icon: 'warning',
+       icon: 'warning',
       title: 'Registration Closed',
        text: 'Registrations are closed currently.',
      });
@@ -242,10 +212,7 @@ const RegistrationPage = () => {
       form.append('ldap_id', formData.ldapId);
       form.append('department', formData.department);
       form.append('year_of_study', formData.yearOfStudy);
-            form.append('cpi', formData.cpi);
-
       form.append('payment_screenshot', formData.screenshot);
-       form.append('passport_photo', formData.passportPhoto);
       form.append('confirmation_accepted', formData.confirmation);
 
       const response = await fetch('http://127.0.0.1:8000/api/registrations/create/', {
@@ -257,7 +224,7 @@ const RegistrationPage = () => {
         const data = await response.json();
         Swal.fire({
           icon: 'success',
-          title: 'Registration Successful',
+          title: 'Registration Successful 🎉',
           text: 'Welcome to the Shadow Program!',
         }).then(() => {
     navigate("/");  // Redirect to homepage after closing the alert
@@ -274,11 +241,9 @@ const RegistrationPage = () => {
           department: '',
           yearOfStudy: '',
           screenshot: null,
-          passportPhoto: null,
           confirmation: false,
         });
         setFileName('');
-         setPassportPhotoName('');
       } else {
         const errorData = await response.json();
         console.error('❌ Validation errors:', errors.non_field_errors);
@@ -294,7 +259,6 @@ const RegistrationPage = () => {
 
           const fieldMapping = {
             'payment_screenshot': 'screenshot',
-              'passport_photo': 'passportPhoto',
             'year_of_study': 'yearOfStudy',
             'first_name': 'firstName',
             'last_name': 'lastName',
@@ -313,7 +277,7 @@ const RegistrationPage = () => {
           // Show duplicate registration / field error popup
           Swal.fire({
             icon: 'error',
-            title: 'Registration Failed',
+            title: 'Registration Failed ❌',
             text: errorData.errors.roll_number || errorData.errors.ldap_id
               ? 'This Roll Number or LDAP ID is already registered.'
               : 'Please correct the errors highlighted in the form.',
@@ -327,7 +291,7 @@ const RegistrationPage = () => {
         }
       }
     } catch (error) {
-      console.error(' Submission failed:', error);
+      console.error('❌ Submission failed:', error);
       Swal.fire({
         icon: 'error',
         title: 'Network Error',
@@ -370,34 +334,34 @@ const RegistrationPage = () => {
 
   return (
     <div className="registration-container">
-      <div className="wrapper">
-        <div className="event_card">
-          <div className="card_content">
-            <div className="logo_section">
+      <div class="wrapper">
+        <div class="event_card">
+          <div class="card_content">
+            <div class="logo_section">
 
               <img src="/placeholder.svg?height=80&width=80" alt="Company Logo" class="company-logo"></img>
             </div>
 
-            <div className="info_section">
-              <h1 className="event_title">Shadow Program – Company Name</h1>
+            <div class="info_section">
+              <h1 class="event_title">Shadow Program – Company Name</h1>
 
-              <div className="event_details">
-                <div className="detail_item">
-                  <span className="detail_label">Venue:</span>
-                  <span className="detail_value">LHC 101, IIT Bombay</span>
+              <div class="event_details">
+                <div class="detail_item">
+                  <span class="detail_label">Venue:</span>
+                  <span class="detail_value">LHC 101, IIT Bombay</span>
                 </div>
-                <div className="detail_item">
-                  <span className="detail_label">Date:</span>
-                  <span className="detail_value">25th August 2025</span>
+                <div class="detail_item">
+                  <span class="detail_label">Date:</span>
+                  <span class="detail_value">25th August 2025</span>
                 </div>
-                <div className="detail_item">
-                  <span className="detail_label">Time:</span>
-                  <span className="detail_value">6:00 PM – 8:00 PM</span>
+                <div class="detail_item">
+                  <span class="detail_label">Time:</span>
+                  <span class="detail_value">6:00 PM – 8:00 PM</span>
                 </div>
               </div>
 
-              <div className="event_note">
-                <span className="note_label">Note:</span>
+              <div class="event_note">
+                <span class="note_label">Note:</span>
                 Open to all first & second year UG students
               </div>
             </div>
@@ -519,71 +483,49 @@ const RegistrationPage = () => {
                 {errors.email && <p className="error-message">{errors.email}</p>}
               </div>
             </div>
-{/* Department and Year */}
-<div className="form-row">
-  <div className="form-group">
-    <label htmlFor="department">
-      Department <span className="required">*</span>
-    </label>
-    <select
-      id="department"
-      name="department"
-      value={formData.department}
-      onChange={handleInputChange}
-      className={`form-select ${errors.department ? 'error' : ''}`}
-    >
-      <option value="">Select Department</option>
-      {departments.map(dept => (
-        <option key={dept.value} value={dept.value}>{dept.label}</option>
-      ))}
-    </select>
-    {errors.department && <p className="error-message">{errors.department}</p>}
-  </div>
 
-  <div className="form-group">
-    <label htmlFor="yearOfStudy">
-      Year of Study <span className="required">*</span>
-    </label>
-    <select
-      id="yearOfStudy"
-      name="yearOfStudy"
-      value={formData.yearOfStudy}
-      onChange={handleInputChange}
-      className={`form-select ${errors.yearOfStudy ? 'error' : ''}`}
-    >
-      <option value="">Select Year</option>
-      {years.map(year => (
-        <option key={year.value} value={year.value}>{year.label}</option>
-      ))}
-    </select>
-    {errors.yearOfStudy && <p className="error-message">{errors.yearOfStudy}</p>}
-  </div>
-</div>
+            {/* Department and Year */}
+            <div className="form-row">
+              <div className="form-group">
+                <label htmlFor="department">
+                  Department <span className="required">*</span>
+                </label>
+                <select
+                  id="department"
+                  name="department"
+                  value={formData.department}
+                  onChange={handleInputChange}
+                  className={`form-select ${errors.department ? 'error' : ''}`}
+                >
+                  <option value="">Select Department</option>
+                  {departments.map(dept => (
+                    <option key={dept.value} value={dept.value}>{dept.label}</option>
+                  ))}
+                </select>
 
-{/* CPI (centered) */}
-<div className="form-group full-width">
-  <label htmlFor="cpi">
-    CPI <span className="required">*</span>
-  </label>
-  <input
-    type="number"
-    step="0.01"
-    min="0"
-    max="10"
-    id="cpi"
-    name="cpi"
-    value={formData.cpi}
-    onChange={handleInputChange}
-    className={`form-input ${errors.cpi ? 'error' : ''}`}
-    placeholder="Enter your CPI (0–10)" 
-  />
-  {errors.cpi && <p className="error-message">{errors.cpi}</p>}
-   <p className="cpi-note">CPI will remain confidential and will only be shared with the company</p>
+                {errors.department && <p className="error-message">{errors.department}</p>}
+              </div>
 
+              <div className="form-group">
+                <label htmlFor="yearOfStudy">
+                  Year of Study <span className="required">*</span>
+                </label>
+                <select
+                  id="yearOfStudy"
+                  name="yearOfStudy"
+                  value={formData.yearOfStudy}
+                  onChange={handleInputChange}
+                  className={`form-select ${errors.yearOfStudy ? 'error' : ''}`}
+                >
+                  <option value="">Select Year</option>
+                  {years.map(year => (
+                    <option key={year.value} value={year.value}>{year.label}</option>
+                  ))}
+                </select>
 
-  <div></div> {/* right spacer */}
-</div>
-
+                {errors.yearOfStudy && <p className="error-message">{errors.yearOfStudy}</p>}
+              </div>
+            </div>
 
             {/* Payment Section */}
             <div className="payment-section">
@@ -623,44 +565,13 @@ const RegistrationPage = () => {
                     </div>
                   ) : (
                     <div className="file-placeholder">
-                      <p className="upload-text"> Click here to upload your payment screenshot</p>
+                      <p className="upload-text">📷 Click here to upload your payment screenshot</p>
                       <p className="file-formats">Supported formats: JPG, PNG, JPEG, WEBP, HEIC</p>
                     </div>
                   )}
                 </div>
               </div>
               {errors.screenshot && <p className="error-message">{errors.screenshot}</p>}
-            </div>
-                        
- {/* Passport Photo Upload */}
-            <div className="form-group full-width">
-              <label htmlFor="passportPhoto">
-                Upload Passport Size Photo <span className="required">*</span>
-              </label>
-              <div className="file-upload-container">
-                <input
-                  type="file"
-                  id="passportPhoto"
-                  name="passportPhoto"
-                  accept="image/*"
-                  onChange={handleFileChange}
-                  className="file-input"
-                />
-                <div className={`file-upload-area ${passportPhotoName ? 'has-file' : ''} ${errors.passportPhoto ? 'error' : ''}`}>
-                  {passportPhotoName ? (
-                    <div className="file-success">
-                      <p className="file-name">✅ {passportPhotoName}</p>
-                      <p className="file-instruction">Click to change file</p>
-                    </div>
-                  ) : (
-                    <div className="file-placeholder">
-                      <p className="upload-text"> Click here to upload your passport size photo</p>
-                      <p className="file-formats">Supported formats: JPG, PNG, JPEG, WEBP, HEIC</p>
-                    </div>
-                  )}
-                </div>
-              </div>
-              {errors.passportPhoto && <p className="error-message">{errors.passportPhoto}</p>}
             </div>
 
             {/* Confirmation Checkbox */}
