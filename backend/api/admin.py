@@ -140,7 +140,24 @@ class RegistrationAdmin(admin.ModelAdmin):
             )
         return "No screenshot uploaded"
     payment_screenshot_preview.short_description = 'Payment Screenshot'
+     # Hide CPI from list view for privacy (since it's confidential)
+    def get_list_display(self, request):
+        return [field for field in self.list_display if field != 'cpi']
     
+    # Only show CPI to superusers
+    def get_fields(self, request, obj=None):
+        fields = super().get_fields(request, obj)
+        if not request.user.is_superuser and 'cpi' in fields:
+            fields = [f for f in fields if f != 'cpi']
+        return fields
+    
+    # Show passport photo thumbnail
+    def passport_photo_preview(self, obj):
+        if obj.passport_photo:
+            return f'<img src="{obj.passport_photo.url}" width="50" height="50" />'
+        return "No photo"
+    passport_photo_preview.allow_tags = True
+    passport_photo_preview.short_description = 'Photo'
     # Admin Actions
     def mark_payment_verified(self, request, queryset):
         updated = queryset.update(payment_verified=True)

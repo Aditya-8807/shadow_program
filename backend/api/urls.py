@@ -8,6 +8,7 @@ urlpatterns = [
     
     # Form data and settings
     path('form-data/', views.get_form_data, name='get_form_data'),
+      path('api/registration-status/', views.registration_status, name='registration-status'),
     
     # Registration endpoints
     path('registrations/', views.list_registrations, name='list_registrations'),

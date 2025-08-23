@@ -214,10 +214,11 @@ body {
 }
 
 .header p {
-  color: #688781;
+  color:  #d0dbc3;
   font-size: 20px;
   opacity: 0.9;
   margin: 20px;
+  font-weight: 700;
 }
 
 /* Form Container */
@@ -254,7 +255,17 @@ body {
 
 .form-group.full-width {
   grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* centers input horizontally */
 }
+.form-group.full-width label {
+  text-align: center;
+}
+.form-group.full-width .form-input {
+  max-width: 300px;   /* keeps CPI box narrower */
+}
+
 
 /* Labels */
 label {
