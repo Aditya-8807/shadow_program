@@ -63,7 +63,7 @@ export default function Navbar() {
         </li>
         <li>
           <Link
-            to="/RegistrationPage"
+            to="/register"
             className="register btn"
             onClick={closeMenu}
           >

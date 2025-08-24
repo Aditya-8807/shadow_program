@@ -3,7 +3,6 @@ from django.utils.html import format_html
 from django.urls import reverse
 from .models import Registration, RegistrationSettings
 
-
 @admin.register(Registration)
 class RegistrationAdmin(admin.ModelAdmin):
     """Admin interface for Registration model"""

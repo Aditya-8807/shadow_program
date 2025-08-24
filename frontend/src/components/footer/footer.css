@@ -65,6 +65,7 @@
 .description {
   margin-bottom: 1rem;
   font-size: 0.9rem;
+  text-align: left !important;
   line-height: 1.4;
   word-wrap: break-word;
   overflow-wrap: break-word;

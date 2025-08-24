@@ -22,38 +22,30 @@ export default function HomePage() {
               between academics and industry.
             </p>
 
-            <button
-              className="b1"
-              onClick={() => navigate("/RegistrationPage")}
-            >
-              Register Now
+            <button className="b1" onClick={() => navigate("/RegistrationPage")}>
+              <span class="button-content">Register Now</span>
             </button>
-            <button className="b2" onClick={() => navigate("/PastEvent")}>
-              Past Shadows
+            <button className="b1" onClick={() => navigate("/PastEvent")}>
+              <span class="button-content">Past Shadows</span>
             </button>
-
           </div>
+
           <img
             src="/images/cdsl.png"
             alt="Student visiting workplace of alumni"
             loading="lazy"
           />
         </div>
+
         <div class="card_container">
           <div class="wrapper">
-
             <div class="event_card">
-
               <div class="card_content">
-
                 <div class="logo_section">
-
                   <img src="/images/past_event/bse.png" alt="Company Logo" class="company-logo"></img>
                 </div>
-
                 <div class="info_section">
                   <h1 class="event_title">Shadow Program – Company Name</h1>
-
                   <div class="event_details">
                     <div class="detail_item">
                       <span class="detail_label">Venue:</span>
@@ -65,32 +57,25 @@ export default function HomePage() {
                     </div>
                     <div class="detail_item">
                       <span class="detail_label">Time:</span>
-                      <span class="detail_value">6:00 PM – 8:00 PM</span>
+                      <span class="detail_value">6:00 PM - 8:00 PM</span>
                     </div>
                     <div class="detail_item">
                       <p>Kindly note that the dress code will be semi-formal. Travel, along with breakfast, lunch, and snacks, will be taken care of by us.</p>
                     </div>
                   </div>
-
-
                   <div class="event_note">
                     <span class="note_label">Note:</span>
                     Open to all first & second year UG students
                   </div>
-
                 </div>
-
               </div>
-
             </div>
-
           </div>
         </div>
 
         <div className="container1">
           <Card />
           <Carousel />
-          {/* Give this wrapper the id for scrolling */}
           <div id="faq">
             <FAQ />
           </div>

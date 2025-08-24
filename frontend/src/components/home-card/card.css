@@ -52,6 +52,7 @@
   background: #ffe4b2;
   border-radius: 16px;
   overflow: hidden;
+  margin: auto;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
   transition: box-shadow 0.3s ease;
 }

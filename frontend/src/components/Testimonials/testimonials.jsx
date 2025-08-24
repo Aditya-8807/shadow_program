@@ -16,12 +16,12 @@ const testimonials = [
     text: "The Bajaj Auto shadow program offered great exposure to core mechanical engineering and electric mobility. Learning about the Chetak EV and witnessing the full manufacturing and electrical processes was an invaluable experience.",
   },
   {
-    name: "Judy Dawson",
+    name: "Siddharth Singh",
     company: "World Quant",
     text: "Program gave me valuable insight into quantitative finance, where data, AI, and research drive investments, while the welcoming culture made the experience memorable",
   },
   {
-    name: "Komal yadav",
+    name: "Komal Yadav",
     company: "NSE",
     text: "It offered insights into trading, clearing, and settlement while showcasing the scale and pace of India’s largest exchange. The interactive discussions made the visit both exciting and educational.",
   },

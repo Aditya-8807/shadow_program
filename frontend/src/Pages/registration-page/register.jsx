@@ -2,13 +2,11 @@ import React, { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
 import './register.css';
 //import BackgroundBeams from "../../components/BackgroundBeams";
+import CustomCheckbox from '../../components/customCheckBox/customcheckbox';
 import { useNavigate } from 'react-router-dom';
-
 
 const RegistrationPage = () => {
   const navigate = useNavigate();
-
-  
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -89,7 +87,6 @@ const RegistrationPage = () => {
       }));
     }
   };
-
 
   const validateForm = () => {
     const newErrors = {};
@@ -306,13 +303,13 @@ const RegistrationPage = () => {
     return (
       <div className="flex flex-col items-center">
         <p style={{ color: 'black', fontWeight: 'bold', fontSize: '1.5rem' }}>
-  Registration Fee: ₹50
-</p>
+          Registration Fee: ₹50
+        </p>
 
-    <p style={{ color: 'black',  fontSize: '1.1rem' }}>
-  Scan either of the QR codes
-</p>
-<br></br>
+        <p style={{ color: 'black',  fontSize: '1.1rem' }}>
+          Scan either of the QR codes
+        </p>
+        <br></br>
         <img
           src="/qr.png"
           alt="Payment QR Code"
@@ -330,44 +327,43 @@ const RegistrationPage = () => {
     );
   };
 
-
-
   return (
     <div className="registration-container">
-      <div class="wrapper">
-        <div class="event_card">
-          <div class="card_content">
-            <div class="logo_section">
-
-              <img src="/placeholder.svg?height=80&width=80" alt="Company Logo" class="company-logo"></img>
-            </div>
-
-            <div class="info_section">
-              <h1 class="event_title">Shadow Program – Company Name</h1>
-
-              <div class="event_details">
-                <div class="detail_item">
-                  <span class="detail_label">Venue:</span>
-                  <span class="detail_value">LHC 101, IIT Bombay</span>
+      <div class="card_container">
+          <div class="wrapper">
+            <div class="event_card">
+              <div class="card_content">
+                <div class="logo_section">
+                  <img src="/images/past_event/bse.png" alt="Company Logo" class="company-logo"></img>
                 </div>
-                <div class="detail_item">
-                  <span class="detail_label">Date:</span>
-                  <span class="detail_value">25th August 2025</span>
+                <div class="info_section">
+                  <h1 class="event_title">Shadow Program – Company Name</h1>
+                  <div class="event_details">
+                    <div class="detail_item">
+                      <span class="detail_label">Venue:</span>
+                      <span class="detail_value">LHC 101, IIT Bombay</span>
+                    </div>
+                    <div class="detail_item">
+                      <span class="detail_label">Date:</span>
+                      <span class="detail_value">25th August 2025</span>
+                    </div>
+                    <div class="detail_item">
+                      <span class="detail_label">Time:</span>
+                      <span class="detail_value">6:00 PM - 8:00 PM</span>
+                    </div>
+                    <div class="detail_item">
+                      <p>Kindly note that the dress code will be semi-formal. Travel, along with breakfast, lunch, and snacks, will be taken care of by us.</p>
+                    </div>
+                  </div>
+                  <div class="event_note">
+                    <span class="note_label">Note:</span>
+                    Open to all first & second year UG students
+                  </div>
                 </div>
-                <div class="detail_item">
-                  <span class="detail_label">Time:</span>
-                  <span class="detail_value">6:00 PM – 8:00 PM</span>
-                </div>
-              </div>
-
-              <div class="event_note">
-                <span class="note_label">Note:</span>
-                Open to all first & second year UG students
               </div>
             </div>
           </div>
         </div>
-      </div>
 
       <div className="registration-card">
         {/* Header */}
@@ -577,7 +573,7 @@ const RegistrationPage = () => {
             {/* Confirmation Checkbox */}
             <div className="confirmation-section">
               <div className="checkbox-container">
-                <input
+                {/* <input
                   type="checkbox"
                   id="confirmation"
                   name="confirmation"
@@ -587,7 +583,20 @@ const RegistrationPage = () => {
                 />
                 <label htmlFor="confirmation" className="checkbox-label">
                   I confirm my registration for the Shadow Program and I understand that I will be attending this program at my own risk, and SARC will not be responsible for any mishaps. <span className="required">*</span>
-                </label>
+                </label> */}
+                <CustomCheckbox
+                  id="confirmation"
+                  name="confirmation"
+                  checked={formData.confirmation}
+                  onChange={handleInputChange}
+                  label={
+                    <>
+                      I confirm my registration for the Shadow Program and I understand that I
+                      will be attending this program at my own risk, and SARC will not be
+                      responsible for any mishaps. The final seat allocation for students will be determined solely at the discretion of the company.<span className="required">*</span>
+                    </>
+                  }
+                />
               </div>
               {errors.confirmation && <p className="error-message">{errors.confirmation}</p>}
             </div>
@@ -608,7 +617,4 @@ const RegistrationPage = () => {
   );
 };
 
-
-
 export default RegistrationPage;
-
