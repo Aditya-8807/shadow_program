@@ -1,127 +1,122 @@
 .header {
-    animation: slideDownStatic 0.5s ease-out;
-    position: relative;
-    /* OR absolute, if you want it on top */
-    z-index: 10;
+  animation: slideDownStatic 0.5s ease-out;
+  position: relative;
+  /* OR absolute, if you want it on top */
+  z-index: 10;
 }
 
 @keyframes slideDownStatic {
-    from {
-        transform: translateY(-200px);
-        opacity: 1;
-    }
+  from {
+    transform: translateY(-200px);
+    opacity: 1;
+  }
 
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 .header h4 {
-    font-style: italic;
-    font-size: 20px;
-    color: #80a69f;
-    
+  font-style: italic;
+  font-size: 20px;
+  color: #80a69f;
 }
 
 .body {
-    background-color: #ffd19648;
-    margin: 20px;
-    border-radius: 30px;
+  background-color: #ffd19648;
+  margin: 20px;
+  border-radius: 30px;
 }
 
-.asmp h1 , .web h1 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: black;
+.asmp h1,
+.web h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
 }
 
 .member-img {
-    width: 250px;
-    height: 250px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    object-fit: cover;
-
-
+  width: 250px;
+  height: 250px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  object-fit: cover;
 }
 
 .overall-cordi {
-    display: flex;
-    flex-wrap: wrap;
-    justify-items: center;
-    justify-content: center;
-    margin: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-items: center;
+  justify-content: center;
+  margin: 20px;
 }
 
 .overall-cordi .card {
-    width: 250px;
+  width: 250px;
 }
 
 .ctm-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 300px);
-    gap: 2rem;
-    padding: 2rem;
-    width: 100%;
-    box-sizing: border-box;
-    justify-items: center;
-    justify-content: center;
-
+  display: grid;
+  grid-template-columns: repeat(2, 300px);
+  gap: 2rem;
+  padding: 2rem;
+  width: 100%;
+  box-sizing: border-box;
+  justify-items: center;
+  justify-content: center;
 }
 
 .cordi-grid {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 
-    gap: 7rem;
-    padding: 1rem;
-    width: 100%;
-    box-sizing: border-box;
-    justify-items: center;
-    justify-content: center;
+  gap: 7rem;
+  padding: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  justify-items: center;
+  justify-content: center;
 }
 
-
 .card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 1.5rem;
-    background-color: #fab96985;
-    backdrop-filter: blur(10px);
-    border-radius: 45px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.5rem;
+  background-color: #fab96985;
+  backdrop-filter: blur(10px);
+  border-radius: 45px;
 
-    transition: transform 0.3s ease;
-
+  transition: transform 0.3s ease;
 }
 
 .card:hover {
-    transform: translateY(-8px);
+  transform: translateY(-8px);
 }
 
 .card h4 {
-    margin-bottom: 1px;
-    margin-top: 7px;
-    font-size: 28px;
-    font-family: 'Times New Roman', Times, serif;
-    color: #131325;
+  margin-bottom: 1px;
+  margin-top: 7px;
+  font-size: 28px;
+  font-family: "Times New Roman", Times, serif;
+  color: #131325;
 }
 
 .card p {
-    margin-bottom: 0px;
-    margin-top: 4px;
-    font-size: 20px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: #131325;
+  margin-bottom: 0px;
+  margin-top: 4px;
+  font-size: 20px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: #131325;
 }
 .social-icons-team a {
-  color:#F5F0E6 ;
+  color: #f5f0e6;
   margin-right: 0.8rem;
   font-size: 1.2rem;
-  background-color: #1E1B2E;
+  background-color: #1e1b2e;
   padding: 0.5rem;
   border-radius: 50%;
   display: inline-flex;
@@ -132,14 +127,15 @@
 
 .social-icons-team a:hover,
 .social-icons-team a:focus {
-  background-color: #1E1B2E;
-  color: #EDCE94;
-  box-shadow: 0 0 10px #1E1B2E;;
+  background-color: #1e1b2e;
+  color: #edce94;
+  box-shadow: 0 0 10px #1e1b2e;
   transform: scale(1.1);
   outline: none;
 }
 @media (max-width: 768px) {
-  .asmp h1, .web h1 {
+  .asmp h1,
+  .web h1 {
     font-size: 1.6rem;
     text-align: center;
   }
@@ -169,31 +165,31 @@
   }
 }
 .contact-details {
-    margin-top: 10px;
-    font-size: 0.9rem;
-    color: #555;
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #555;
 }
 
 .contact-details p {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    margin: 4px 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 4px 0;
 }
 
 .contact-details svg {
-    color:black;
+  color: black;
 }
 @media (max-width: 768px) {
   .header {
     text-align: center;
   }
-  
+
   .header h1 {
     font-size: 1.8rem;
     margin-bottom: 0.5rem;
   }
-  
+
   .header h4 {
     font-size: 1rem;
   }
