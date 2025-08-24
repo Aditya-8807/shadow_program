@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import RegexValidator, EmailValidator
+from django.core.validators import MinValueValidator, MaxValueValidator
 import uuid
 import os
 
@@ -25,19 +26,29 @@ class Registration(models.Model):
     contact = models.CharField(validators=[phone_regex], max_length=10)
     email = models.EmailField(validators=[EmailValidator()])
     ldap_id = models.CharField(max_length=50, unique=True)
+    cpi = models.DecimalField(
+        max_digits=3, 
+        decimal_places=2,
+        validators=[MinValueValidator(0.00), MaxValueValidator(10.00)],
+        help_text="CPI between 0.00 and 10.00"
+    )
+    passport_photo = models.ImageField(
+        upload_to='passport_photos/',
+        help_text="Upload passport size photo"
+    )
     
     # Academic Information
     DEPARTMENT_CHOICES = [
         ('aerospace_engineering', 'Aerospace Engineering'),
+        ('applied geophysics', 'Applied Geophysics'),
         ('chemical_engineering', 'Chemical Engineering'),
         ('civil_engineering', 'Civil Engineering'),
         ('computer_science_engineering', 'Computer Science and Engineering'),
         ('electrical_engineering', 'Electrical Engineering'),
         ('engineering_physics', 'Engineering Physics'),
-        ('materials_science_engineering', 'Materials Science and Engineering'),
         ('mechanical_engineering', 'Mechanical Engineering'),
         ('metallurgical_engineering', 'Metallurgical Engineering and Materials Science'),
-        ('mathematics_statistics', 'Mathematics and Statistics'),
+        ('mathematics', 'Mathematics'),
         ('chemistry', 'Chemistry'),
         ('physics', 'Physics'),
         ('biosciences_bioengineering', 'Biosciences and Bioengineering'),
@@ -105,7 +116,6 @@ class Registration(models.Model):
     
     def get_year_display_name(self):
         return dict(self.YEAR_CHOICES).get(self.year_of_study, self.year_of_study)
-
 
 class RegistrationSettings(models.Model):
     """Model for managing registration settings"""

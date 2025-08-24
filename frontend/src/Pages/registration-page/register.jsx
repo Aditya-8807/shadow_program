@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
 import './register.css';
-//import BackgroundBeams from "../../components/BackgroundBeams";
 import CustomCheckbox from '../../components/customCheckBox/customcheckbox';
 import { useNavigate } from 'react-router-dom';
 
 const RegistrationPage = () => {
   const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -16,29 +16,34 @@ const RegistrationPage = () => {
     ldapId: '',
     department: '',
     yearOfStudy: '',
+    cpi: '',
     screenshot: null,
-    confirmation: false
+    passportPhoto: null,
+    confirmation: false,
   });
 
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [fileName, setFileName] = useState('');
+  const [passportPhotoName, setPassportPhotoName] = useState('');
 
   const [registrationsOpen, setRegistrationsOpen] = useState(true);
+
+  // Fetch registration status from backend
   useEffect(() => {
-  fetch("http://127.0.0.1:8000/api/registration-status/")
-    .then((res) => res.json())
-    .then((data) => {
-      console.log("API returned:", data); // Debug
-      setRegistrationsOpen(data.registrations_open);
-    })
-    .catch(() => setRegistrationsOpen(false));
-}, []);
+    fetch('http://127.0.0.1:8000/api/registration-status/')
+      .then((res) => res.json())
+      .then((data) => {
+        console.log('API returned:', data);
+        setRegistrationsOpen(data.registrations_open);
+      })
+      .catch(() => setRegistrationsOpen(false));
+  }, []);
 
-
+  // Dropdown options
   const departments = [
     { value: 'aerospace_engineering', label: 'Aerospace Engineering' },
-    { value: 'applied geophysics', label: 'Applied Geophysics' },
+    { value: 'applied_geophysics', label: 'Applied Geophysics' },
     { value: 'chemical_engineering', label: 'Chemical Engineering' },
     { value: 'civil_engineering', label: 'Civil Engineering' },
     { value: 'computer_science_engineering', label: 'Computer Science and Engineering' },
@@ -58,7 +63,6 @@ const RegistrationPage = () => {
     { value: 'systems_control_engineering', label: 'Systems and Control Engineering' },
     { value: 'climate_studies', label: 'Climate Studies' },
     { value: 'other', label: 'Other' },
-
   ];
 
   const years = [
@@ -69,54 +73,60 @@ const RegistrationPage = () => {
     { value: '5th_year', label: '5th Year' },
     { value: 'phd', label: 'PhD' },
     { value: 'msc', label: 'MSc' },
-    { value: 'mtech', label: 'MTech' }
+    { value: 'mtech', label: 'MTech' },
   ];
 
+  // Handle input text/select/checkbox
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: type === 'checkbox' ? checked : value
+      [name]: type === 'checkbox' ? checked : value,
     }));
 
-    // Clear error when user starts typing
     if (errors[name]) {
-      setErrors(prev => ({
-        ...prev,
-        [name]: ''
-      }));
+      setErrors((prev) => ({ ...prev, [name]: '' }));
     }
   };
 
+  // Validate form
   const validateForm = () => {
     const newErrors = {};
 
     if (!formData.firstName.trim()) newErrors.firstName = 'First Name is required';
     if (!formData.lastName.trim()) newErrors.lastName = 'Last Name is required';
     if (!formData.rollNumber.trim()) newErrors.rollNumber = 'Roll Number is required';
+
     if (!formData.contact.trim()) {
       newErrors.contact = 'Contact Number is required';
     } else if (!/^\d{10}$/.test(formData.contact)) {
       newErrors.contact = 'Contact Number must be 10 digits';
     }
+
     if (!formData.email.trim()) {
       newErrors.email = 'Email is required';
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = 'Please enter a valid email';
     }
+
     if (!formData.ldapId.trim()) {
-      newErrors.ldapId = 'LDAP ID is required';
+      newErrors.ldapId = "LDAP ID is required";
     } else {
-      const parts = formData.ldapId.trim().split('@');
-      if (parts.length !== 2 || parts[1] !== 'iitb.ac.in') {
-        newErrors.ldapId = 'LDAP ID must be in the format ******@iitb.ac.in';
+      const ldap = formData.ldapId.trim().toLowerCase();
+      if (!ldap.endsWith("@iitb.ac.in")) {
+        newErrors.ldapId = "LDAP ID must be in the format ******@iitb.ac.in";
       }
+    }
+
+    if (!formData.cpi) {
+      newErrors.cpi = 'CPI is required';
+    } else if (isNaN(formData.cpi) || formData.cpi < 0 || formData.cpi > 10) {
+      newErrors.cpi = 'CPI must be a number between 0 and 10';
     }
 
     if (!formData.department) newErrors.department = 'Department is required';
     if (!formData.yearOfStudy) newErrors.yearOfStudy = 'Year of Study is required';
 
-    // More specific file validation
     if (!formData.screenshot) {
       newErrors.screenshot = 'Payment screenshot is required';
     } else if (!(formData.screenshot instanceof File)) {
@@ -125,51 +135,47 @@ const RegistrationPage = () => {
       newErrors.screenshot = 'Please select an image file';
     }
 
+    if (!formData.passportPhoto) {
+      newErrors.passportPhoto = 'Passport photo is required';
+    } else if (!(formData.passportPhoto instanceof File)) {
+      newErrors.passportPhoto = 'Invalid file selected';
+    } else if (!formData.passportPhoto.type.startsWith('image/')) {
+      newErrors.passportPhoto = 'Please select an image file';
+    }
+
     if (!formData.confirmation) newErrors.confirmation = 'You must confirm your registration';
 
-    console.log('Validation errors:', newErrors); // Debug log
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
+  // Handle file selection
   const handleFileChange = (e) => {
     const file = e.target.files[0];
-    console.log('File selected:', file); // Debug log
+    const fieldName = e.target.name;
 
     if (file) {
-      console.log('File details:', {
-        name: file.name,
-        size: file.size,
-        type: file.type
-      }); // Debug log
+      setFormData((prev) => ({ ...prev, [fieldName]: file }));
 
-      setFormData(prev => ({
-        ...prev,
-        screenshot: file
-      }));
-      setFileName(file.name);
+      if (fieldName === 'screenshot') {
+        setFileName(file.name);
+      } else if (fieldName === 'passportPhoto') {
+        setPassportPhotoName(file.name);
+      }
 
-      // Clear file error
-      if (errors.screenshot) {
-        setErrors(prev => ({
-          ...prev,
-          screenshot: ''
-        }));
+      if (errors[fieldName]) {
+        setErrors((prev) => ({ ...prev, [fieldName]: '' }));
       }
     } else {
-      console.log('No file selected'); // Debug log
-      setFormData(prev => ({
-        ...prev,
-        screenshot: null
-      }));
-      setFileName('');
+      setFormData((prev) => ({ ...prev, [fieldName]: null }));
+      if (fieldName === 'screenshot') setFileName('');
+      if (fieldName === 'passportPhoto') setPassportPhotoName('');
     }
   };
 
-  // Updated handleSubmit function with file debugging
+  // Handle form submit
   const handleSubmit = async () => {
-
-     if (!validateForm() && formData.screenshot) {
+    if (!validateForm()) {
       Swal.fire({
         icon: 'warning',
         title: 'Invalid Credentials',
@@ -178,24 +184,14 @@ const RegistrationPage = () => {
       return;
     }
 
-     if (!formData.screenshot) {
+    if (!registrationsOpen) {
       Swal.fire({
-        icon: 'error',
-        title: 'Missing Screenshot',
-        text: 'Please select a payment screenshot before submitting.',
+        icon: 'warning',
+        title: 'Registration Closed',
+        text: 'Registrations are closed currently.',
       });
       return;
     }
-    
-  // if (!registrationsOpen) {
-  //   Swal.fire({
-  //     icon: 'warning',
-  //     title: 'Registration Closed',
-  //     text: 'Registrations are closed currently.',
-  //   });
-  //   return;
-  // }
-    
 
     setIsSubmitting(true);
 
@@ -209,7 +205,9 @@ const RegistrationPage = () => {
       form.append('ldap_id', formData.ldapId);
       form.append('department', formData.department);
       form.append('year_of_study', formData.yearOfStudy);
+      form.append('cpi', formData.cpi);
       form.append('payment_screenshot', formData.screenshot);
+      form.append('passport_photo', formData.passportPhoto);
       form.append('confirmation_accepted', formData.confirmation);
 
       const response = await fetch('http://127.0.0.1:8000/api/registrations/create/', {
@@ -218,16 +216,13 @@ const RegistrationPage = () => {
       });
 
       if (response.ok) {
-        const data = await response.json();
+        await response.json();
         Swal.fire({
           icon: 'success',
-          title: 'Registration Successful 🎉',
+          title: 'Registration Successful',
           text: 'Welcome to the Shadow Program!',
-        }).then(() => {
-    navigate("/");  // Redirect to homepage after closing the alert
-  });
+        }).then(() => navigate('/'));
 
-        // Reset form
         setFormData({
           firstName: '',
           lastName: '',
@@ -237,47 +232,49 @@ const RegistrationPage = () => {
           ldapId: '',
           department: '',
           yearOfStudy: '',
+          cpi: '',
           screenshot: null,
+          passportPhoto: null,
           confirmation: false,
         });
         setFileName('');
+        setPassportPhotoName('');
       } else {
         const errorData = await response.json();
-        console.error('❌ Validation errors:', errors.non_field_errors);
 
         if (errorData.errors) {
-          // Convert backend error format to frontend format
           const formattedErrors = {};
-          Object.keys(errorData.errors).forEach(key => {
+          Object.keys(errorData.errors).forEach((key) => {
             formattedErrors[key] = Array.isArray(errorData.errors[key])
               ? errorData.errors[key][0]
               : errorData.errors[key];
           });
 
           const fieldMapping = {
-            'payment_screenshot': 'screenshot',
-            'year_of_study': 'yearOfStudy',
-            'first_name': 'firstName',
-            'last_name': 'lastName',
-            'roll_number': 'rollNumber',
-            'ldap_id': 'ldapId'
+            payment_screenshot: 'screenshot',
+            passport_photo: 'passportPhoto',
+            year_of_study: 'yearOfStudy',
+            first_name: 'firstName',
+            last_name: 'lastName',
+            roll_number: 'rollNumber',
+            ldap_id: 'ldapId',
           };
 
           const mappedErrors = {};
-          Object.keys(formattedErrors).forEach(key => {
+          Object.keys(formattedErrors).forEach((key) => {
             const frontendKey = fieldMapping[key] || key;
             mappedErrors[frontendKey] = formattedErrors[key];
           });
 
           setErrors(mappedErrors);
 
-          // Show duplicate registration / field error popup
           Swal.fire({
             icon: 'error',
-            title: 'Registration Failed ❌',
-            text: errorData.errors.roll_number || errorData.errors.ldap_id
-              ? 'This Roll Number or LDAP ID is already registered.'
-              : 'Please correct the errors highlighted in the form.',
+            title: 'Registration Failed',
+            text:
+              errorData.errors.roll_number || errorData.errors.ldap_id
+                ? 'This Roll Number or LDAP ID is already registered.'
+                : 'Please correct the errors highlighted in the form.',
           });
         } else {
           Swal.fire({
@@ -288,7 +285,7 @@ const RegistrationPage = () => {
         }
       }
     } catch (error) {
-      console.error('❌ Submission failed:', error);
+      console.error('Submission failed:', error);
       Swal.fire({
         icon: 'error',
         title: 'Network Error',
@@ -299,80 +296,59 @@ const RegistrationPage = () => {
     }
   };
 
-  const QRCodeSVG = () => {
-    return (
-      <div className="flex flex-col items-center">
-        <p style={{ color: 'black', fontWeight: 'bold', fontSize: '1.5rem' }}>
-          Registration Fee: ₹50
-        </p>
-
-        <p style={{ color: 'black',  fontSize: '1.1rem' }}>
-          Scan either of the QR codes
-        </p>
-        <br></br>
-        <img
-          src="/qr.png"
-          alt="Payment QR Code"
-          style={{ width: "200px", height: "200px", marginRight: "200px" }}
-        />
-         <img
-          src="/qr.png"
-          alt="Payment QR Code"
-          style={{ width: "200px", height: "200px" }}
-        />
-
-        
-        </div>
-      
-    );
-  };
+  const QRCodeSVG = () => (
+    <div className="flex flex-col items-center">
+      <p style={{ color: 'black', fontWeight: 'bold', fontSize: '1.5rem' }}>
+        Registration Fee: ₹50
+      </p>
+      <p style={{ color: 'black', fontSize: '1.1rem' }}>Scan either of the QR codes</p>
+      <br />
+      <img src="/qr.png" alt="Payment QR Code" style={{ width: 200, height: 200, marginRight: 200 }} />
+      <img src="/qr.png" alt="Payment QR Code" style={{ width: 200, height: 200 }} />
+    </div>
+  );
 
   return (
     <div className="registration-container">
-      <div class="card_container">
-          <div class="wrapper">
-            <div class="event_card">
-              <div class="card_content">
-                <div class="logo_section">
-                  <img src="/images/past_event/bse.png" alt="Company Logo" class="company-logo"></img>
+      {/* Event Card */}
+      <div className="wrapper">
+        <div className="event_card">
+          <div className="card_content">
+            <div className="logo_section">
+              <img src="/placeholder.svg?height=80&width=80" alt="Company Logo" className="company-logo" />
+            </div>
+            <div className="info_section">
+              <h1 className="event_title">Shadow Program - Company Name</h1>
+              <div className="event_details">
+                <div className="detail_item">
+                  <span className="detail_label">Venue:</span>
+                  <span className="detail_value">LHC 101, IIT Bombay</span>
                 </div>
-                <div class="info_section">
-                  <h1 class="event_title">Shadow Program – Company Name</h1>
-                  <div class="event_details">
-                    <div class="detail_item">
-                      <span class="detail_label">Venue:</span>
-                      <span class="detail_value">LHC 101, IIT Bombay</span>
-                    </div>
-                    <div class="detail_item">
-                      <span class="detail_label">Date:</span>
-                      <span class="detail_value">25th August 2025</span>
-                    </div>
-                    <div class="detail_item">
-                      <span class="detail_label">Time:</span>
-                      <span class="detail_value">6:00 PM - 8:00 PM</span>
-                    </div>
-                    <div class="detail_item">
-                      <p>Kindly note that the dress code will be semi-formal. Travel, along with breakfast, lunch, and snacks, will be taken care of by us.</p>
-                    </div>
-                  </div>
-                  <div class="event_note">
-                    <span class="note_label">Note:</span>
-                    Open to all first & second year UG students
-                  </div>
+                <div className="detail_item">
+                  <span className="detail_label">Date:</span>
+                  <span className="detail_value">25th August 2025</span>
                 </div>
+                <div className="detail_item">
+                  <span className="detail_label">Time:</span>
+                  <span className="detail_value">6:00 PM - 8:00 PM</span>
+                </div>
+              </div>
+              <div className="event_note">
+                <span className="note_label">Note:</span>
+                Open to all first & second year UG students
               </div>
             </div>
           </div>
         </div>
+      </div>
 
+      {/* Registration Form */}
       <div className="registration-card">
-        {/* Header */}
         <div className="header">
           <h1>Shadow Program Registration</h1>
           <p>SARC - IIT Bombay</p>
         </div>
 
-        {/* Form */}
         <div className="form-container">
           <div className="form-content">
             {/* First Name and Last Name */}
@@ -498,7 +474,6 @@ const RegistrationPage = () => {
                     <option key={dept.value} value={dept.value}>{dept.label}</option>
                   ))}
                 </select>
-
                 {errors.department && <p className="error-message">{errors.department}</p>}
               </div>
 
@@ -518,10 +493,32 @@ const RegistrationPage = () => {
                     <option key={year.value} value={year.value}>{year.label}</option>
                   ))}
                 </select>
-
                 {errors.yearOfStudy && <p className="error-message">{errors.yearOfStudy}</p>}
               </div>
             </div>
+
+            {/* CPI (centered) */}
+            <div className="form-group full-width">
+              <label htmlFor="cpi">
+                CPI <span className="required">*</span>
+              </label>
+              <input
+                type="number"
+                step="0.01"
+                min="0"
+                max="10"
+                id="cpi"
+                name="cpi"
+                value={formData.cpi}
+                onChange={handleInputChange}
+                className={`form-input ${errors.cpi ? 'error' : ''}`}
+                placeholder="Enter your CPI (0–10)" 
+              />
+              {errors.cpi && <p className="error-message">{errors.cpi}</p>}
+              <p className="cpi-note">CPI will remain confidential and will only be shared with the company</p>
+              <div></div> {/* right spacer */}
+            </div>
+
 
             {/* Payment Section */}
             <div className="payment-section">
@@ -561,7 +558,7 @@ const RegistrationPage = () => {
                     </div>
                   ) : (
                     <div className="file-placeholder">
-                      <p className="upload-text">📷 Click here to upload your payment screenshot</p>
+                      <p className="upload-text"> Click here to upload your payment screenshot</p>
                       <p className="file-formats">Supported formats: JPG, PNG, JPEG, WEBP, HEIC</p>
                     </div>
                   )}
@@ -569,21 +566,41 @@ const RegistrationPage = () => {
               </div>
               {errors.screenshot && <p className="error-message">{errors.screenshot}</p>}
             </div>
+                        
+            {/* Passport Photo Upload */}
+            <div className="form-group full-width">
+              <label htmlFor="passportPhoto">
+                Upload Passport Size Photo <span className="required">*</span>
+              </label>
+              <div className="file-upload-container">
+                <input
+                  type="file"
+                  id="passportPhoto"
+                  name="passportPhoto"
+                  accept="image/*"
+                  onChange={handleFileChange}
+                  className="file-input"
+                />
+                <div className={`file-upload-area ${passportPhotoName ? 'has-file' : ''} ${errors.passportPhoto ? 'error' : ''}`}>
+                  {passportPhotoName ? (
+                    <div className="file-success">
+                      <p className="file-name">✅ {passportPhotoName}</p>
+                      <p className="file-instruction">Click to change file</p>
+                    </div>
+                  ) : (
+                    <div className="file-placeholder">
+                      <p className="upload-text"> Click here to upload your passport size photo</p>
+                      <p className="file-formats">Supported formats: JPG, PNG, JPEG, WEBP, HEIC</p>
+                    </div>
+                  )}
+                </div>
+              </div>
+              {errors.passportPhoto && <p className="error-message">{errors.passportPhoto}</p>}
+            </div>
 
             {/* Confirmation Checkbox */}
             <div className="confirmation-section">
               <div className="checkbox-container">
-                {/* <input
-                  type="checkbox"
-                  id="confirmation"
-                  name="confirmation"
-                  checked={formData.confirmation}
-                  onChange={handleInputChange}
-                  className="checkbox"
-                />
-                <label htmlFor="confirmation" className="checkbox-label">
-                  I confirm my registration for the Shadow Program and I understand that I will be attending this program at my own risk, and SARC will not be responsible for any mishaps. <span className="required">*</span>
-                </label> */}
                 <CustomCheckbox
                   id="confirmation"
                   name="confirmation"

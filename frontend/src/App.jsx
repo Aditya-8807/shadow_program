@@ -28,9 +28,9 @@ export default function App() {
       <div className="content">
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/PastEvent" element={<PastEvent/>} />
+          <Route path="/events" element={<PastEvent/>} />
           <Route path="/register" element={<RegistrationPage />} />
-          <Route path="/TeamPage" element={<TeamPage />} />
+          <Route path="/team" element={<TeamPage />} />
         </Routes>
       </div>
       <Footer />

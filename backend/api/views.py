@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from django.core.mail import send_mail
 from django.conf import settings
 from django.db import transaction
+from django.db.models import Avg, Count, Q
 from .models import Registration, RegistrationSettings
 from .serializers import (
     RegistrationSerializer,
@@ -25,6 +26,19 @@ def api_health_check(request):
         'version': '1.0.0'
     })
 
+@api_view(['GET'])
+def registration_status(request):
+    """Get registration open/close status"""
+    try:
+        settings = RegistrationSettings.objects.first()
+        if settings:
+            return Response({'registrations_open': settings.registration_open})
+        else:
+            # Create default settings if none exist
+            settings = RegistrationSettings.objects.create(registration_open=True)
+            return Response({'registrations_open': settings.registration_open})
+    except Exception as e:
+        return Response({'registrations_open': False, 'error': str(e)})
 
 @api_view(['GET'])
 def get_form_data(request):
@@ -66,11 +80,66 @@ def get_form_data(request):
 
 @api_view(['POST'])
 @parser_classes([MultiPartParser, FormParser])
+def validate_passport_photo(request):
+    """Validate passport photo before form submission"""
+    
+    photo = request.FILES.get('passport_photo')
+    
+    if not photo:
+        return Response({
+            'valid': False,
+            'message': 'No photo uploaded'
+        }, status=status.HTTP_400_BAD_REQUEST)
+    
+    # Validate file size (5MB limit)
+    if photo.size > 5 * 1024 * 1024:
+        return Response({
+            'valid': False,
+            'message': 'Image file too large. Maximum size is 5MB.'
+        }, status=status.HTTP_400_BAD_REQUEST)
+    
+    # Validate file type
+    if not photo.content_type.startswith('image/'):
+        return Response({
+            'valid': False,
+            'message': 'Only image files are allowed.'
+        }, status=status.HTTP_400_BAD_REQUEST)
+    
+    return Response({
+        'valid': True,
+        'message': 'Photo is valid',
+        'file_info': {
+            'name': photo.name,
+            'size': photo.size,
+            'type': photo.content_type
+        }
+    })
+
+
+@api_view(['POST'])
+@parser_classes([MultiPartParser, FormParser])
 def create_registration(request):
     """Create a new registration"""
     
     try:
         with transaction.atomic():
+            # Check if passport photo is provided
+            if 'passport_photo' not in request.FILES:
+                return Response({
+                    'message': 'Passport photo is required.',
+                    'errors': {'passport_photo': ['This field is required.']},
+                    'success': False
+                }, status=status.HTTP_400_BAD_REQUEST)
+            
+            # Validate CPI is provided
+            cpi = request.data.get('cpi')
+            if not cpi:
+                return Response({
+                    'message': 'CPI is required.',
+                    'errors': {'cpi': ['This field is required.']},
+                    'success': False
+                }, status=status.HTTP_400_BAD_REQUEST)
+            
             serializer = RegistrationCreateSerializer(data=request.data)
             
             if serializer.is_valid():
@@ -204,6 +273,13 @@ def registration_statistics(request):
     approved_registrations = Registration.objects.filter(status='approved').count()
     payment_verified_count = Registration.objects.filter(payment_verified=True).count()
     
+    # CPI statistics (for admin use only)
+    cpi_stats = Registration.objects.aggregate(
+        avg_cpi=Avg('cpi'),
+        high_cpi_count=Count('id', filter=Q(cpi__gte=8.0)),
+        total_with_cpi=Count('id', filter=Q(cpi__isnull=False))
+    )
+    
     # Department wise statistics
     department_stats = {}
     for dept_code, dept_name in Registration.DEPARTMENT_CHOICES:
@@ -224,7 +300,12 @@ def registration_statistics(request):
         'approved_registrations': approved_registrations,
         'payment_verified_count': payment_verified_count,
         'department_statistics': department_stats,
-        'year_statistics': year_stats
+        'year_statistics': year_stats,
+        'cpi_statistics': {
+            'average_cpi': round(cpi_stats['avg_cpi'], 2) if cpi_stats['avg_cpi'] else 0,
+            'high_performers': cpi_stats['high_cpi_count'],  # CPI >= 8.0
+            'total_submissions': cpi_stats['total_with_cpi']
+        }
     })
 
 
@@ -246,18 +327,20 @@ Your registration details:
 - Year: {registration.get_year_display_name()}
 - Contact: {registration.contact}
 - Email: {registration.email}
+- Passport Photo: Uploaded ✓
 
 Your registration is currently being reviewed. You will receive further updates on your registered email address.
 
 Important Notes:
-- Please ensure your payment screenshot is clear and shows the transaction details
+- Please ensure your passport photo is clear and professional
+- Your CPI information will remain confidential and will only be shared with the company
 - Your registration fee of ₹50 will be refunded after successful completion of the program
 - Keep this email for your records
 
 If you have any questions, please contact SARC - IIT Bombay.
 
 Best regards,
-SARC Team
+SARC
 IIT Bombay
     """
     

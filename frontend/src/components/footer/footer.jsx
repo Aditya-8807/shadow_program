@@ -60,11 +60,11 @@ export default function Footer() {
               Home
             </Link>
             <span>|</span>
-            <Link to="/PastEvent" onClick={scrollToTop}>
+            <Link to="/events" onClick={scrollToTop}>
               Past Events
             </Link>
             <span>|</span>
-            <Link to="/TeamPage" onClick={scrollToTop}>
+            <Link to="/team" onClick={scrollToTop}>
               Team
             </Link>
             <span>|</span>
@@ -89,7 +89,11 @@ export default function Footer() {
           </div>
           <div className="contact-item">
             <FaEnvelope className="footer-icon" />
-            <a href="mailto:web@sarc-iitb.org">web@sarc-iitb.org</a>
+            <a href="mailto:aadit.sarc@gmail.com">aadit.sarc@gmail.com</a>
+          </div>
+          <div className="contact-item">
+            <FaEnvelope className="footer-icon" />
+            <a href="mailto:aastham.sarc@gmail.com">aastham.sarc@gmail.com</a>
           </div>
         </div>
 

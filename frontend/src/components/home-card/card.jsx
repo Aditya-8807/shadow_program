@@ -66,7 +66,7 @@ export default function Card() {
       </div>
 
       <button
-        onClick={() => navigate("/PastEvent")}
+        onClick={() => navigate("/events")}
         className="view-button"
         aria-label="View All Past Events"
       >

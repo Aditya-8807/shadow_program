@@ -25,7 +25,7 @@ export default function HomePage() {
             <button className="b1" onClick={() => navigate("/RegistrationPage")}>
               <span class="button-content">Register Now</span>
             </button>
-            <button className="b1" onClick={() => navigate("/PastEvent")}>
+            <button className="b1" onClick={() => navigate("/events")}>
               <span class="button-content">Past Shadows</span>
             </button>
           </div>

@@ -49,17 +49,17 @@ export default function Navbar() {
           </Link>
         </li>
         <li>
-          <Link to="/PastEvent" onClick={closeMenu} className="btn">
+          <Link to="/events" onClick={closeMenu} className="btn">
             Past Events
           </Link>
         </li>
         <li>
-          <Link to="/TeamPage" onClick={closeMenu} className="btn">
+          <Link to="/team" onClick={closeMenu} className="btn">
             Team
           </Link>
         </li>
         <li>
-          <a href="#faq-section" className="btn" onClick={goToFAQ}> FAQ</a>
+          <a href="#faq" className="btn" onClick={goToFAQ}> FAQ</a>
         </li>
         <li>
           <Link

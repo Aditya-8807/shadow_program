@@ -33,7 +33,9 @@ class RegistrationSerializer(serializers.ModelSerializer):
             'refund_processed',
             'refund_date',
             'created_at',
-            'updated_at'
+            'updated_at',
+            'cpi',
+            'passport_photo'
         ]
         read_only_fields = [
             'id',
@@ -53,6 +55,20 @@ class RegistrationSerializer(serializers.ModelSerializer):
         """Validate contact number format"""
         if not re.match(r'^\d{10}$', value):
             raise serializers.ValidationError("Contact number must be exactly 10 digits.")
+        return value
+    def validate_cpi(self, value):
+        if value < 0 or value > 10:
+            raise serializers.ValidationError("CPI must be between 0.00 and 10.00")
+        return value
+    
+    def validate_passport_photo(self, value):
+        if value.size > 5 * 1024 * 1024:  # 5MB limit
+            raise serializers.ValidationError("Image file too large. Max size is 5MB")
+        
+        # Check if it's an image
+        if not value.content_type.startswith('image/'):
+            raise serializers.ValidationError("Only image files are allowed")
+        
         return value
     
     def validate_email(self, value):
@@ -93,13 +109,12 @@ class RegistrationSerializer(serializers.ModelSerializer):
                 raise serializers.ValidationError("File size cannot exceed 5MB.")
             
             # Check file format
-            allowed_formats = ['jpg', 'jpeg', 'png', 'gif']
+            allowed_formats = ['jpg', 'jpeg', 'png', 'webp', 'heic']
             ext = value.name.split('.')[-1].lower()
             if ext not in allowed_formats:
-                raise serializers.ValidationError("Only JPG, PNG, and GIF files are allowed.")
+                raise serializers.ValidationError("Only JPG, PNG, JPEG, WEBP, and HEIC files are allowed.")
         
         return value
-
 
 class RegistrationListSerializer(serializers.ModelSerializer):
     """Lightweight serializer for listing registrations"""
@@ -122,7 +137,6 @@ class RegistrationListSerializer(serializers.ModelSerializer):
             'created_at'
         ]
 
-
 class RegistrationCreateSerializer(serializers.ModelSerializer):
     """Serializer for creating new registrations"""
     
@@ -137,6 +151,8 @@ class RegistrationCreateSerializer(serializers.ModelSerializer):
             'ldap_id',
             'department',
             'year_of_study',
+            'cpi',
+            'passport_photo',
             'payment_screenshot',
             'confirmation_accepted'
         ]
@@ -160,7 +176,6 @@ class RegistrationCreateSerializer(serializers.ModelSerializer):
         
         return data
 
-
 class RegistrationSettingsSerializer(serializers.ModelSerializer):
     """Serializer for registration settings"""
     
@@ -175,12 +190,10 @@ class RegistrationSettingsSerializer(serializers.ModelSerializer):
             'payment_instructions'
         ]
 
-
 class DepartmentChoicesSerializer(serializers.Serializer):
     """Serializer for department choices"""
     value = serializers.CharField()
     label = serializers.CharField()
-
 
 class YearChoicesSerializer(serializers.Serializer):
     """Serializer for year choices"""

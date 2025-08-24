@@ -144,3 +144,6 @@ DEFAULT_FROM_EMAIL = 'noreply@sarc.iitb.ac.in'
 FILE_UPLOAD_MAX_MEMORY_SIZE = 5242880  # 5MB
 DATA_UPLOAD_MAX_MEMORY_SIZE = 5242880  # 5MB"""
 
+
+# Image processing settings
+ALLOWED_IMAGE_EXTENSIONS = ['jpg', 'jpeg', 'png', 'webp', 'heic']
