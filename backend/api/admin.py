@@ -15,9 +15,11 @@ class RegistrationAdmin(admin.ModelAdmin):
         'year_display',
         'contact',
         'email',
+        'cpi',
+        'passport_photo_preview',
         'payment_status',
         'status',
-        'created_at'
+        'created_at',
     ]
     
     list_filter = [
@@ -43,7 +45,8 @@ class RegistrationAdmin(admin.ModelAdmin):
         'created_at',
         'updated_at',
         'full_name',
-        'payment_screenshot_preview'
+        'payment_screenshot_preview',
+        "passport_photo_preview",
     ]
     
     fieldsets = [
@@ -65,14 +68,17 @@ class RegistrationAdmin(admin.ModelAdmin):
         ('Academic Information', {
             'fields': [
                 'department',
-                'year_of_study'
+                'year_of_study',
+                'cpi'
             ]
         }),
         ('Payment Information', {
             'fields': [
                 'payment_screenshot',
                 'payment_screenshot_preview',
-                'payment_verified'
+                'payment_verified',
+                'passport_photo',
+                'passport_photo_preview',
             ]
         }),
         ('Registration Status', {
@@ -140,24 +146,17 @@ class RegistrationAdmin(admin.ModelAdmin):
             )
         return "No screenshot uploaded"
     payment_screenshot_preview.short_description = 'Payment Screenshot'
-     # Hide CPI from list view for privacy (since it's confidential)
-    def get_list_display(self, request):
-        return [field for field in self.list_display if field != 'cpi']
-    
-    # Only show CPI to superusers
-    def get_fields(self, request, obj=None):
-        fields = super().get_fields(request, obj)
-        if not request.user.is_superuser and 'cpi' in fields:
-            fields = [f for f in fields if f != 'cpi']
-        return fields
     
     # Show passport photo thumbnail
     def passport_photo_preview(self, obj):
         if obj.passport_photo:
-            return f'<img src="{obj.passport_photo.url}" width="50" height="50" />'
+            return format_html(
+                '<img src="{}" width="80" height="80" style="object-fit: cover; border-radius: 8px;" />',
+                obj.passport_photo.url
+            )
         return "No photo"
-    passport_photo_preview.allow_tags = True
-    passport_photo_preview.short_description = 'Photo'
+    passport_photo_preview.short_description = 'Passport Photo'
+    
     # Admin Actions
     def mark_payment_verified(self, request, queryset):
         updated = queryset.update(payment_verified=True)

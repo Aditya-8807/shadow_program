@@ -33,8 +33,9 @@ class RegistrationSerializer(serializers.ModelSerializer):
             'refund_processed',
             'refund_date',
             'created_at',
-            'updated_at'
-             'cpi', 'passport_photo'
+            'updated_at',
+            'cpi',
+            'passport_photo'
         ]
         read_only_fields = [
             'id',
@@ -150,6 +151,8 @@ class RegistrationCreateSerializer(serializers.ModelSerializer):
             'ldap_id',
             'department',
             'year_of_study',
+            'cpi',
+            'passport_photo',
             'payment_screenshot',
             'confirmation_accepted'
         ]

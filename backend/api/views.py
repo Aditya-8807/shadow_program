@@ -25,6 +25,7 @@ def api_health_check(request):
         'status': 'success',
         'version': '1.0.0'
     })
+
 @api_view(['GET'])
 def registration_status(request):
     """Get registration open/close status"""
